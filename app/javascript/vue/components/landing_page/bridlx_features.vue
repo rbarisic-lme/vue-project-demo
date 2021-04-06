@@ -60,8 +60,8 @@ export default {
         }
         &:hover {
           background: #fff;
-          box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
-          border-radius: 8px;
+          box-shadow: 0 4px 6px 0 rgba(0,0,0,0.1);
+          border-radius: 12px;
           top: 0px;
         }
       }

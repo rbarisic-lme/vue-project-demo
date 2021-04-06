@@ -16,28 +16,32 @@ export default {
   components: {
   },
   props: {
+    imageNames: Array,
+    pathPrefix: String
   },
   data() {
     return {
       images: [],
-      loadImagesCount: 6, // Images to be loaded
       active: 0,
-      interval: 0,
+      intervalId: 0,
       transitionSpeed: 2000, // in milliseconds,
-      slideOffset: 40,
       wrapperStyle: {},
     }
   },
   mounted() {
-    for (var i = 1; i <= this.loadImagesCount; i++) {
+    for (var i = 0; i < this.loadImagesCount; i++) {
       let image = new Image();
-      image.src = require(`@images/banner/Model${i}.jpeg`);
+      image.src = require(`@images/${this.pathPrefix}${this.imageNames[i]}`);
       image.onload = this.onImgLoad(image);
     }
   },
   computed: {
+    // Images to be loaded
+    loadImagesCount() {
+      return this.imageNames.length
+    },
     imagesCount() {
-      return this.images.length;
+      return this.images.length
     },
   },
   methods: {
@@ -64,17 +68,14 @@ export default {
 
       return offsetWidth;
     },
-    setActive(val) {
-      this.active = val
-    },
     onImgLoad(val) {
       this.images.push (val.src);
     },
     setNewInterval() {
-      clearInterval(this.interval);
-      this.interval = setInterval(() => {
-            this.setActive(this.active + 1);
-          }, this.transitionSpeed)
+      clearInterval(this.intervalId);
+      this.intervalId = setInterval(() => {
+        this.active++
+      }, this.transitionSpeed)
     },
   },
   watch: {
@@ -92,7 +93,7 @@ export default {
     }
   },
   beforeDestroy() {
-    clearInterval(this.interval)
+    clearInterval(this.intervalId)
   }
 }
 </script>

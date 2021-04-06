@@ -1,6 +1,6 @@
 <template lang="pug">
 .splash.px-1.py-4
-  BGSlider
+  BGSlider(transitionSpeed="4000")
   .align-bottom
     .container
       .row

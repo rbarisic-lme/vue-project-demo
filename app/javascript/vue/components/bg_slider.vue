@@ -11,6 +11,7 @@ export default {
   components: {
   },
   props: {
+    transitionSpeed: String, // in milliseconds
   },
   data() {
     return {
@@ -18,7 +19,6 @@ export default {
       loadImagesCount: 6, // Images to be loaded
       active: 0,
       interval: 0,
-      transitionSpeed: 3000, // in milliseconds
       loadedImages: [],
     }
   },
