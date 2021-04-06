@@ -1,0 +1,131 @@
+<template lang="pug">
+  div
+    //- v-navigation-drawer(app)
+
+    //- v-app-bar(app)
+    .header.flex.animate__animated.animate__fadeInDown(:class="{scrolled: scrolled}")
+      .header-logos.flex
+        .item.p-3
+          a(href="#")
+            img.logo-bridlx(src="@images/logos/bridlx-bright.svg" alt="bridlX")
+        .item.half-visible.p-3
+          a(href="#")
+            img.logo-bridlx-beyond(src="@images/logos/bridlx-and-beyond-dark.svg" alt="bridlX Business")
+        .item.half-visible.p-3
+          a(href="#")
+            img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlX and Beyond")
+      .header-items.text-right
+        a(href="#" class="hover:text-white").p-3 Entdecken
+        a(href="#").p-3 Stylist werden
+        a(href="#").p-3 Login
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      scrollTop: 0,
+      scrollThreshold: 200,
+    }
+  },
+  computed: {
+    scrolled() {
+      return this.scrollTop > this.scrollThreshold ? true : false;
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.onScroll);
+  },
+  destroyed () {
+    window.removeEventListener('scroll', this.onScroll);
+  },
+  methods: {
+    onScroll (event) {
+      this.scrollTop = window.scrollY - (window.scrollY % 100); //debounce
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+  .header {
+    transition: all .3s;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    padding: 32px 64px;
+    align-items: flex-end;
+    .header-logos {
+      width: 50%;
+      .item {
+        transition: all .3s;
+        display: inline-block;
+        max-width: 30vw;
+        &.half-visible {
+          opacity: 0.5;
+          &:hover {
+            opacity: 1;
+          }
+        }
+        img {
+          display: inline-block;
+        }
+        img.logo-bridlx {
+          max-height: 64px;
+        }
+        img.logo-bridlx-beyond {
+          position: relative;
+          top: 32px;
+          max-height: 48px;
+        }
+        img.logo-bridlx-business {
+          position: relative;
+          top: 32px;
+          max-height: 48px;
+        }
+      }
+    }
+    .header-items {
+      width: 50%;
+      a {
+        position: relative;
+        transition: all .2s;
+        display: inline-block;
+        color: #fff;
+        top: 0px;
+        &:hover {
+          top: 4px;
+        }
+      }
+    }
+    &.scrolled {
+      background: #000;
+      padding: 0 16px;
+      .header-logos {
+        .item {
+          img.logo-bridlx {
+            max-height: 32px;
+          }
+          img.logo-bridlx-beyond {
+            position: relative;
+            top: 32px;
+            max-height: 32px;
+            opacity: 0;
+            display: none;
+          }
+          img.logo-bridlx-business {
+            position: relative;
+            top: 32px;
+            max-height: 32px;
+            opacity: 0;
+            display: none;
+            
+          }
+        }
+      }
+    }
+  }
+</style>

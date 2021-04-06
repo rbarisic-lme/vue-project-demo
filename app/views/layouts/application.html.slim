@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title bridlX
+
+    meta name="viewport" content="width=device-width,initial-scale=1"
+
+    meta name="author" content="bridlX"
+    meta name="keywords" content="BridlX, Hochzeit, Heiraten, Stylisten, Stylefinder, Look, Beauty"
+
+    == csrf_meta_tags
+    == csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+
+    link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet"
+
+    - if @vue_app
+      = javascript_pack_tag @vue_app, 'data-turbolinks-track': 'reload'
+      = stylesheet_pack_tag @vue_app, media: 'all', 'data-turbolinks-track': 'reload'
+
+  body
+    = yield

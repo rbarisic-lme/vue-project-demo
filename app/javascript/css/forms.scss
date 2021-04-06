@@ -1,0 +1,30 @@
+.row--form-inline {
+  .input-annotated, button {
+    width: 100%;
+
+  }
+
+  button {
+    padding: 16px 8px;
+
+    text-align: center;
+
+    text-transform: uppercase;
+
+    @media screen and (max-width: 720px) {
+      margin: 0.5rem 0;
+    }
+
+    font-weight: bold;
+    color: $white;
+    background-color: $color-lead;
+
+    &:hover {
+      background-color: lighten($color-lead, 5%);
+    }
+  }
+}
+
+.sizeaware {
+  height: 100%;
+}
