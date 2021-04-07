@@ -114,11 +114,16 @@ export default {
     z-index: 998;
     justify-content: center;
     flex-direction: column;
-    padding: 12px;
+    padding: 6px;
     .indicator-wrapper {
       padding: 12px;
-      margin-bottom: 12px;
       cursor: pointer;
+
+      &:hover {
+        .indicator {
+          background-color: rgba(255,255,255,0.5);
+        }
+      }
 
       &:last-child {
         margin-bottom: 0;

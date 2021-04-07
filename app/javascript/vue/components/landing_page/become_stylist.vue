@@ -1,21 +1,24 @@
 <template lang="pug">
-  ContainerSlider(transitionSpeed="500000")
+  ContainerSlider(transitionSpeed="5000")
     .container-slider(key="1")
       .row.h100p.no-gutters(style="background: #c6d8b6;")
-        .col-6
-          .cover-image(style="background-image: ~@images/banner/Model1.jpeg")
-        .col-6
-          .p-8(style="max-width: 50%;")
+        .col-6.d-none.d-lg-block
+          .flex-horizontal
+            img(src="~@images/lp/become-a-stylist/portrait-1.jpg")
+            img(src="~@images/lp/become-a-stylist/portrait-2.jpg")
+            img(src="~@images/lp/become-a-stylist/portrait-3.jpg")
+        .col-12.col-lg-6
+          .p-8.mw-50-md-up
             h2.heading-h2.serif.mb-4 Werde Stylist.
             p.lead Teile dein Profil und mache zukünftig noch mehr Bräute glücklich.
             a.lead-btn-stylist-1(href="#") Erfahre mehr
     .container-slider(key="2")
       .row.h100p.no-gutters(style="background: #f5ecdc;")
-        .col-6
+        .col-6.d-none.d-lg-block
           .img-centered
             img(src="~@images/logos/bridlx-and-beyond-purple-and-black.svg")
-        .col-6
-          .p-8(style="max-width: 50%;")
+        .col-12.col-lg-6
+          .p-8.mw-50-md-up
             h2.heading-h2.serif.mb-4 Grenzenlos genießen.
             p.lead bridlx and beyond – der exklusive 24/7 Rundum-Service speziell für Weddingplanner, internationale Hochzeiten und vieles mehr.
             a.lead-btn-stylist-1(href="#") Entdecke mehr dazu
@@ -23,7 +26,7 @@
       .row.h100p.no-gutters(style="background: #2d2360; color: #fff;")
         .container
           .row
-            .col-6
+            .col-12.col-lg-6
               .p-8
                 h2.heading-h2.serif.mb-4
                   img(src="~@images/logos/bridlx-business-bright.svg" style="max-height: 96px;")
@@ -40,17 +43,17 @@
                     img(src="~@images/icons/ui/checkmark-white.svg")
                     span Werde Teil des Ecosystems
                 a.lead-btn-stylist-1.lead-btn-stylist-white(href="#") Entdecke mehr dazu
-            .col-6
+            .col-6.d-none.d-lg-block
               video(autoplay loop muted playsinline preload="metadata" style="height: 400px; margin-left: auto; margin-right: 32px;")
                 source(src="@assets/videos/bridlx-business-trailer.mp4" type="video/mp4")
                 | Your browser does not support the video tag.
     .container-slider(key="4")
       .row.h100p.no-gutters
-        .col-6
+        .col-6.d-none.d-lg-block
           .img-centered
             img(src="~@images/AdobeStock_355334010.jpg" style="height: 380px;")
-        .col-6(style="background: #dcb3a5;")
-          .p-8(style="max-width: 50%;")
+        .col-12.col-lg-6(style="background: #dcb3a5;")
+          .p-8
             h2.heading-h2.serif.mb-4 Digital Add-Ons
             p.lead Neben unserem bridlx E-Learning Kurs bereiten dich unsere hochqualifizierten Coaches perfekt auf deine Hochzeit vor.
             p.lead Profitiere jederzeit & überall von unserem digitalen Angebot, unter anderem im Bereich Fitness und Yoga.
@@ -95,7 +98,7 @@ export default {
     height: 100%;
     width: 100%;
     background-size: cover;
-    background-image: url(~@images/banner/Model1.jpeg);
+    // background-image: url(~@images/lp/become-a-stylist/portrait-1.jpg);
   }
   .h100p {
     height: 100%;
@@ -125,12 +128,28 @@ export default {
       background: #333;
     }
     &.lead-btn-stylist-white {
-    color: #fff;
-    border-color: #fff;
-    &:hover {
-      color: #333;
-      background: #fff;
+      color: #fff;
+      border-color: #fff;
+      &:hover {
+        color: #333;
+        background: #fff;
+      }
     }
   }
+
+  .mw-50-md-up {
+    max-width: 50%;
+    @media screen and (max-width: 720px) {
+      max-width: unset;
+    }
+  }
+
+  .flex-horizontal {
+    display: flex;
+    max-width: 100%;
+    overflow: hidden;
+    img {
+
+    }
   }
 </style>

@@ -1,23 +1,38 @@
 <template lang="pug">
   div
     //- v-navigation-drawer(app)
-
     //- v-app-bar(app)
-    .header.flex.animate__animated.animate__fadeInDown(:class="{scrolled: scrolled}")
-      .header-logos.flex
-        .item.p-3
-          a(href="#")
-            img.logo-bridlx(src="@images/logos/bridlx-bright.svg" alt="bridlX")
-        .item.half-visible.p-3
-          a(href="#")
-            img.logo-bridlx-beyond(src="@images/logos/bridlx-and-beyond-dark.svg" alt="bridlX Business")
-        .item.half-visible.p-3
-          a(href="#")
-            img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlX and Beyond")
-      .header-items.text-right
-        a(href="#" class="hover:text-white").p-3 Entdecken
-        a(href="#").p-3 Stylist werden
-        a(href="#").p-3 Login
+    .d-block.d-lg-none
+      v-app-bar()
+        v-app-bar-nav-icon(@click="drawer = true")
+        v-toolbar-title bridlX
+
+      v-navigation-drawer(v-model="drawer" absolute temporary)
+        v-list(nav dense)
+          v-list-item-group
+            v-list-item
+              v-list-item-title(link to="#") Entdecken
+            v-list-item
+              v-list-item-title(link to="#") Stylist werden
+            v-list-item
+              v-list-item-title(link to="#") Login
+
+    .d-none.d-lg-block
+      .header.flex.animate__animated.animate__fadeInDown(:class="{scrolled: scrolled}")
+        .header-logos.flex
+          .item.p-3
+            a(href="#")
+              img.logo-bridlx(src="@images/logos/bridlx-bright.svg" alt="bridlX")
+          .item.half-visible.p-3
+            a(href="#")
+              img.logo-bridlx-beyond(src="@images/logos/bridlx-and-beyond-dark.svg" alt="bridlX Business")
+          .item.half-visible.p-3
+            a(href="#")
+              img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlX and Beyond")
+        .header-items.text-right
+          a(href="#" class="hover:text-white").p-3 Entdecken
+          a(href="#").p-3 Stylist werden
+          a(href="#").p-3 Login
 </template>
 
 <script>
@@ -26,6 +41,7 @@ export default {
     return {
       scrollTop: 0,
       scrollThreshold: 200,
+      drawer: false
     }
   },
   computed: {

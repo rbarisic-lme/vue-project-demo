@@ -1,5 +1,5 @@
 <template lang="pug">
-.bg-footer
+.bg-footer.pt-8
   .container.footer
     .row
       .col-12.col-md-4
@@ -27,14 +27,19 @@
             a(href="#") Blog
           li
             a(href="#") Podcast
-    .row
+    .row.mt-8
       .col-12.col-md-5
         .footer-social-icons.flex
-          img.ml-0(src="~@images/icons/social/bridlx-instagram-circle.svg")
-          img(src="~@images/icons/social/bridlx-facebook-circle.svg")
-          img(src="~@images/icons/social/bridlx-youtube-circle.svg")
-          img(src="~@images/icons/social/bridlx-pinterest-circle.svg")
-          img.mr-0(src="~@images/icons/social/bridlx-linkedin-circle.svg")
+          a(href="#")
+            img.ml-0(src="~@images/icons/social/bridlx-instagram-circle.svg")
+          a(href="#")
+            img(src="~@images/icons/social/bridlx-facebook-circle.svg")
+          a(href="#")
+            img(src="~@images/icons/social/bridlx-youtube-circle.svg")
+          a(href="#")
+            img(src="~@images/icons/social/bridlx-pinterest-circle.svg")
+          a(href="#")
+            img.mr-0(src="~@images/icons/social/bridlx-linkedin-circle.svg")
       .col-12.col-md-6.offset-md-1
         .footer-links.flex
           .copyright.p-4 &copy; 2021 bridlx
@@ -66,6 +71,7 @@ export default {
   }
   .footer {
     a {
+      display: inline-block;
       color: #000;
       &:hover {
         text-decoration: underline;
@@ -76,6 +82,8 @@ export default {
       img {
         max-height: 48px;
         margin-right: 1rem;
+        display: inline-block;
+        width: 48px;
       }
       @media screen and (max-width: 720px) {
         justify-content: space-between;

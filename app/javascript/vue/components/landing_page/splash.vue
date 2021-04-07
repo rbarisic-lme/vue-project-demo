@@ -8,7 +8,7 @@
           .slogan.animate__animated.animate__bounce
             h1.heading-h1
               span Du heiratest?
-              br.visible-md-up
+              br
               span Finde dein perfektes Brautstyling
         .col-12
           .search
@@ -56,6 +56,9 @@ export default {
   .splash {
     .slogan {
       margin-top: 16rem;
+      @media screen and (max-width: 720px) {
+        margin-top: 4rem;
+      }
     }
     .search {
       margin-top: 40px;
