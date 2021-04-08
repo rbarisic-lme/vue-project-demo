@@ -1,10 +1,10 @@
 module.exports = {
   purge: [], 
   darkMode: false, // or 'media' or 'class'
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  // variants: {
+    // extend: {},
+  // },
+  // plugins: [],
   theme: {
     fontFamily: {
       'sans':  ['Roboto', 'Helvetica', 'Arial', 'sans-serif'],
@@ -12,8 +12,8 @@ module.exports = {
     },
     colors: {
       primary: '#000',
-      secondary: '',
+      // secondary: '',
     },
-    extend: {},
+    // extend: {},
   },
 }
