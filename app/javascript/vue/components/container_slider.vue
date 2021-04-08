@@ -1,5 +1,5 @@
 <template lang="pug">
-  .overflow-container
+  .overflow-container(:style="styleHeight")
     .indicators
       .indicator-wrapper(v-for="item in this.slideCount" :key="item" :data-index="item" @click="clickIndicator")
         .indicator(:class="{active: active == item - 1}")
@@ -14,17 +14,22 @@ export default {
   },
   props: {
       transitionSpeed: String,
+      height: [String, Number],
   },
   data() {
     return {
       slideCount: 0,
       active: 0,
-      slideOffset: 420,
       intervalId: 0,
       wrapperStyle: {},
     }
   },
   computed: {
+    styleHeight() {
+      return {
+        height: this.height + "px",
+      }
+    }
   },
   mounted() {
     this.slideCount = this.$refs.wrapper.childElementCount;
@@ -51,7 +56,7 @@ export default {
       };
     },
     getOffset() {
-      let offset = (this.active * this.slideOffset) / -1
+      let offset = (this.active * this.height) / -1
       return offset;
     },
     clickIndicator(e) {
@@ -84,7 +89,6 @@ export default {
     justify-content: center;
     align-items: center;
 
-    height: 420px;
     width: 100%;
 
     overflow: hidden;
@@ -100,9 +104,6 @@ export default {
     flex-direction: column-reverse;
   }
   .container-slider {
-    height: 420px;
-    @media screen and (max-width: 720px) {
-    }
   }
   .indicators {
     position: absolute;

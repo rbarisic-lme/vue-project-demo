@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
 
+  devise_for :stylists
+  devise_for :users
+  root 'static_pages#landing_page'
+
   get 'about_us', to: 'static_pages#about_us'
   get 'imprint', to: 'static_pages#imprint'
   get 'privacy', to: 'static_pages#privacy'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get '/', to: 'static_pages#landing_page'
+  get 'become-a-stylist', to: 'static_pages#become_a_stylist'
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Vue App
   scope :app do

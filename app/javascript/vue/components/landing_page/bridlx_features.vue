@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container.bridlx-features.pt-4.pb-2
+  .container.bridlx-features.pt-8.pb-8
     h2.heading-h2.serif.mt-4.mb-8.text-center Sag „JA“- ohne Stress
     .row.feature-elements
       .col-md.p-4.feature-element

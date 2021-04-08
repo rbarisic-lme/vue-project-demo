@@ -11,4 +11,8 @@ class StaticPagesController < ApplicationController
 
   def privacy
   end
+
+  def become_a_stylist
+    @vue_app = "become_a_stylist"
+  end
 end

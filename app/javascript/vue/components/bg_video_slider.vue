@@ -1,9 +1,10 @@
 <template lang="pug">
   transition(name="fade" mode="out-in")
-    transition-group.bg-slider-wrapper(name="bg-slider" tag="div")
-      .bg-slider(v-for="(image, index) in images" :key="image" :style="`background-image: url(${images[index]})`" v-show="active == index")
-        h1 {{active}}
-        h1 {{index}}
+    transition-group.bg-slider-wrapper(name="bg-slider" tag="div" ref="videoWrapper")
+      .bg-video-slider(v-for="(video, index) in videos" :key="video" v-show="active == index")
+        video(autoplay loop muted playsinline preload="metadata")
+          source(:src="videos[index]" type="video/mp4")
+          | Your browser does not support the video tag.
 </template>
 
 <script>
@@ -11,50 +12,45 @@ export default {
   components: {
   },
   props: {
-    transitionSpeed: String, // in milliseconds
+    videoNames: Array,
   },
   data() {
     return {
-      images: [],
-      loadImagesCount: 6, // Images to be loaded
+      videos: [],
+      videoDurations: [],
+      pathPrefix: 'videos',
       active: 0,
       interval: 0,
-      loadedImages: [],
+      transitionSpeed: 7000,
     }
   },
   mounted() {
-    for (var i = 1; i <= this.loadImagesCount; i++) {
-      let image = new Image();
-      image.src = require(`@images/banner/Model${i}.jpeg`);
-      image.onload = this.onImgLoad(image);
+    for(let i = 0; i < this.videoNames.length; i++) {
+      this.videos.push(require(`@assets/${this.pathPrefix}/${this.videoNames[i]}`));
     }
     this.interval = this.setNewInterval();
   },
   computed: {
-    imagesCount() {
-      return this.images.length;
+    videosCount() {
+      return this.videos.length;
     }
   },
   methods: {
     setActive(val) {
       this.active = val
-    },
-    onImgLoad(val) {
-      this.images.push (val.src)
+
+      // this.$refs.videoWrapper.children[0].children[0].elm.load();
     },
     setNewInterval() {
       clearInterval(this.interval);
       return setInterval(() => {
-            this.setActive(this.active + 1);
-          }, this.transitionSpeed)
+          this.setActive(this.active + 1);
+        }, 7000);
     }
   },
   watch: {
-    images() {
-      this.setNewInterval();
-    },
     active(val) {
-      if(val >= this.imagesCount) {
+      if(val >= this.videos.length) {
         this.active = 0;
       }
     }
@@ -66,14 +62,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .bg-slider {
+  .bg-slider-wrapper {
+    video {
+      width: 100%;
+      height: 80vh;
+      object-fit: cover;
+
+    }
+  }
+
+  .bg-video-slider {
     background-color: #81ae76;
     position: absolute;
     top: 0;
     left: -60px;
     width: calc(100% + 60px);
     height: 100%;
-    background: #fff;
+    background: #000;
     background-size: cover;
     background-position-x: right;
     background-position-y: top;

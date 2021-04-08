@@ -1,35 +1,26 @@
 <template lang="pug">
-.splash.px-1.py-4
-  BGSlider(transitionSpeed="4000")
-  .align-bottom
-    .container
-      .row
-        .col-12.col-md-8
-          .slogan.animate__animated.animate__bounce
-            h1.heading-h1
-              span Du heiratest?
-              br
-              span Finde dein perfektes Brautstyling
-        .col-12
-          .search
-            SearchStylist
+.splash
+  BGVideoSlider(:videoNames="['become_a_stylist/banner_1_mobile.mp4', 'become_a_stylist/banner_2_mobile.mp4', 'become_a_stylist/banner_todo_mobile.mp4']")
 </template>
 
 <script>
 import SearchStylist from '@/components/search_stylist.vue';
-import BGSlider from '@/components/bg_slider.vue';
+import ContainerSlider from '@/components/container_slider.vue';
+import BGVideoSlider from '@/components/bg_video_slider.vue';
 
 export default {
   components: {
     SearchStylist,
-    BGSlider,
+    BGVideoSlider,
+    ContainerSlider,
   },
   data() {
     return {
-
     }
   },
   computed: {
+  },
+  methods: {
   }
 }
 </script>
@@ -44,11 +35,12 @@ export default {
     color: #fff;
     background: #000;
     /*background-image: url(~@images/splash-landing-page.jpg);*/
-    min-height: 80vh;
     overflow: hidden;
-    @media screen and (max-width: 720px) {
-      min-height: 20vh;
-    }
+
+    height: 80vh;
+    // @media screen and (max-width: 720px) {
+    //   max-height: 50vh;
+    // }
   }
 
   .splash {

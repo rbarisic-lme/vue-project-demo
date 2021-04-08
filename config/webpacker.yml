@@ -19,6 +19,8 @@ default: &default
   extract_css: false
 
   static_assets_extensions:
+    - .webm
+    - .mov
     - .mp4
     - .jpg
     - .jpeg
@@ -32,6 +34,7 @@ default: &default
     - .ttf
     - .woff
     - .woff2
+    - .txt
 
   extensions:
     - .vue

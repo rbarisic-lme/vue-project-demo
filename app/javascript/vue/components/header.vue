@@ -3,17 +3,22 @@
     //- v-navigation-drawer(app)
     //- v-app-bar(app)
     .d-block.d-lg-none
-      v-app-bar()
+      v-app-bar(dark fixed elevate-on-scroll style="z-index: 9900;")
         v-app-bar-nav-icon(@click="drawer = true")
         v-toolbar-title bridlX
 
-      v-navigation-drawer(v-model="drawer" absolute temporary)
+
+      v-navigation-drawer(v-model="drawer" absolute temporary style="z-index: 9910;")
+        v-list-item
+          v-list-item-content
+            v-list-item-title.title bridlX
+        v-divider
         v-list(nav dense)
           v-list-item-group
             v-list-item
               v-list-item-title(link to="#") Entdecken
             v-list-item
-              v-list-item-title(link to="#") Stylist werden
+              v-list-item-title(link to="become-a-stylist") Stylist werden
             v-list-item
               v-list-item-title(link to="#") Login
 
@@ -31,7 +36,7 @@
               img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlX and Beyond")
         .header-items.text-right
           a(href="#" class="hover:text-white").p-3 Entdecken
-          a(href="#").p-3 Stylist werden
+          a(href="become-a-stylist").p-3 Stylist werden
           a(href="#").p-3 Login
 </template>
 
