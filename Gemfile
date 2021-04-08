@@ -40,6 +40,7 @@ gem "devise" # user authentication
 # gem "font-awesome-sass", "~> 5.15.1"
 gem "slim-rails" # Slim Templating
 gem "recursive-open-struct"
+gem "figaro"
 
 gem 'geocoder'
 
