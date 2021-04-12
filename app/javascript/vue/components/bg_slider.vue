@@ -1,5 +1,5 @@
 <template lang="pug">
-  transition(name="fade" mode="out-in")
+  transition(name="fade")
     transition-group.bg-slider-wrapper(name="bg-slider" tag="div")
       .bg-slider(v-for="(image, index) in images" :key="image" :style="`background-image: url(${images[index]})`" v-show="active == index")
         h1 {{active}}

@@ -1,0 +1,28 @@
+.container.py-5
+  h1.heading-h3 = t("register_as_a_stylist")
+
+  = form_for resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form--rows'} do |f|
+    = render "stylists/shared/error_messages", resource: resource
+    .field
+      = f.label :first_name
+      = f.text_field :first_name
+    .field
+      = f.label :last_name
+      = f.text_field :first_name
+    .field
+      = f.label :email
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field
+      = f.label :password
+      - if @minimum_password_length
+      em
+        span = "#{@minimum_password_length} "
+        span characters minimum)
+      = f.password_field :password, autocomplete: "new-password"
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .actions
+      = f.submit "Sign up"
+    
+    = render "stylists/shared/links"

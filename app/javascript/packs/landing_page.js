@@ -6,20 +6,13 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import VueLazyload from 'vue-lazyload'
 import vuetify from '@/plugins/vuetify' // path to vuetify export
+import VModal from 'vue-js-modal'
 
 import App from '../vue/apps/landing_page/app.vue'
 import _ from 'lodash';
 
-// const loadimage = require('./assets/loading.gif')
-// const errorimage = require('./assets/error.gif')
-Vue.use(VueLazyload, {
-  preLoad: 1.3,
-  // error: errorimage,
-  // loading: loadimage,
-  attempt: 1
-})
+Vue.use(VModal)
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

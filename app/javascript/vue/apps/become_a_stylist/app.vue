@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app
     v-main#app-become-a-stylist
-      Header
+      Header(:links="headerLinks")
       Splash
       Footer
 </template>
@@ -20,6 +20,11 @@ export default {
   data() {
     return {
       position: 0,
+      headerLinks: [
+        {url: "#", text: "Entdecken"},
+        {url: "/become-a-stylist", text: "Stylist werden", active: true},
+        {url: "#", text: "Login (Stylist)", modal: "stylistSignIn"},
+      ]
     }
   },
 }

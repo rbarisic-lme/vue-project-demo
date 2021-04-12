@@ -1,7 +1,7 @@
 <template lang="pug">
   v-app
     v-main#app-landing
-      Header
+      Header(:links="headerLinks")
       Splash
       Mentions
       Services
@@ -38,6 +38,11 @@ export default {
   data() {
     return {
       position: 0,
+      headerLinks: [
+        {url: "#", text: "Entdecken"},
+        {url: "/become-a-stylist", text: "Stylist werden"},
+        {url: "#", text: "Login", modal: "userSignIn"},
+      ]
     }
   },
 }

@@ -28,3 +28,15 @@
 .sizeaware {
   height: 100%;
 }
+
+.form--rows {
+  .field {
+    label {
+      display: block;
+    }
+    input {
+      display: block;
+      border: 1px solid #ccc;
+    }
+  }
+}

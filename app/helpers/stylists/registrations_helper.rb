@@ -1,0 +1,2 @@
+module Stylists::RegistrationsHelper
+end
