@@ -11,7 +11,7 @@
               v-list-item(v-for="child in item.items" :key="child.text" link :to="'/info/' + item.url + '/' + child.url")
                 v-list-item-content
                   v-list-item-title {{child.text}}
-            v-list-item(v-for="item in plainItems" :key="item.text")
+            v-list-item(v-for="item in plainItems" :key="item.text" link :to="item.url")
               v-list-item-content
                 v-list-item-title {{item.text}}
       .col-12.col-md-8.offset-md-1
@@ -34,19 +34,19 @@ export default {
         {
           text: "Profil", url: 'profile', items: [
             {url: 'personal-information', text: 'Persönliche Informationen'},
-            {url: 'here', text: 'Mein Service'},
+            {url: 'my-service', text: 'Mein Service'},
           ]
         },
         { text: "Mein Business", url: 'business', items: [
-            {url: 'here', text: 'Unternehmensdaten'},
-            {url: 'here', text: 'Bankverbindung'},
-            {url: 'here', text: 'Nachweise'},
+            {url: 'company-data', text: 'Unternehmensdaten'},
+            {url: 'bank-account', text: 'Bankverbindung'},
+            {url: 'verification', text: 'Nachweise'},
           ]
         },
       ],
       plainItems: [
-        { url: '', text: "Skills"},
-        { url: '', text: "Checkliste"},
+        { url: '/info/skills', text: "Skills"},
+        { url: '/info/checklist', text: "Checkliste"},
       ]
     }
   }
