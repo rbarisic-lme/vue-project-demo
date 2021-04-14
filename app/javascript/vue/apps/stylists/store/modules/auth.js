@@ -1,4 +1,4 @@
-import api from '@/api/stylist'
+// import api from '@/api/stylist'
 
 // initial state
 // shape: [{ id, quantity }]
@@ -15,16 +15,21 @@ const getters = {
 
 // actions
 const actions = {
-  async updateAvatar(state, payload) {
-    await this._vm.$axios.get('/api/v1/stylists/1')
+  async login(state, payload) {
+    let result = await this._vm.$axios.post('/stylists/sign_in', {
+      email: payload['email'],
+      password: payload['password']
+    })
+
+    debugger;
+  },
+  async checkAuthentication(state, payload) {
+    await this._vm.$axios.get('/api/v1/stylists')
   }
 }
 
 // mutations
 const mutations = {
-  setProfilePicture(state, payload) {
-    state.profilePicture = payload;
-  }
 }
 
 export default {

@@ -18,12 +18,21 @@ import _ from 'lodash';
 import router from '../vue/apps/stylists/router.js'
 import store from '../vue/apps/stylists/store/index.js'
 
+import axios from 'axios'
+
 Vue.use(VModal)
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
+let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = token
+axios.defaults.headers.common['Accept'] = 'application/json'
+
+Vue.prototype.$axios = axios;
+
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    axios,
     router,
     store,
     vuetify,

@@ -14,7 +14,7 @@ const router = new VueRouter({
   mode: 'history',
   base: '/stylists',
   routes: [
-    {path: '/info', component: InfoPage, children: [
+    {path: '/info', component: InfoPage, meta: { requiresAuth: true }, children: [
       {path: 'profile/personal-information', component: PersonalInfoView},
       {path: 'profile/my-service', component: MyServiceView},
       {path: 'business/company-data', component: CompanyDataView},

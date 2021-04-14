@@ -3,15 +3,16 @@ Modal(name="stylistSignIn" height="auto" :maxWidth="300")
   div.m-8.text-center
     h3.heading-h3.mb-5 Als Stylist bei bridlX einloggen
     .form--rows
-      .link-btn(class="font-bold text-white border rounded w-full py-4 px-3 mb-4 bg-fb") Weiter mit Facebook
-      .link-btn(class="font-bold text-white border rounded w-full py-4 px-3 mb-4 bg-google") Weiter mit Google
+      v-btn(block large color="#4267b2" dark).mb-4 Weiter mit Facebook
+      v-btn(block large color="#DC2626" dark).mb-4 Weiter mit Google
+      //- .link-btn(class="font-bold text-white border rounded w-full py-4 px-3 mb-4 bg-fb") Weiter mit Facebook
+      //- .link-btn(class="font-bold text-white border rounded w-full py-4 px-3 mb-4 bg-google") Weiter mit Google
 
       div.mb-4 Oder
-      label(class="block text-gray-700 text-sm font-bold mb-2 text-left" for="email") E-Mail
-      input(class="mb-2 shadow border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="text" placeholder="E-Mail Adresse")
-      input(class="mb-2 shadow border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="E-Mail Adresse")
+      v-text-field(v-model="email" label="E-Mail" clearable)
+      v-text-field(v-model="password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
 
-      input(class="font-bold text-white border rounded w-full py-4 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline bg-btn" id="email" type="button" value="Weiter")
+      v-btn(block large color="#6ccc52" @click="authenticate" dark :loading="loading").mb-4 Weiter
 </template>
 
 <script>
@@ -24,7 +25,29 @@ export default {
   },
   data() {
     return {
-      
+      showPw: false,
+      loading: false,
+      email: '',
+      password: '',
+    }
+  },
+  methods: {
+    authenticate() {
+      // this.$store.dispatch('auth/login')
+      this.loading = true;
+
+      this.$axios.post('/stylists/sign_in', {
+        stylist: {
+          email: this.email,
+          password: this.password,
+        }
+      }).then(response => {
+        if (response.status == 200 && response.data.token != null) {
+          window.location = '/stylists'
+        }
+      });
+
+      this.loading = false;
     }
   }
 }

@@ -4,9 +4,7 @@
       .col-12.col-md-4
         v-sheet.px-8.py-4.mb-8.text-center(rounded elevation="2")
           h3.heading-h3.serif.mb-8 Profilbild
-          v-btn(elevation="0" fab x-large)
-            v-icon.mr-2(color="black") mdi-camera-outline
-          v-file-input(accept="image/png, image/jpeg, image/bmp" placeholder="Pick an avatar" prepend-icon="mdi-camera" label="Profilbild")
+          AvatarForm
 
       .col-12.col-md-8
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
@@ -46,11 +44,13 @@
 
 <script>
 import EditableOverlay from '@/components/editable_overlay.vue'
-import { mdiChatProcessingOutline } from '@mdi/js';
+import { mdiChatProcessingOutline } from '@mdi/js'
+import AvatarForm from '@/components/account/forms/avatar.vue'
 
 export default {
   components: {
-    EditableOverlay
+    EditableOverlay,
+    AvatarForm,
   },
   props: {
 

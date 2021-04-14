@@ -14,8 +14,7 @@ v-app(id="stylists")
     v-spacer
     v-toolbar-items(class="hidden-xs-only")
       v-btn(text v-for="item in menuItems" :key="item.text" :to="item.url") {{ item.text }}
-    v-avatar.ml-3(color="primary")
-      span.white--text.headline C
+    StylistAvatar
 
   v-main
     v-container(fluid) 
@@ -29,21 +28,27 @@ v-app(id="stylists")
 import Header from '@/components/header.vue'
 import Footer from '@/components/landing_page/footer.vue'
 
+import StylistAvatar from '@/components/stylist/avatar'
+
 export default {
   components: {
     Header,
-    Footer
+    Footer,
+    StylistAvatar,
   },
   data: () => ({
     drawer: false,
     menuItems: [
       {url: "/", text: "Dashboard"},
-      {url: "/info", text: "Info"},
+      {url: "/info/profile/personal-information", text: "Info"},
       {url: "/nachrichten", text: "Nachrichten"},
       {url: "/order", text: "Order"},
       {url: "/kalender", text: "Kalender"},
     ]
   }),
+  mounted() {
+    this.$store.dispatch('auth/checkAuthentication')
+  },
 }
 </script>
 

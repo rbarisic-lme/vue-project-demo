@@ -14,7 +14,8 @@ class StaticPagesController < ApplicationController
 
   def become_a_stylist
     if current_stylist
-      redirect_to stylists_path
+      byebug
+      redirect_to stylist_app_path
     end
 
     @vue_app = "become_a_stylist"

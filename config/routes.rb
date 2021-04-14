@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # resources :stylists, only: [:index]
 
-  devise_for :stylists, controllers: {
+  devise_for :stylists, defaults: {format: :json}, controllers: {
     sessions: 'stylists/sessions',
     registrations: 'stylists/registrations'
   }
@@ -21,8 +21,14 @@ Rails.application.routes.draw do
 
   # Stylist Vue App
   scope :stylists do
-    get "/", to: "stylists#app", format: false
+    get "/", to: "stylists#app", format: false, as: 'stylist_app'
     
     get "/*path", to: "stylists#app", format: false
+  end
+
+  namespace :api, defaults: {format: :json} do
+    namespace :v1 do
+      resources :stylists
+    end
   end
 end

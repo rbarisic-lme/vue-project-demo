@@ -10,6 +10,8 @@ gem 'rails', '~> 6.1.3'
 # Use PostgreSQL as Database
 gem "pg"
 
+gem 'rack-cors'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -35,12 +37,12 @@ gem "figaro" # enables application.yml ENV
 gem "oauth2"
 gem "httparty" # http client
 gem "devise" # user authentication
+gem 'devise-jwt' # authentication via JSON Web Token
 # gem "rubyzip"
 # gem "ransack" # better search
 # gem "font-awesome-sass", "~> 5.15.1"
 gem "slim-rails" # Slim Templating
 gem "recursive-open-struct"
-gem "figaro"
 
 gem 'geocoder'
 
