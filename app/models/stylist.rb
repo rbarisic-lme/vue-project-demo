@@ -3,10 +3,6 @@ class Stylist < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
-  # devise :database_authenticatable, :registerable,
-         # :recoverable, :rememberable, :validatable
-
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
          :jwt_authenticatable, jwt_revocation_strategy: self
 
@@ -18,4 +14,11 @@ class Stylist < ApplicationRecord
   #   super
   #   # do_something(token, payload)
   # end
+
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+  def initials
+    self.first_name[0] + self.last_name[0]
+  end
 end

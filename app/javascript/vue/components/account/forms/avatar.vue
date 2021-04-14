@@ -1,23 +1,24 @@
 <template lang="pug">
   div
-    v-btn(elevation="0" fab x-large)
-      v-icon.mr-2(color="black") mdi-camera-outline
+    Avatar(size="120").mb-4
     v-file-input(v-model="avatar" accept="image/png, image/jpeg, image/bmp" placeholder="Profilbild hochladen" prepend-icon="mdi-camera" label="Profilbild")
-    v-btn(elevation="0" rounded v-if="avatarSize > 0" color="primary" @click="uploadAvatar") Speichern
+    v-btn(elevation="0" rounded v-if="avatarSize > 0" color="primary" @click="uploadAvatar" :loading="loading") Speichern
 </template>
 
 <script>
+import Avatar from '@/components/stylist/avatar.vue'
 
 export default {
   components: {
-
+    Avatar
   },
   props: {
 
   },
   data() {
     return {
-      avatar: new Blob,
+      loading: false,
+      avatar: null,
       rules: [
         value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
       ],
@@ -35,9 +36,12 @@ export default {
   mounted() {
   },
   methods: {
-    uploadAvatar() {
-      this.$store.dispatch("account/updateAvatar", this.avatar)
-
+    async uploadAvatar() {
+      this.loading = true
+      let result = await this.$store.dispatch("account/updateAvatar", this.avatar).then(() => {
+        this.loading = false
+        this.avatar = null
+      })
     }
   }
 }

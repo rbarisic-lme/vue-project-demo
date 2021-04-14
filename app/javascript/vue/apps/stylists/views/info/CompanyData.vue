@@ -18,9 +18,11 @@
 </template>
 
 <script>
+import EditableOverlay from '@/components/editable_overlay.vue'
+
 export default {
   components: {
-
+    EditableOverlay,
   },
   props: {
 

@@ -14,7 +14,7 @@
             v-list-item(v-for="item in plainItems" :key="item.text" link :to="item.url")
               v-list-item-content
                 v-list-item-title {{item.text}}
-      .col-12.col-md-8.offset-md-1
+      .col-12.col-md-8.offset-lg-1
         router-view
 </template>
 

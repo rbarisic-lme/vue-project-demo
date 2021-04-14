@@ -22,13 +22,14 @@ Rails.application.routes.draw do
   # Stylist Vue App
   scope :stylists do
     get "/", to: "stylists#app", format: false, as: 'stylist_app'
-    
     get "/*path", to: "stylists#app", format: false
   end
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :stylists
+      resources :stylists do
+        get 'current', on: :collection
+      end
     end
   end
 end

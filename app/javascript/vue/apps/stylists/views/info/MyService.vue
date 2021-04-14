@@ -30,7 +30,7 @@
                 span Adresse
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h3.heading-h3.serif.mb-8.text-center Extras
-          EditableOverlay(height="100")
+          EditableOverlay(height="200")
             template(v-slot:overlay-text)
               p
                 v-icon.mr-2(color="black") mdi-chat-processing-outline

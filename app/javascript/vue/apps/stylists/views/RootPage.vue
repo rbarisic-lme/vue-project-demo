@@ -1,7 +1,7 @@
 <template lang="pug">
   .container
     .row
-      .col-3
+      .col-12.col-lg-3
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h3.heading-h3.serif.mb-8.text-center Bewertungen
           div Qualität
@@ -16,7 +16,17 @@
           v-btn(color="primary" rounded) Bitte um Empfehlung
           v-divider.my-4
           p.lead Mein Profil teilen
-      .col-8.offset-1
+          v-item-group
+            v-btn(elevation="0" text fab small)
+              v-icon(color="black") mdi-facebook
+            v-btn(elevation="0" text fab small)
+              v-icon(color="black") mdi-twitter
+            v-btn(elevation="0" text fab small)
+              v-icon(color="black") mdi-linkedin
+            v-btn(elevation="0" text fab small)
+              v-icon(color="black") mdi-email-outline
+
+      .col-12.col-lg-8.offset-lg-1
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h3.heading-h3.serif.mb-8.text-center Du wirst wahrgenommen
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")

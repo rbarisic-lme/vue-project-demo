@@ -1,9 +1,10 @@
 // import api from '@/api/stylist'
+import VueCookies from 'vue-cookies'
 
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
-  jwtToken: undefined,
+  jwt: VueCookies.get('jwt') || undefined, //JSON Web Token
   initials: 'CJ',
   profilePicture: '',
 })
@@ -20,11 +21,13 @@ const actions = {
       email: payload['email'],
       password: payload['password']
     })
-
-    debugger;
   },
-  async checkAuthentication(state, payload) {
-    await this._vm.$axios.get('/api/v1/stylists')
+  async checkAuthentication(ctx, payload) {
+    if (ctx.state.jwt) {
+      this._vm.$axios.defaults.headers.common['Authorization'] = `Bearer ${ctx.state.jwt}`
+    } else {
+      //todo: redirect to login
+    }
   }
 }
 

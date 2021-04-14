@@ -4,7 +4,7 @@
 //-     Header(type="sticky")
 //-     Footer
 
-v-app(id="stylists")
+v-app(id="stylists" :style="appStyle")
   v-navigation-drawer(v-model="drawer"
  app) 
   v-app-bar(app)
@@ -44,10 +44,14 @@ export default {
       {url: "/nachrichten", text: "Nachrichten"},
       {url: "/order", text: "Order"},
       {url: "/kalender", text: "Kalender"},
-    ]
+    ],
+    appStyle: {
+      background: '#f3f3f5'
+    }
   }),
-  mounted() {
-    this.$store.dispatch('auth/checkAuthentication')
+  async mounted() {
+    await this.$store.dispatch('auth/checkAuthentication')
+    await this.$store.dispatch('account/loadAccount')
   },
 }
 </script>
