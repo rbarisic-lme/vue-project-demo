@@ -1,0 +1,9 @@
+= form_for @api_v1_brand do |f|
+  - if @api_v1_brand.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@api_v1_brand.errors.count, "error")} prohibited this api_v1_brand from being saved:"
+      ul
+        - @api_v1_brand.errors.full_messages.each do |message|
+          li = message
+
+  .actions = f.submit

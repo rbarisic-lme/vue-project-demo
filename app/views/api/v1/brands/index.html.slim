@@ -1,0 +1,19 @@
+h1 Listing api_v1_brands
+
+table
+  thead
+    tr
+      th
+      th
+      th
+
+  tbody
+    - @api_v1_brands.each do |api_v1_brand|
+      tr
+        td = link_to 'Show', api_v1_brand
+        td = link_to 'Edit', edit_api_v1_brand_path(api_v1_brand)
+        td = link_to 'Destroy', api_v1_brand, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Brand', new_api_v1_brand_path

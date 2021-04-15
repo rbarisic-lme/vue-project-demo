@@ -11,6 +11,7 @@ const state = () => ({
   updated_at: undefined,
   url: undefined,
   avatar_url: undefined,
+  about_me: undefined,
   accountLoading: true,
 })
 
@@ -34,13 +35,19 @@ const actions = {
     let formData = new FormData();
     formData.append("stylist[avatar]", payload);
 
-    let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+    // let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+    //   headers: { "Content-Type": "multipart/form-data" }
+    // })
+
+    // if (result.status == 200) {
+    //   ctx.commit('setAccount', result.data)
+    // }
+
+    return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     })
 
-    if (result.status == 200) {
-      ctx.commit('setAccount', result.data)
-    }
+    return result
   }
 }
 

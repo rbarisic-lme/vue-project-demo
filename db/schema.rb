@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_13_203801) do
+ActiveRecord::Schema.define(version: 2021_04_15_221232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2021_04_13_203801) do
     t.index ["stylist_id"], name: "index_allowlisted_jwts_on_stylist_id"
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "stylists", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_04_13_203801) do
     t.string "phone"
     t.string "address_latitude"
     t.string "address_longitude"
+    t.text "about_me"
     t.index ["email"], name: "index_stylists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
   end

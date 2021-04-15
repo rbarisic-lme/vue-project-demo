@@ -50,7 +50,7 @@ export default {
     }
   }),
   async mounted() {
-    await this.$store.dispatch('auth/checkAuthentication')
+    let result = await this.$store.dispatch('auth/checkAuthentication')
     await this.$store.dispatch('account/loadAccount')
   },
 }

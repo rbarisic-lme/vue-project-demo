@@ -4,9 +4,7 @@ import VueCookies from 'vue-cookies'
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
-  jwt: VueCookies.get('jwt') || undefined, //JSON Web Token
-  initials: 'CJ',
-  profilePicture: '',
+  brands: [],
 })
 
 // getters
@@ -16,22 +14,15 @@ const getters = {
 
 // actions
 const actions = {
+  async getBrands() {
+    let result = await this._vm.$axios.post('/api/v1/brands')
+  }
   // async login(state, payload) {
   //   let result = await this._vm.$axios.post('/stylists/sign_in', {
   //     email: payload['email'],
   //     password: payload['password']
   //   })
   // },
-  async checkAuthentication(ctx, payload) {
-    let result = this._vm.$axios.get('/api/v1/stylists/authenticated');
-
-    if (ctx.state.jwt) {
-      this._vm.$axios.defaults.headers.common['Authorization'] = `Bearer ${ctx.state.jwt}`
-      return true
-    } else {
-      return false
-    }
-  }
 }
 
 // mutations

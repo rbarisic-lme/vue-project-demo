@@ -33,8 +33,10 @@ export default {
   },
   methods: {
     authenticate() {
-      // this.$store.dispatch('auth/login')
       this.loading = true;
+
+      // this.$store.dispatch('auth/login').then(response => {
+      // })
 
       this.$axios.post('/stylists/sign_in', {
         stylist: {
