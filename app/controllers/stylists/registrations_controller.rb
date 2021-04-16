@@ -1,5 +1,5 @@
 class Stylists::RegistrationsController < Devise::RegistrationsController
-  skip_before_action :authenticate_user!, only: [:new]
+  # skip_before_action :authenticate_user!, only: [:new]
 
   respond_to :json
 
