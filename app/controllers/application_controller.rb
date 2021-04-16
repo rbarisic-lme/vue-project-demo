@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   
-  before_action :authenticate_http if Rails.env.production?
+  # before_action :authenticate_http if Rails.env.production?
   # callback to set CSRF TOKEN for non-idempotent Ajax request
   after_action :add_csrf_token_to_json_request_header
 
