@@ -11,6 +11,13 @@ class Stylist < ApplicationRecord
   self.skip_session_storage = [:http_auth, :params_auth]
   #============================================================================
 
+  before_save :sanitize_strings
+
+  after_validation :geocode
+
+  geocoded_by :address
+  geocoded_by :address, latitude: :address_latitude, longitude: :address_longitude  # ActiveRecord
+
   has_one_attached :avatar
 
   has_and_belongs_to_many :brands
@@ -31,7 +38,15 @@ class Stylist < ApplicationRecord
     self.first_name[0] + self.last_name[0]
   end
 
+  def address
+    [street, city, country].compact.join(', ')
+  end
+
   private
+    def sanitize_strings
+      self.about_me = ActionView::Base.full_sanitizer.sanitize(self.about_me)
+    end
+
     def brands_format
       # if self.brands
         # errors.add(:brands, :invalid)

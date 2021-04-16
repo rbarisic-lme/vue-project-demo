@@ -1,3 +1,4 @@
+import { getField, updateField } from 'vuex-map-fields';
 import api from '@/api/stylist'
 
 // initial state
@@ -14,12 +15,24 @@ const state = () => ({
   about_me: undefined,
   accountLoading: true,
   brands: [],
+  languages: [],
+  street: undefined,
+  city: undefined,
+  zipcode: undefined,
+  country: undefined,
 })
 
 // getters
 const getters = {
+  getField,
+  getProp: (state, payload) => {
+      state[payload.prop]
+  },
   brands: state =>  {
     return state.brands
+  },
+  languages: state => { // don't deprecate yet
+    return state.languages
   }
 }
 
@@ -51,8 +64,26 @@ const actions = {
   },
   async updateBrands(ctx, payload) {
     let formData = new FormData();
-    console.log(payload)
     formData.append("stylist[brand_ids]", payload)
+
+    return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+  },
+  async updateAccount(ctx, payload) {
+    let formData = new FormData();
+
+    payload.forEach(attr => {
+      formData.append(`stylist[${attr.name}]`, attr.value)
+    })
+
+    return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+  },
+  async updateLanguages(ctx, payload) {
+    let formData = new FormData();
+    formData.append("stylist[language_ids]", payload)
 
     return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
@@ -62,6 +93,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  updateProp(state, payload) {
+      state[payload.prop] = payload.value
+  },
   setProfilePicture(state, payload) {
     state.profilePicture = payload
   },
@@ -74,7 +108,11 @@ const mutations = {
   },
   brands(state, payload) {
     state.brands = payload
-  }
+  },
+  languages(state, payload) {
+    state.languages = payload
+  },
+  updateField
 }
 
 export default {

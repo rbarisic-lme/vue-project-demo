@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_031826) do
+ActiveRecord::Schema.define(version: 2021_04_16_072813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,13 +77,13 @@ ActiveRecord::Schema.define(version: 2021_04_16_031826) do
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
-  create_table "languages_stylists_associations", force: :cascade do |t|
+  create_table "languages_stylists", force: :cascade do |t|
     t.bigint "language_id"
     t.bigint "stylist_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["language_id"], name: "index_languages_stylists_associations_on_language_id"
-    t.index ["stylist_id"], name: "index_languages_stylists_associations_on_stylist_id"
+    t.index ["language_id"], name: "index_languages_stylists_on_language_id"
+    t.index ["stylist_id"], name: "index_languages_stylists_on_stylist_id"
   end
 
   create_table "stylists", force: :cascade do |t|
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 2021_04_16_031826) do
     t.string "address_latitude"
     t.string "address_longitude"
     t.text "about_me"
+    t.integer "service_radius"
     t.index ["email"], name: "index_stylists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
   end

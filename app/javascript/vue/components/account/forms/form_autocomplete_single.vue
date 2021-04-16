@@ -1,8 +1,8 @@
 <template lang="pug">
-  EditableOverlay(:clickPen="getBackendItems")
+  EditableOverlay(:clickPen="getBackendItems" :height="height")
     template(v-slot:default="slotProps")
 
-      v-form(v-model="valid" ref="form" @submit="saveItems" @submit.prevent)
+      v-form(v-model="valid" ref="form" @submit="saveItems" @submit.prevent).mb-8
         v-autocomplete(
           :loading="!slotProps.overlay && backendItems < 1"
           :name="name"
@@ -11,11 +11,9 @@
           :items="backendItemsOrStoreItems"
           item-text="name"
           item-value="id"
-          chips deletable-chips
-          multiple
         )
-        v-btn(color="primary" @click="saveItems" :disabled="!valid" :loading="loading") Speichern
     template(v-slot:hideInactive)
+      v-btn(color="primary" @click="saveItems" :disabled="!valid || loading" :loading="loading") Speichern
 </template>
 
 <script>
@@ -28,6 +26,10 @@ export default {
     EditableOverlay
   },
   props: {
+    height: {
+      default: String,
+      default: "auto"
+    },
     label: String,
     saveAction: String,
     getAvailableAction: String,

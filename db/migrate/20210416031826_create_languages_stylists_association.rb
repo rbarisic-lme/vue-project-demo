@@ -1,6 +1,6 @@
 class CreateLanguagesStylistsAssociation < ActiveRecord::Migration[6.1]
   def change
-    create_table :languages_stylists_associations do |t|
+    create_table :languages_stylists do |t|
       t.belongs_to :language
       t.belongs_to :stylist
       t.timestamps

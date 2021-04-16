@@ -79,6 +79,11 @@ class Api::V1::StylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stylist_params
-      params.fetch(:stylist).permit(:avatar, brand_ids: [])
+      params.fetch(:stylist).permit(
+        :avatar, :about_me,
+        :street, :city, :zipcode, :country,
+        :service_radius,
+        brand_ids: [], language_ids: []
+      )
     end
 end

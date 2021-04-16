@@ -1,2 +1,1 @@
-json.extract! language, :id, :created_at, :updated_at
-json.url language_url(language, format: :json)
+json.extract! language, :id, :name, :iso2, :iso3

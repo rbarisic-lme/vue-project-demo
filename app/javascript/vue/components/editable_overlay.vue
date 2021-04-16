@@ -1,12 +1,13 @@
 <template lang="pug">
-  v-card(flat :height="height")
+  v-card(flat :height="overlay ? height : 'auto'")
     slot(name="default" v-if="!overlay || !hideContent" :overlay="overlay")
     slot(name="hideInactive" v-if="!overlay" :overlay="overlay")
     v-overlay.text-dark(class="overlay-100" absolute :opacity="0.4" color="#d1dee6" :value="overlay")
+      .overlay-text
         slot(name="overlay-text")
-
+          
+      .right-edge
         slot(name="overlay-actions")
-          div.right-edge
             v-btn(text :color="color" @click="hideOverlay")
               v-icon(:color="color") {{icon}}
               span {{ text }}
@@ -64,7 +65,19 @@ export default {
     height: 100%;
   }
   .overlay-100 {
+    .overlay-text {
+      top: 0;
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      color: #999;
+      overflow: hidden;
+    }
     .right-edge {
+      top: 0;
+      left: 0;
+      position: absolute;
       width: 100%;
       height: 100%;
       display: flex;
