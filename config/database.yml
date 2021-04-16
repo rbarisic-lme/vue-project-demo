@@ -12,3 +12,7 @@ development:
 test:
   <<: *default
   database: bridlx_rails_test
+
+production:
+  <<: *default
+  database: bridlx_rails_production
