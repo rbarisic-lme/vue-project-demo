@@ -56,7 +56,7 @@
             div(style="max-width: 1200px; margin: 0 auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.3)")
                 h2.heading-h2.pt-8(style="font-weight: bold") „ Mein größter Wunsch ist es vielen talentierten Stylisten eine Oberfläche zu bieten. Somit können sie sich genau auf das konzentrieren, was sie lieben – Menschen ein lächeln ins Gesicht zu zaubern. “
                 h3.heading-h3.text-right.serif Alisa, Gründerin und CO-CEO bridlx
-        .container-slider(key="1" style="height: 460px")
+        .container-slider(key="3" style="height: 460px")
           .container
             .row.h100p.no-gutters(style="background: #fff")
               .col-6.d-none.d-lg-block
