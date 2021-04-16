@@ -49,11 +49,11 @@ class Api::V1::BrandsController < ApplicationController
 
   # DELETE /api/v1/brands/1 or /api/v1/brands/1.json
   def destroy
-    @brand.destroy
-    respond_to do |format|
-      format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    # @brand.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

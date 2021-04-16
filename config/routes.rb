@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :brands, only: [:index, :show]
+      resources :languages, only: [:index, :show]
 
       resources :stylists do
         get 'current', on: :collection

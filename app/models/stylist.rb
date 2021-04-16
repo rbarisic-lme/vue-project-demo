@@ -11,10 +11,10 @@ class Stylist < ApplicationRecord
   self.skip_session_storage = [:http_auth, :params_auth]
   #============================================================================
 
-
   has_one_attached :avatar
 
   has_and_belongs_to_many :brands
+  has_and_belongs_to_many :languages
 
   # def on_jwt_dispatch(token, payload)
   #   super

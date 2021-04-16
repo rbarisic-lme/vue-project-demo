@@ -47,8 +47,14 @@
             v-icon.text-h5.mr-2(color="black") mdi-domain
             span Marken
 
-          BrandsForm
-          //- EditableOverlay(height="100").mb-4
+          FormAutocomplete(
+            name="brands[]"
+            label="Marken hinzufügen"
+            saveAction="account/updateBrands"
+            getAvailableAction="brands/getBrands"
+            :backendItemsName='["brands", "brands"]'
+            :itemsInStoreName='["account", "brands"]'
+          )
           v-divider.my-4
           p.text-h5
             v-icon.text-h5.mr-2(color="black") mdi-leaf
@@ -61,14 +67,16 @@
 import EditableOverlay from '@/components/editable_overlay.vue'
 import { mdiChatProcessingOutline } from '@mdi/js'
 import AvatarForm from '@/components/account/forms/avatar.vue'
-import BrandsForm from '@/components/account/forms/brands.vue'
+// import BrandsForm from '@/components/account/forms/brands.vue'
+import FormAutocomplete from '@/components/account/forms/form_autocomplete.vue'
 
 export default {
 
   components: {
     EditableOverlay,
     AvatarForm,
-    BrandsForm,
+    // BrandsForm,
+    FormAutocomplete,
   },
   props: {
 

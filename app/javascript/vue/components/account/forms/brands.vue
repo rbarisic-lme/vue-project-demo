@@ -5,7 +5,7 @@
       v-form(v-model="valid" ref="form" @submit="saveBrands" @submit.prevent)
         v-autocomplete(
           :loading="!slotProps.overlay && availableBrands < 1"
-          name="brands[]"
+          name="brand_ids[]"
           :rules="newBrandRules" :label="slotProps.hideOverlay ? 'Marken hinzufügen' : ''"
           v-model="brands"
           :items="availableBrands"

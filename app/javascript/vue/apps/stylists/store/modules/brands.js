@@ -10,7 +10,9 @@ const state = () => ({
 })
 // getters
 const getters = {
-  
+  brands: state => {
+    return state.brands
+  }  
 }
 
 // actions
@@ -27,6 +29,9 @@ const actions = {
 // mutations
 const mutations = {
   setBrands(state, payload) {
+    state.brands = payload
+  },
+  brands(state, payload) {
     state.brands = payload
   }
 }

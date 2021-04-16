@@ -59,8 +59,12 @@ class Api::V1::StylistsController < ApplicationController
 
   private
     def sanitize_params
-      if params["stylist"]["brand_ids"] && params["stylist"]["brand_ids"].class == String
-        params["stylist"]["brand_ids"] = params["stylist"]["brand_ids"].split(',')
+      array_relations = %w(brand_ids language_ids)
+
+      array_relations.each do |ar|
+        if params["stylist"][ar] && params["stylist"][ar].class == String
+          params["stylist"][ar] = params["stylist"][ar].split(',')
+        end
       end
     end
 
