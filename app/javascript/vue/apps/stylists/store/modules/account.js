@@ -13,6 +13,7 @@ const state = () => ({
   avatar_url: undefined,
   about_me: undefined,
   accountLoading: true,
+  brands: [],
 })
 
 // getters
@@ -33,21 +34,27 @@ const actions = {
   },
   async updateAvatar(ctx, payload) {
     let formData = new FormData();
+    
     formData.append("stylist[avatar]", payload);
 
-    // let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
-    //   headers: { "Content-Type": "multipart/form-data" }
-    // })
+    let result =  await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
 
-    // if (result.status == 200) {
-    //   ctx.commit('setAccount', result.data)
-    // }
+    if (result.status == 200) {
+      ctx.commit('setAccount', result.data)
+    }
+
+    return result
+  },
+  async updateBrands(ctx, payload) {
+    let formData = new FormData();
+    console.log(payload)
+    formData.append("stylist[brand_ids]", payload)
 
     return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     })
-
-    return result
   }
 }
 

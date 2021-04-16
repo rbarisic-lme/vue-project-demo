@@ -27,11 +27,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
-      resources :brands
+      resources :brands, only: [:index, :show]
 
       resources :stylists do
         get 'current', on: :collection
         get 'authenticated', on: :collection
+        # resources :brands
       end
     end
   end

@@ -6,6 +6,8 @@ class Api::V1::StylistsController < ApplicationController
   # hinder users from tempering with other users
   before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
 
+  before_action :sanitize_params, only: %i[ create update ]
+
   def current
     @stylist = current_stylist
   end
@@ -56,6 +58,12 @@ class Api::V1::StylistsController < ApplicationController
   end
 
   private
+    def sanitize_params
+      if params["stylist"]["brand_ids"] && params["stylist"]["brand_ids"].class == String
+        params["stylist"]["brand_ids"] = params["stylist"]["brand_ids"].split(',')
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_stylist
       @stylist = Stylist.with_attached_avatar.find(params[:id])
@@ -67,6 +75,6 @@ class Api::V1::StylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stylist_params
-      params.fetch(:stylist).permit(:avatar)
+      params.fetch(:stylist).permit(:avatar, brand_ids: [])
     end
 end

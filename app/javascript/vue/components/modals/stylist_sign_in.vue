@@ -46,7 +46,7 @@ export default {
       }).then( response => {
         if (response.status == 200 && response.data.token != null) {
           console.log(this.$cookies)
-          this.$cookies.set('jwt', response.data.token);
+          this.$cookies.set('jwt', response.data.token, {expires: '24h'});
           window.location = '/stylists'
         }
       });

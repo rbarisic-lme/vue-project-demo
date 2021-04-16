@@ -2,12 +2,14 @@
   v-card(flat :height="height")
     slot(name="default" v-if="!overlay || !hideContent" :overlay="overlay")
     slot(name="hideInactive" v-if="!overlay" :overlay="overlay")
-    v-overlay.d-flex.align-end.text-dark(class="overlay-100" absolute :opacity="0.4" color="#d1dee6" :value="overlay")
-      div.right-edge.text-center
+    v-overlay.text-dark(class="overlay-100" absolute :opacity="0.4" color="#d1dee6" :value="overlay")
         slot(name="overlay-text")
-        v-btn(text :color="color" @click="hideOverlay")
-          v-icon(:color="color") {{icon}}
-          span {{ text }}
+
+        slot(name="overlay-actions")
+          div.right-edge
+            v-btn(text :color="color" @click="hideOverlay")
+              v-icon(:color="color") {{icon}}
+              span {{ text }}
 </template>
 
 <script>
@@ -35,6 +37,9 @@ export default {
     text: {
       type: String,
       default: 'Bearbeiten'
+    },
+    clickPen: {
+      default: null
     }
   },
   data() {
@@ -44,6 +49,9 @@ export default {
   },
   methods: {
     hideOverlay() {
+      if (this.clickPen !== null) {
+        this.clickPen()
+      }
       this.overlay = false;
     }
   }
@@ -54,5 +62,14 @@ export default {
   .overlay-100 /deep/ .v-overlay__content {
     width: 100%;
     height: 100%;
+  }
+  .overlay-100 {
+    .right-edge {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
   }
 </style>

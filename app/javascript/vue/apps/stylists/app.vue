@@ -16,10 +16,17 @@ v-app(id="stylists" :style="appStyle")
       v-btn(text v-for="item in menuItems" :key="item.text" :to="item.url") {{ item.text }}
     StylistAvatar
 
-  v-main
-    v-container(fluid) 
+  v-main(v-if="$store.state.auth.authenticated")
+    v-container(fluid)
       transition(name="fade" mode="out-in")
         router-view
+  v-main(v-else="$store.state.auth.authenticated")
+    v-container
+      v-row
+        v-col(md="4")
+          v-skeleton-loader(type="article")
+        v-col(md="8")
+          v-skeleton-loader(type="article")
   v-footer(app)
 
 </template>
@@ -49,8 +56,24 @@ export default {
       background: '#f3f3f5'
     }
   }),
+  methods: {
+    redirectUnauthorized() {
+      this.$cookies.remove('jwt')
+      window.location = '/become-a-stylist'
+    }
+  },
   async mounted() {
-    let result = await this.$store.dispatch('auth/checkAuthentication')
+    let result = await this.$store.dispatch('auth/checkAuthentication').then(result => {
+      if (result.data.authorized == false) {
+        this.redirectUnauthorized()
+      } else {
+        this.$store.state.auth.authenticated = true
+      }
+    }).catch(error => {
+      // todo: this.showLoginDialog()
+      this.redirectUnauthorized()
+    })
+
     await this.$store.dispatch('account/loadAccount')
   },
 }

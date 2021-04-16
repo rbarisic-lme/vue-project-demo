@@ -43,13 +43,18 @@
       .col-12.col-md-8
         v-sheet.h-100.px-8.py-4.mb-8(rounded elevation="2")
           h3.heading-h3.serif.mb-8.text-center Arbeitsmittel
+          p.text-h5
+            v-icon.text-h5.mr-2(color="black") mdi-domain
+            span Marken
+
           BrandsForm
           //- EditableOverlay(height="100").mb-4
+          v-divider.my-4
+          p.text-h5
+            v-icon.text-h5.mr-2(color="black") mdi-leaf
+            span Nachhaltige Produkte
           EditableOverlay(height="100")
             template(v-slot:overlay-text)
-              p
-                v-icon.mr-2(color="black") mdi-leaf
-                span Nachhaltige Produkte
 </template>
 
 <script>

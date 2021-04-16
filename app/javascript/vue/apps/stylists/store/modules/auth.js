@@ -4,6 +4,7 @@ import VueCookies from 'vue-cookies'
 // initial state
 // shape: [{ id, quantity }]
 const state = () => ({
+  authenticated: false,
   jwt: VueCookies.get('jwt') || undefined, //JSON Web Token
   initials: 'CJ',
   profilePicture: '',
@@ -23,14 +24,15 @@ const actions = {
   //   })
   // },
   async checkAuthentication(ctx, payload) {
-    let result = this._vm.$axios.get('/api/v1/stylists/authenticated');
-
     if (ctx.state.jwt) {
       this._vm.$axios.defaults.headers.common['Authorization'] = `Bearer ${ctx.state.jwt}`
-      return true
     } else {
-      return false
+      return Promise.reject('Not Authenticated')
     }
+    
+    return this._vm.$axios.get('/api/v1/stylists/authenticated');
+
+    // return result
   }
 }
 
