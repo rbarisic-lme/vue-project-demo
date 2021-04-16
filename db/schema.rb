@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_072813) do
+ActiveRecord::Schema.define(version: 2021_04_16_081851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,22 @@ ActiveRecord::Schema.define(version: 2021_04_16_072813) do
     t.bigint "stylist_id"
     t.index ["brand_id"], name: "index_brands_stylists_on_brand_id"
     t.index ["stylist_id"], name: "index_brands_stylists_on_stylist_id"
+  end
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "street"
+    t.string "zipcode"
+    t.string "country"
+    t.string "legal_form"
+    t.string "tax_id"
+    t.string "vat"
+    t.integer "tax_rate"
+    t.bigint "stylist_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stylist_id"], name: "index_businesses_on_stylist_id"
   end
 
   create_table "languages", force: :cascade do |t|

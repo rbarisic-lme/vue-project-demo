@@ -12,11 +12,14 @@ class Stylist < ApplicationRecord
   #============================================================================
 
   before_save :sanitize_strings
+  before_create :build_default_business
 
   after_validation :geocode
 
   geocoded_by :address
   geocoded_by :address, latitude: :address_latitude, longitude: :address_longitude  # ActiveRecord
+
+  has_one :business, dependent: :destroy
 
   has_one_attached :avatar
 
@@ -43,9 +46,18 @@ class Stylist < ApplicationRecord
   end
 
   private
+    def build_default_business
+      build_business
+      true
+    end
+
     def sanitize_strings
       self.about_me = ActionView::Base.full_sanitizer.sanitize(self.about_me)
     end
+
+    # def sanitize_numbers
+    #   self.service_radius.to_i
+    # end
 
     def brands_format
       # if self.brands

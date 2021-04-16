@@ -1,0 +1,1 @@
+json.extract!(business, :id, :created_at, :updated_at, :name, :city, :street, :zipcode, :country, :legal_form, :tax_id, :vat, :tax_rate,)

@@ -29,10 +29,15 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :brands, only: [:index, :show]
       resources :languages, only: [:index, :show]
+      resources :businesses do
+        get 'current', on: :collection
+      end
 
       resources :stylists do
         get 'current', on: :collection
         get 'authenticated', on: :collection
+        # get 'business', on: :collection, action: :show_current
+        # put 'business' on: :collection, action: :update_current
         # resources :brands
       end
     end

@@ -2,6 +2,7 @@ import VueRouter from 'vue-router'
 
 import RootPage from '@/apps/stylists/views/RootPage'
 import InfoPage from '@/apps/stylists/views/InfoPage'
+import CalendarPage from '@/apps/stylists/views/CalendarPage'
 import PersonalInfoView from '@/apps/stylists/views/info/PersonalInfo'
 import MyServiceView from '@/apps/stylists/views/info/MyService'
 import CompanyDataView from '@/apps/stylists/views/info/CompanyData'
@@ -23,6 +24,7 @@ const router = new VueRouter({
       {path: 'skills', component: VerificationView},
       {path: 'checklist', component: VerificationView},
     ]},
+    {path: '/kalender', component: CalendarPage},
     {path: '*', component: RootPage},
   ]
 });

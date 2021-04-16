@@ -14,8 +14,15 @@ v-app(id="stylists" :style="appStyle")
     v-spacer
     v-toolbar-items(class="hidden-xs-only")
       v-btn(text v-for="item in menuItems" :key="item.text" :to="item.url") {{ item.text }}
-    StylistAvatar
-
+    v-menu(offset-y)
+      template(v-slot:activator="{ on, attrs }")
+        div(elevation="0" opacity="0" v-on="on" v-bind="attrs")
+          StylistAvatar
+      v-list
+        v-list-item(link to="/")
+          v-list-item-title Zur Hauptseite
+        v-list-item(link to="/sign_out")
+          v-list-item-title Ausloggen
   v-main(v-if="$store.state.auth.authenticated")
     v-container(fluid)
       transition(name="fade" mode="out-in")
@@ -75,6 +82,7 @@ export default {
     })
 
     await this.$store.dispatch('account/loadAccount')
+    await this.$store.dispatch('business/loadBusiness')
   },
 }
 </script>

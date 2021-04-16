@@ -20,6 +20,7 @@ const state = () => ({
   city: undefined,
   zipcode: undefined,
   country: undefined,
+  service_radius: undefined,
 })
 
 // getters

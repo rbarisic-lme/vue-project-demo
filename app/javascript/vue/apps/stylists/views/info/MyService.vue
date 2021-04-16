@@ -4,8 +4,7 @@
       .col-12.col-lg-5
         .h-100
           v-sheet.px-8.py-4.mb-8(rounded elevation="2")
-            h3.heading-h3.serif.mb-8 Unternehmensdaten
-            p Diese Angaben sind für die Erstellung Ihrer Rechnungen notwendig. Sie erscheinen nicht auf Ihrem Profil.
+            h3.heading-h3.serif.mb-8 Auftragspräferenzen
             p.text-h6
               v-icon.text-h6.mr-2(color="black") mdi-home-city-outline
               span Workspace
