@@ -1,5 +1,5 @@
 <template lang="pug">
-  .container.pt-8.pb-8
+  .container.pt-8.pb-8.for-tomorrow
     .row
       .col-12.col-md-8.offset-md-2
         .text-center

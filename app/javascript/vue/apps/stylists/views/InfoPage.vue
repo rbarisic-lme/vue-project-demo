@@ -39,14 +39,14 @@ export default {
         },
         { text: "Mein Business", url: 'business', items: [
             {url: 'company-data', text: 'Unternehmensdaten'},
-            {url: 'bank-account', text: 'Bankverbindung', disabled: true},
+            {url: 'bank-account', text: 'Bankverbindung', disabled: false},
             {url: 'verification', text: 'Nachweise', disabled: true},
           ]
         },
       ],
       plainItems: [
         { url: '/info/skills', text: "Skills", disabled: true},
-        { url: '/info/checklist', text: "Checkliste", disabled: true},
+        { url: '/info/checklist', text: "Checkliste"},
       ]
     }
   }

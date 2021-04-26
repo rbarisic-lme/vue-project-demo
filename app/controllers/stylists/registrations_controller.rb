@@ -21,7 +21,6 @@ class Stylists::RegistrationsController < Devise::RegistrationsController
     # end
 
     def current_token
-      byebug
       request.env['warden-jwt_auth.token']
     end
 

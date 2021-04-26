@@ -23,6 +23,7 @@
       .col-12
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h3.heading-h3.serif.mb-8.text-center Extras
+          ExtrasForm
           EditableOverlay(height="200")
             template(v-slot:overlay-text)
               p
@@ -33,6 +34,7 @@
 <script>
 import EditableOverlay from '@/components/editable_overlay.vue'
 import AddressForm from '@/components/account/forms/address.vue'
+import ExtrasForm from '@/components/account/forms/extras.vue'
 import RadiusForm from '@/components/account/forms/radius.vue'
 import PackagesForm from '@/components/account/forms/packages.vue'
 
@@ -42,6 +44,7 @@ export default {
   components: {
     EditableOverlay,
     AddressForm,
+    ExtrasForm,
     RadiusForm,
     PackagesForm,
   },

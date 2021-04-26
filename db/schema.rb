@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_16_081851) do
+ActiveRecord::Schema.define(version: 2021_04_26_153042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,21 @@ ActiveRecord::Schema.define(version: 2021_04_16_081851) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["stylist_id"], name: "index_allowlisted_jwts_on_stylist_id"
+  end
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string "full_name"
+    t.string "street"
+    t.string "zipcode"
+    t.string "city"
+    t.string "country"
+    t.string "iban"
+    t.string "bic"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "owner_type"
+    t.bigint "owner_id"
+    t.index ["owner_type", "owner_id"], name: "index_bank_accounts_on_owner"
   end
 
   create_table "brands", force: :cascade do |t|

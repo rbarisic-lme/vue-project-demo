@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :api do
+    namespace :v1 do
+      resources :bank_accounts
+    end
+  end
   # resources :stylists, only: [:index]
 
   devise_for :stylists, defaults: {format: :json}, controllers: {

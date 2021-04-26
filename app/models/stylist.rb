@@ -12,7 +12,9 @@ class Stylist < ApplicationRecord
   #============================================================================
 
   before_save :sanitize_strings
+  
   before_create :build_default_business
+  before_create :build_default_bank_account
 
   after_validation :geocode
 
@@ -20,6 +22,7 @@ class Stylist < ApplicationRecord
   geocoded_by :address, latitude: :address_latitude, longitude: :address_longitude  # ActiveRecord
 
   has_one :business, dependent: :destroy
+  has_one :bank_account, dependent: :destroy, as: :owner
 
   has_one_attached :avatar
 
@@ -48,6 +51,11 @@ class Stylist < ApplicationRecord
   private
     def build_default_business
       build_business
+      true
+    end
+
+    def build_default_bank_account
+      build_bank_account
       true
     end
 

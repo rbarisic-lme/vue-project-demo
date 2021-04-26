@@ -1,10 +1,7 @@
 <template lang="pug">
-  .input-annotated(v-on:click="setFocus" :style="wrapperStyle")
+  .input-annotated(:style="wrapperStyle")
     .annotation(:style="annotationStyle") {{annotation}}
-    //- div(v-show="focused")
-    input(type="text" :name="name" :placeholder="description" ref="input" :style="inputStyle" autocomplete="false")
-    //- div(v-show="!focused")
-      //- .placeholder {{description}}
+    input(:value="value" type="text" :name="name" :placeholder="description" ref="input" :style="inputStyle" autocomplete="off" :readonly="readonly")
 </template>
 
 <script>
@@ -13,6 +10,11 @@ export default {
 
   },
   props: {
+    value: String,
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     annotation: String,
     name: String,
     description: String,

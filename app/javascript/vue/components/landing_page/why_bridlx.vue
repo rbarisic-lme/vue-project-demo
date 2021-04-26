@@ -2,13 +2,16 @@
   .container-fluid.why-bridlx
     .container.pt-5.pb-4.mt-5
       .row
-        .col-12.col-md-5
+        .col-12.col-md-5.flex-centered
           h2.heading-h2.serif.mb-4.font-light Warum bridlX?
           p Wir begleiten dich auf deiner Reise zu deinem schönsten Tag.
           p Genieße den einzigartigen Service eines individuell auf dich abgestimmten Brautstylings.
-          a.lead-btn-why.mt-2.serif(href="#") Jetzt entdecken
+          //- a.lead-btn-why.mt-2.serif(href="#") Jetzt entdecken
+          v-btn(large).mt-2 Jetzt entdecken
         .col-12.col-md-7
-          video(autoplay loop muted playsinline preload="metadata")
+          div(style="padding:56.25% 0 0 0;position:relative;")
+            iframe(src="https://player.vimeo.com/video/537721274" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture")
+          //- video(autoplay loop muted playsinline preload="metadata")
             source(src="@assets/videos/bridlx-business-trailer.mp4" type="video/mp4")
             | Your browser does not support the video tag.
 

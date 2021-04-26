@@ -31,7 +31,7 @@
                       v-spacer
                       v-spacer
                       //- v-text-field(label="Umsatzsteuernummer (Ust-ID)" outlined).pl-4
-                      v-btn(color="primary" x-large @click="save" :loading="loading") Speichern
+                      v-btn(rounded color="primary" x-large @click="save" :loading="loading") Speichern
               v-col(md="3")
                 v-row
                   v-col(sm="12" md="6").d-flex.justify-center.align-center
