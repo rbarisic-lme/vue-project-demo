@@ -14,7 +14,6 @@ class StaticPagesController < ApplicationController
 
   def become_a_stylist
     if current_stylist
-      byebug
       redirect_to stylist_app_path
     end
 

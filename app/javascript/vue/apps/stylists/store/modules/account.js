@@ -21,6 +21,7 @@ const state = () => ({
   zipcode: undefined,
   country: undefined,
   service_radius: undefined,
+  account_completed: false,
 })
 
 // getters

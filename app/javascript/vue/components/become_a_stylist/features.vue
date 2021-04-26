@@ -37,6 +37,7 @@ export default {
 
 <style lang="scss" scoped>
   .bridlx-features {
+    min-height: 40vh;
     .feature-elements {
       .feature-element {
         transition: all .3s;

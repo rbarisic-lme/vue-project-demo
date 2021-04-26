@@ -1,4 +1,4 @@
 json.stylist do
-  json.(current_stylist, :id, :email)
+  json.(resource, :id, :email)
 end
 json.token @token

@@ -18,10 +18,11 @@ Devise.setup do |config|
 
   config.jwt do |jwt|
     jwt.secret = ENV['devise_jwt_secret_key']
-    # jwt.dispatch_requests = [ 
-        # ['POST', %r{^/sign_in([.]json)?$}],
-        # ['POST', %r{^/$}],
-        # ['GET', %r{^/$}]
+    # jwt.dispatch_requests = [
+        ['POST', %r{^.+\/sign_in([.]json)?$}],
+        ['POST', %r{^.+\/sign_up([.]json)?$}],
+        ['POST', %r{^.+\/stylists([.]json)?$}],
+        ['POST', %r{^.+\/users([.]json)?$}],
     # ]
     # jwt.revocation_requests = [
       # ['DELETE', %r{^/sign_out$}]

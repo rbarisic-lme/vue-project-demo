@@ -42,18 +42,15 @@
           //- a(href="#" class="hover:text-white").p-3 Entdecken
           //- a(href="become-a-stylist").p-3 Stylist werden
           //- div.link-btn.p-3(@click="$modal.show('userSignIn')") Login
-    ModalUserSignIn
-    ModalStylistSignIn
+    SignInModal
 </template>
 
 <script>
-import ModalUserSignIn from '@/components/modals/user_sign_in'
-import ModalStylistSignIn from '@/components/modals/stylist_sign_in'
+import SignInModal from '@/components/modals/sign_in_modal'
 
 export default {
   components: {
-    ModalUserSignIn,
-    ModalStylistSignIn,
+    SignInModal,
   },
   props: {
     type: String,
