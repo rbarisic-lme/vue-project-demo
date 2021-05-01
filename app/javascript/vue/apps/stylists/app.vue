@@ -65,8 +65,8 @@ export default {
   }),
   methods: {
     redirectUnauthorized() {
-      // this.$cookies.remove('jwt')
-      // window.location = '/become-a-stylist'
+      this.$cookies.remove('jwt')
+      window.location = '/become-a-stylist'
     }
   },
   async mounted() {
