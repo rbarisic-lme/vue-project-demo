@@ -1,8 +1,9 @@
 <template lang="pug">
-  EditableOverlay(:clickPen="getBackendItems" :height="height")
+  EditableOverlay(:clickPen="getBackendItems" :height="height" ref="overlay")
     template(v-slot:default="slotProps")
 
       v-form(v-model="valid" ref="form" @submit="saveItems" @submit.prevent).mb-8
+
         v-autocomplete(
           :loading="!slotProps.overlay && backendItems < 1"
           :name="name"
@@ -15,7 +16,7 @@
           multiple
         )
     template(v-slot:hideInactive)
-      v-btn(color="primary" @click="saveItems" :disabled="!valid || loading" :loading="loading") Speichern
+      v-btn(rounded color="primary" @click="saveItems" :disabled="!valid || loading" :loading="loading") Speichern
 </template>
 
 <script>
@@ -93,13 +94,16 @@ export default {
     saveItems() {
       if(this.isValid()) {
         this.loading = true
-        this.$store.dispatch(this.saveAction, this.itemsInStore).catch(error => {
-          console.log(error)
+        this.$store.dispatch(this.saveAction, this.itemsInStore)
+        .then(result => {
+          this.$toast.open('Daten erfolgreich geändert')
+        })
+        .catch(error => {
+          this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
         })
         .finally(() => {
-          setTimeout(() => {
-            this.loading = false
-          }, 1000)
+          this.loading = false
+          this.$refs.overlay.resetOverlay()
         })
       }      
     },

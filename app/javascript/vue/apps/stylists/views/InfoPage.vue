@@ -40,7 +40,7 @@ export default {
         { text: "Mein Business", url: 'business', items: [
             {url: 'company-data', text: 'Unternehmensdaten'},
             {url: 'bank-account', text: 'Bankverbindung', disabled: false},
-            {url: 'verification', text: 'Nachweise', disabled: true},
+            {url: 'verification', text: 'Nachweise', disabled: false},
           ]
         },
       ],

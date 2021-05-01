@@ -1,5 +1,9 @@
 class Api::V1::BankAccountsController < ApplicationController
+  before_action :set_stylist, only: %i[ show update destroy ]
   before_action :set_bank_account, only: %i[ show edit update destroy ]
+
+  before_action :authenticate_stylist!, unless: -> { request.format == :json }
+  before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
 
   # GET /bank_accounts or /bank_accounts.json
   def index
@@ -8,6 +12,10 @@ class Api::V1::BankAccountsController < ApplicationController
 
   # GET /bank_accounts/1 or /bank_accounts/1.json
   def show
+  end
+
+  def current
+    @bank_account = current_stylist.bank_account
   end
 
   # GET /bank_accounts/new
@@ -25,10 +33,8 @@ class Api::V1::BankAccountsController < ApplicationController
 
     respond_to do |format|
       if @bank_account.save
-        format.html { redirect_to @bank_account, notice: "Bank account was successfully created." }
-        format.json { render :show, status: :created, location: @bank_account }
+        format.json { render :show, status: :created } # location: @bank_account }
       else
-        format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @bank_account.errors, status: :unprocessable_entity }
       end
     end
@@ -38,10 +44,8 @@ class Api::V1::BankAccountsController < ApplicationController
   def update
     respond_to do |format|
       if @bank_account.update(bank_account_params)
-        format.html { redirect_to @bank_account, notice: "Bank account was successfully updated." }
-        format.json { render :show, status: :ok, location: @bank_account }
+        format.json { render :show, status: :ok } # location: @bank_account }
       else
-        format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @bank_account.errors, status: :unprocessable_entity }
       end
     end
@@ -51,7 +55,6 @@ class Api::V1::BankAccountsController < ApplicationController
   def destroy
     @bank_account.destroy
     respond_to do |format|
-      format.html { redirect_to api_v1_bank_accounts_url, notice: "Bank account was successfully destroyed." }
       format.json { head :no_content }
     end
   end

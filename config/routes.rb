@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :api do
-    namespace :v1 do
-      resources :bank_accounts
-    end
-  end
   # resources :stylists, only: [:index]
-
   devise_for :stylists, defaults: {format: :json}, controllers: {
     sessions: 'stylists/sessions',
     registrations: 'stylists/registrations'
@@ -19,7 +13,6 @@ Rails.application.routes.draw do
   get 'about_us', to: 'static_pages#about_us'
   get 'imprint', to: 'static_pages#imprint'
   get 'privacy', to: 'static_pages#privacy'
-
   get 'become-a-stylist', to: 'static_pages#become_a_stylist'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -34,6 +27,11 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :brands, only: [:index, :show]
       resources :languages, only: [:index, :show]
+      
+      resources :bank_accounts do
+        get 'current', on: :collection
+      end
+
       resources :businesses do
         get 'current', on: :collection
       end

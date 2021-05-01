@@ -3,10 +3,6 @@
     Avatar(size="120").mb-4
     v-file-input(v-model="avatar" accept="image/png, image/jpeg, image/bmp" placeholder="Profilbild hochladen" prepend-icon="mdi-camera" label="Profilbild")
     v-btn(elevation="0" rounded v-if="avatarSize > 0" color="primary" @click="uploadAvatar" :loading="loading") Speichern
-    v-snackbar(v-model="snackbar")
-      span {{snackbarContent}}
-      template(v-slot:action="{attrs}")
-        v-btn(color="pink" text v-bind="attrs" @click="snackbar = false") schliessen
 </template>
 
 <script>
@@ -21,8 +17,6 @@ export default {
   },
   data() {
     return {
-      snackbar: false,
-      snackbarContent: null,
       loading: false,
       avatar: null,
       rules: [
@@ -45,10 +39,13 @@ export default {
     uploadAvatar() {
       this.loading = true
 
-      this.$store.dispatch("account/updateAvatar", this.avatar).catch((error) => {
-        // this.snackbarContent = `Fehler: ${error.message}`
-        this.snackbarContent = 'Leider ist ein Fehler aufgetreten.'
-        this.snackbar = true
+      this.$store.dispatch("account/updateAvatar", this.avatar)
+      .then(response => {
+        this.$toast.open('Profilbild erfolgreich hochgeladen');
+
+      })
+      .catch((error) => {
+       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       }).finally(response => {
         this.avatar = null
         this.loading = false

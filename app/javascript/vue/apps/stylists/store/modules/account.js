@@ -16,12 +16,19 @@ const state = () => ({
   accountLoading: true,
   brands: [],
   languages: [],
+  extras: [],
   street: undefined,
   city: undefined,
   zipcode: undefined,
   country: undefined,
   service_radius: undefined,
   account_completed: false,
+  service_package_basic_hair_price: 0.0,
+  service_package_basic__makeup_price: 0.0,
+  service_package_standard_price: 0.0,
+  service_package_premium_price: 0.0,
+  snackSuccess: false,
+  snackError: false,
 })
 
 // getters
@@ -35,6 +42,27 @@ const getters = {
   },
   languages: state => { // don't deprecate yet
     return state.languages
+  },
+  addressPresent: state => {
+    if (state.street && state.city && state.zipcode && state.country) {
+      return true
+    } else {
+      return false
+    }
+  },
+  servicePackagePricesPresent: state => {
+    if (state.service_package_basic_hair_price && service_package_basic__makeup_price && service_package_standard_price && service_package_premium_price) {
+      return true
+    } else {
+      return false
+    }
+  },
+  workspacePresent: state => {
+    if (state.street && state.city && state.zipcode && state.country) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 

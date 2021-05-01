@@ -63,7 +63,7 @@ export default {
           // window.location = '/stylists'
         // }
       }).catch( error => {
-        console.log(error)
+        this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       })
 
       this.loading = false
@@ -85,7 +85,9 @@ export default {
           this.$cookies.set('jwt', response.data.token, {expires: '24h'});
           window.location = '/stylists'
         }
-      });
+      }).catch(error => {
+       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+      })
 
       this.loading = false;
     }

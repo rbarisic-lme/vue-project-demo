@@ -14,6 +14,10 @@ import store from '../vue/apps/stylists/store/index.js'
 
 import axios from 'axios'
 
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+Vue.use(VueToast, { position: 'bottom' });
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 Vue.use(VueCookies)

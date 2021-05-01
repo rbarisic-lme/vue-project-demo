@@ -14,7 +14,7 @@ const state = () => ({
   legal_form: undefined,
   tax_id: undefined,
   vat: undefined,
-  tax_rate: undefined,
+  tax_rate: 19,
   created_at: undefined,
   updated_at: undefined,
   stylist_id: undefined,
@@ -22,6 +22,22 @@ const state = () => ({
 // getters
 const getters = {
   getField,
+  businessDataComplete: state => {
+    if ( state.name
+      && state.city
+      && state.street
+      && state.zipcode
+      && state.country
+      && state.legal_form
+      && state.tax_id
+      && state.vat
+      && state.tax_rate
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
 }
 
 // actions
@@ -52,6 +68,10 @@ const mutations = {
   updateField,
   setBusiness(state, payload) {
     Object.keys(payload).forEach( key => {
+      if (payload[key] === "null") {
+        payload[key] = ''
+      }
+
       state[key] = payload[key]
     })
 

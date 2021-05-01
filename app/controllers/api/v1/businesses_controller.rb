@@ -66,15 +66,6 @@ class Api::V1::BusinessesController < ApplicationController
       @business = current_stylist.business
     end
 
-    # Use callbacks to share common setup or constraints between actions.
-    def set_stylist
-      @stylist = current_stylist
-    end
-
-    def check_current_stylist
-      render 'redirect_unauthorized' and return unless current_stylist
-    end
-
     # Only allow a list of trusted parameters through.
     def business_params
       params.fetch(:business, {}).permit(

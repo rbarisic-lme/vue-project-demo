@@ -6,7 +6,7 @@
         v-text-field(name="city" v-model="city" label="Stadt")
         v-text-field(name="zipcode" v-model="zipcode" label="Postleitzahl")
         v-select(v-model="country" name="country" :items="countries" label="Land" single-line append-icon="mdi-earth")
-        v-btn(color="primary" @click="save" :loading="loading") Speichern
+      v-btn(rounded color="primary" @click="save" :loading="loading") Speichern
     template(v-slot:overlay-text)
       .p-4
         p {{street}}
@@ -53,8 +53,11 @@ export default {
         {name: "city", value: this.city},
         {name: "zipcode", value: this.zipcode},
         {name: "country", value: this.country},
-      ]).catch(error => {
-
+      ]).then(result => {
+        this.$toast.open('Adresse erfolgreich geupdated')
+      })
+      .catch(error => {
+       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       }).finally(result => {
         this.loading = false
       })

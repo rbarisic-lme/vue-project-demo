@@ -2,6 +2,8 @@
   v-card(flat :height="overlay ? height : 'auto'")
     slot(name="default" v-if="!overlay || !hideContent" :overlay="overlay")
     slot(name="hideInactive" v-if="!overlay" :overlay="overlay")
+    v-btn(rounded @click="resetOverlay" v-if="!overlay" v-show="!hideCancel").ml-2 Abbrechen
+
     v-overlay.text-dark(class="overlay-100" absolute :opacity="0.4" color="#d1dee6" :value="overlay")
       .overlay-text
         slot(name="overlay-text")
@@ -41,6 +43,10 @@ export default {
     },
     clickPen: {
       default: null
+    },
+    hideCancel: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -49,6 +55,9 @@ export default {
     }
   },
   methods: {
+    resetOverlay() {
+      this.overlay = true
+    },
     hideOverlay() {
       if (this.clickPen !== null) {
         this.clickPen()

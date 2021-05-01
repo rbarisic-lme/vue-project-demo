@@ -14,12 +14,13 @@
                 v-col(v-for="check in category.collection" :key="check.title" sm="6")
                   p
                     v-icon(color="green" v-if="check.done") mdi-check
-                    v-icon(color="red" v-else="check.done") mdi-cross
-                    v-btn(text) {{check.title}}
-
+                    v-icon(color="red" v-else="check.done") mdi-plus
+                    v-btn(text :to="category.route") {{check.title}}
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
   components: {
 
@@ -29,28 +30,45 @@ export default {
   },
   data() {
     return {
-      checkCategories: [
-        {title: 'Persönliche Informationen', key: 'checksPersonal', collection: [
-          {title: 'Beschreibung', done: this.personalInfoDone() },
-          {title: 'Adresse', done: this.personalInfoDone() },
-          {title: 'Sprachen', done: this.personalInfoDone() },
+    }
+  },
+  mounted() {
+  },
+  computed: {
+    // ...mapGetters({
+        // getterName: 'addressPresent'
+    // })
+    checkCategories() {
+      return [
+        {title: 'Persönliche Informationen', route: '/info/profile/personal-information', key: 'checksPersonal', collection: [
+          {title: 'Beschreibung', done: this.$store.state.account.about_me != null },
+          {title: 'Adresse', done: this.$store.getters['account/addressPresent'] },
+          {title: 'Sprachen', done: this.$store.state.account.languages.length > 0 },
         ]},
-        {title: 'Mein Service', key: 'checksPersonal', collection: [
-          {title: 'Produkte & Marken', done: this.personalInfoDone() },
-          {title: 'Workspace', done: this.personalInfoDone() },
-          {title: 'Umkreis', done: this.personalInfoDone() },
-          {title: 'Paketpreise', done: this.personalInfoDone() },
-          {title: 'Extras', done: this.personalInfoDone() },
+        {title: 'Mein Service', route: '/info/profile/my-service', key: 'checksPersonal', collection: [
+          {title: 'Produkte & Marken', done: this.$store.state.account.brands.length > 0 },
+          {title: 'Workspace', done: this.$store.getters['account/workspacePresent'] },
+          {title: 'Umkreis', done: this.$store.state.account.service_radius != null },
+          {title: 'Paketpreise', done: this.$store.getters['account/servicePackagePricesPresent'] },
+          {title: 'Extras', done: this.$store.state.account.extras.length > 0 },
         ]},
-        {title: 'Unternehmensdaten', key: 'checksBusiness', collection: [
-          {title: 'Firmenanschrift', done: this.personalInfoDone() },
+        {title: 'Unternehmensdaten', route: '/info/business/company-data', key: 'checksBusiness', collection: [
+          {title: 'Firmenanschrift', done: this.$store.getters['business/businessDataComplete'] },
         ]},
-        {title: 'Skills', key: 'checksSkills', collection: [
-          {title: 'Portfolio', done: this.personalInfoDone() },
-          {title: 'Fähigkeiten', done: this.personalInfoDone() },
-          {title: 'Zertifizierung', done: this.personalInfoDone() },
-        ]},
-      ],
+        {title: 'Bankkonto', route: '/info/business/bank-account', key: 'checksBusiness', collection: [
+          {title: 'Kontodaten', done: this.$store.getters['bankAccount/dataComplete']}
+          ]
+        },
+        // {title: 'Verifizierung', route: '/info/business/bank-account', key: 'checksBusiness', collection: [
+
+        //   ]
+        // },
+        // {title: 'Skills', route: '/info/skills', key: 'checksSkills', collection: [
+        //   {title: 'Portfolio', done: this.personalInfoDone() },
+        //   {title: 'Fähigkeiten', done: this.personalInfoDone() },
+        //   {title: 'Zertifizierung', done: this.personalInfoDone() },
+        // ]},
+      ]
     }
   },
   methods: {

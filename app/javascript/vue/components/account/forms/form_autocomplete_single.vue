@@ -13,7 +13,7 @@
           item-value="id"
         )
     template(v-slot:hideInactive)
-      v-btn(color="primary" @click="saveItems" :disabled="!valid || loading" :loading="loading") Speichern
+      v-btn(rounded color="primary" @click="saveItems" :disabled="!valid || loading" :loading="loading") Speichern
 </template>
 
 <script>
@@ -93,7 +93,7 @@ export default {
       if(this.isValid()) {
         this.loading = true
         this.$store.dispatch(this.saveAction, this.itemsInStore).catch(error => {
-          console.log(error)
+          this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
         })
         .finally(() => {
           setTimeout(() => {

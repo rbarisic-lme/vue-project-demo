@@ -83,6 +83,7 @@ export default {
 
     await this.$store.dispatch('account/loadAccount')
     await this.$store.dispatch('business/loadBusiness')
+    await this.$store.dispatch('bankAccount/loadBankAccount')
   },
 }
 </script>

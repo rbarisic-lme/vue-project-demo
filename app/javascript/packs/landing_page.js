@@ -12,6 +12,10 @@ import VModal from 'vue-js-modal'
 import App from '../vue/apps/landing_page/app.vue'
 import _ from 'lodash';
 
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+Vue.use(VueToast, { position: 'bottom' });
+
 Vue.use(VModal)
 
 document.addEventListener('DOMContentLoaded', () => {

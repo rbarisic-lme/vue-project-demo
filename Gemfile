@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+gem "attr_encrypted", "~> 3.1.0" # Encrypt and Decrypt attributes
+
+
 gem "standardrb" # Coding Standards (linter etc.)
 gem "kaminari" # pagination
 gem "figaro" # enables application.yml ENV

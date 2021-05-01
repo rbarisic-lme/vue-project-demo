@@ -83,6 +83,10 @@ class Api::V1::StylistsController < ApplicationController
         :avatar, :about_me,
         :street, :city, :zipcode, :country,
         :service_radius,
+        :service_package_basic_hair_price,
+        :service_package_basic_makeup_price,
+        :service_package_standard_price,
+        :service_package_premium_price,
         brand_ids: [], language_ids: []
       )
     end

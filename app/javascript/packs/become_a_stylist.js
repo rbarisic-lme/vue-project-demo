@@ -7,6 +7,10 @@ import App from '../vue/apps/become_a_stylist/app.vue'
 
 import axios from 'axios'
 
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
+Vue.use(VueToast, { position: 'bottom' });
+
 Vue.use(VueCookies)
 Vue.use(VModal)
 

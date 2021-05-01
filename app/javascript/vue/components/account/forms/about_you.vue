@@ -3,7 +3,7 @@
     template(v-slot:default="slotProps")
       v-textarea.mb-4(flat :outlined="!slotProps.overlay" name="about-me" solo auto-grow hide-details placeholder="Beschreibe dich hier mit einem kurzen Text", v-model="about_me" rows="4")
     template(v-slot:hideInactive)
-      v-btn(rounded color="primary" @click="save") Speichern
+      v-btn(rounded color="primary" @click="save" :loading="loading" :disabled="loading") Speichern
 </template>
 
 <script>
@@ -24,6 +24,7 @@ export default {
   },
   data() {
     return {
+      loading: false
     }
   },
   computed: {
@@ -32,11 +33,17 @@ export default {
   },
   methods: {
     save() {
+      this.loading = true
+
       this.$store.dispatch('account/updateAccount', [
         {name: "about_me", value: this.about_me}
-      ]).catch(error => {
-
+      ]).then(response => {
+        this.$toast.open('Beschreibung erfolgreich hochgeladen');
+      })
+      .catch(error => {
+        this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       }).finally(result => {
+        this.loading = false
       })
     }
   }

@@ -17,18 +17,13 @@
       .col-12.col-lg-7
         .h-100
           v-sheet.px-8.py-4.mb-8(rounded elevation="2")
-            h3.heading-h3.serif.mb-8 Pakete
-            PackagesForm
+            h3.heading-h3.serif.mb-8.text-center Extras
+            ExtrasForm
     .row
       .col-12
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
-          h3.heading-h3.serif.mb-8.text-center Extras
-          ExtrasForm
-          EditableOverlay(height="200")
-            template(v-slot:overlay-text)
-              p
-                v-icon.mr-2(color="black") mdi-chat-processing-outline
-                span Erhöhe deine Chancen und biete weitere Extras an. Die Bräute werden es lieben.
+          h3.heading-h3.serif.mb-8 Pakete
+          PackagesForm
 </template>
 
 <script>

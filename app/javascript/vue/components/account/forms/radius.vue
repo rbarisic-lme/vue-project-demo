@@ -10,7 +10,7 @@
             //- template(v-slot:thumb-label="{ value }")
               span {{value}} km
             template(v-slot:append) KM
-        v-btn(color="primary" @click="save") Speichern
+        v-btn(rounded color="primary" @click="save") Speichern
 
 </template>
 
@@ -42,7 +42,7 @@ export default {
       this.$store.dispatch('account/updateAccount', [
         {name: "service_radius", value: this.service_radius},
       ]).catch(error => {
-
+       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       }).finally(result => {
       })
     }

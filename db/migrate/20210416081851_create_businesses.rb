@@ -9,7 +9,7 @@ class CreateBusinesses < ActiveRecord::Migration[6.1]
       t.string :legal_form
       t.string :tax_id
       t.string :vat
-      t.integer :tax_rate
+      t.integer :tax_rate, default: 19
 
       t.references :stylist, index: true
 

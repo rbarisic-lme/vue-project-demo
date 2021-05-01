@@ -9,11 +9,20 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def add_csrf_token_to_json_request_header
-    if request.format.json? && protect_against_forgery?
-      response.headers['X-CSRF-Token'] = form_authenticity_token
+    def add_csrf_token_to_json_request_header
+      if request.format.json? && protect_against_forgery?
+        response.headers['X-CSRF-Token'] = form_authenticity_token
+      end
     end
-  end
+
+    def set_stylist
+      @stylist = current_stylist
+    end
+
+    def check_current_stylist
+      render 'redirect_unauthorized' and return unless current_stylist
+    end
+
 
   protected
     def configure_permitted_parameters

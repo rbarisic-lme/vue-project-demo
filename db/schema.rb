@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_153042) do
+ActiveRecord::Schema.define(version: 2021_04_26_170925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,8 @@ ActiveRecord::Schema.define(version: 2021_04_26_153042) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "owner_type"
     t.bigint "owner_id"
+    t.string "encrypted_iban"
+    t.string "encrypted_iban_iv"
     t.index ["owner_type", "owner_id"], name: "index_bank_accounts_on_owner"
   end
 
@@ -136,6 +138,10 @@ ActiveRecord::Schema.define(version: 2021_04_26_153042) do
     t.string "address_longitude"
     t.text "about_me"
     t.integer "service_radius"
+    t.decimal "service_package_basic_hair_price"
+    t.decimal "service_package_basic_makeup_price"
+    t.decimal "service_package_standard_price"
+    t.decimal "service_package_premium_price"
     t.index ["email"], name: "index_stylists_on_email", unique: true
     t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
   end

@@ -1,7 +1,11 @@
 <template lang="pug">
   EditableOverlay(height="200")
+    template(v-slot:overlay-text)
+      .flex-centered.h-100.text-center
+        v-icon.mr-2(color="black") mdi-chat-processing-outline
+        span.mt-2 Erhöhe deine Chancen und biete weitere Extras an. Die Bräute werden es lieben.
     template(v-slot:default="slotProps")
-      v-textarea.mb-4(flat :outlined="!slotProps.overlay" name="about-me" solo auto-grow hide-details placeholder="Beschreibe dich hier mit einem kurzen Text", v-model="about_me" rows="4")
+
     template(v-slot:hideInactive)
       v-btn(rounded color="primary" @click="save") Speichern
 </template>
@@ -35,7 +39,7 @@ export default {
       this.$store.dispatch('account/updateAccount', [
         {name: "about_me", value: this.about_me}
       ]).catch(error => {
-
+       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
       }).finally(result => {
       })
     }

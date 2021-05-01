@@ -12,12 +12,12 @@
               v-tab(disabled) Sonstige
             v-row
               v-col(sm="12" md="8")
-                v-form
+                v-form(rules="bankAccountRules")
                   v-text-field(v-model="full_name" label="Name und Vorname" outlined)
-                  v-text-field(v-model="street" label="Anschrift des Kontoinhabers" outlined)
+                  v-text-field(v-model="street" label="Anschrift des Kontoinhabers" outlined autocomplete="street")
                   v-text-field(v-model="zipcode" label="Postleitzahl" outlined)
                   v-text-field(v-model="city" label="Stadt" outlined)
-                  v-select(v-model="country" :items="countries" item-value="name" item-text="name" label="Land" outlined)
+                  v-select(select v-model="country" :items="countries" item-value="name" item-text="name" label="Land" outlined)
                   v-text-field(v-model="iban" label="IBAN" outlined)
 
                   .text-right
@@ -51,6 +51,9 @@ export default {
     return {
       loading: false,
       countries: CountriesJSON,
+      bankAccountRules: {
+        // value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
+      },
     }
   },
   computed: {
@@ -60,13 +63,14 @@ export default {
     save() {
         this.loading = true
         this.$store.dispatch('bankAccount/updateBackend', [
-          {name: "name", value: this.name},
+          {name: "full_name", value: this.full_name},
           {name: "city", value: this.city},
           {name: "street", value: this.street},
           {name: "zipcode", value: this.zipcode},
           {name: "country", value: this.country},
+          {name: "iban", value: this.iban},
         ]).catch(error => {
-
+          this.$toast.open({message: 'Leider konnte dein Bankkonto nicht aktualisiert werden', type: 'error'})
         }).finally(result => {
           setTimeout(() => {this.loading = false}, 1000)
         })

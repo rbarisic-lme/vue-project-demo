@@ -13,25 +13,25 @@
     .row
       .col-12.col-xl-4
         v-sheet.h-100.px-8.py-4.text-center(rounded elevation="2")
-          h3.heading-h3.serif Profilbild
+          h3.heading-h3.serif.mb-8 Profilbild
           AvatarForm
 
       .col-12.col-xl-8
         v-sheet.h-100.px-8.py-4(rounded elevation="2")
-          h3.heading-h3.serif.text-center Über dich
+          h3.heading-h3.serif.text-center.mb-8 Über dich
           AboutYouForm
     .row
       .col-12.col-xl-4
         .pb-6
           v-sheet.px-8.py-4(rounded elevation="2")
-            h3.heading-h3.serif.text-center Standort
+            h3.heading-h3.serif.text-center.mb-8 Standort
             p.text-h6
               v-icon.text-h6.mr-2(color="black") mdi-map-marker-outline
               span Adresse
               AddressForm
         .pb-0
           v-sheet.px-8.py-4(rounded elevation="2")
-            h3.heading-h3.serif.text-center Kommunikation
+            h3.heading-h3.serif.text-center.mb-8 Kommunikation
             p.text-h6
               v-icon.text-h6.mr-2(color="black") mdi-chat-processing-outline
               span Sprachen
@@ -45,10 +45,11 @@
             )
       .col-12.col-xl-8
         v-sheet.h-100.px-8.py-4(rounded elevation="2")
-          h3.heading-h3.serif.text-center Arbeitsmittel
+          h3.heading-h3.serif.text-center.mb-8 Arbeitsmittel
           p.text-h6
             v-icon.text-h6.mr-2(color="black") mdi-domain
             span Marken
+          p Wähle die Produkte aus, die du am häufigsten verwendest.
 
           FormAutocompleteMulti(
             name="brand_ids[]"

@@ -14,7 +14,7 @@
           chips deletable-chips
           multiple
         )
-        v-btn(color="primary" @click="saveBrands" :disabled="!valid" :loading="loading") Speichern
+        v-btn(rounded color="primary" @click="saveBrands" :disabled="!valid" :loading="loading") Speichern
       //- v-list(class="overflow-y-auto")
         //- v-subheader Marken
         //- v-list-item(v-for="brand in $store.state.services.brands" :key="brand.name")
@@ -83,7 +83,7 @@ export default {
       if(this.isValid()) {
         this.loading = true
         this.$store.dispatch('account/updateBrands', this.brands).catch(error => {
-          console.log(error)
+          this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
         })
         .finally(() => {
           setTimeout(() => {

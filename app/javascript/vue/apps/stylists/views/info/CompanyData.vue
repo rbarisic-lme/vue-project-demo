@@ -19,7 +19,8 @@
                   v-text-field(v-model="city" label="Stadt" outlined)
                   v-text-field(v-model="street" label="Strasse" outlined)
                   v-text-field(v-model="zipcode" label="Postleitzahl" outlined)
-                  v-text-field(v-model="country" label="Land" outlined)
+                  v-select(select v-model="country" :items="countries" item-value="name" item-text="name" label="Land" outlined)
+                  v-divider.my-4
                   //- v-text-field(v-model="address_extra" label="Adresszusatz" outlined)
                   v-select(v-model="legal_form" :items="legalForms" label="Rechtsform" outlined)
                   v-text-field(v-model="tax_id" label="Steuer-ID" outlined)
@@ -54,6 +55,7 @@
 import EditableOverlay from '@/components/editable_overlay.vue'
 
 import LegalFormsJSON from '@/data/legal_forms.json'
+import CountriesJSON from '@/data/countries.json'
 
 import { createHelpers } from 'vuex-map-fields';
 
@@ -72,7 +74,8 @@ export default {
   data() {
     return {
       loading: false,
-      legalForms: LegalFormsJSON
+      legalForms: LegalFormsJSON,
+      countries: CountriesJSON,
     }
   },
   computed: {

@@ -5,7 +5,7 @@ import { getField, updateField } from 'vuex-map-fields';
 // initial state
 // shape: [{}]
 const state = () => ({
-  name: undefined,
+  full_name: undefined,
   city: undefined,
   street: undefined,
   zipcode: undefined,
@@ -15,12 +15,25 @@ const state = () => ({
 // getters
 const getters = {
   getField,
+  dataComplete: state => {
+    if ( state.full_name
+      && state.city
+      && state.street
+      && state.zipcode
+      && state.country
+      && state.iban
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
 }
 
 // actions
 const actions = {
   async loadBankAccount(ctx, payload) {
-    let result = await this._vm.$axios.get('/api/v1/bank_account/current')
+    let result = await this._vm.$axios.get('/api/v1/bank_accounts/current')
     if(result.status == 200) {
       ctx.commit('setBankAccount', result.data)
     } else {
@@ -34,7 +47,7 @@ const actions = {
       formData.append(`bank_account[${attr.name}]`, attr.value)
     })
 
-    return await this._vm.$axios.put(`/api/v1/bank_account/${ctx.state.id}`, formData, {
+    return await this._vm.$axios.put(`/api/v1/bank_accounts/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
     })
   },
