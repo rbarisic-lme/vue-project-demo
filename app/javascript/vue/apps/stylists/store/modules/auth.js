@@ -30,7 +30,7 @@ const actions = {
       return Promise.reject('Not Authenticated')
     }
     
-    return this._vm.$axios.get('/api/v1/stylists/authenticated');
+    return this._vm.$axios.get('/api/v1/auth/authenticated');
 
     // return result
   }

@@ -1,9 +1,9 @@
 class Api::V1::BusinessesController < ApplicationController
-  before_action :set_stylist, only: %i[ show update destroy ]
+  before_action :set_user, only: %i[ show update destroy ]
   before_action :set_business, only: %i[ show update destroy ]
 
-  before_action :authenticate_stylist!, unless: -> { request.format == :json }
-  before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
+  before_action :authenticate_user!, unless: -> { request.format == :json }
+  before_action :check_current_user, only: %i[ current show update destroy authenticated ]
 
   # GET /businesses or /businesses.json
   def index
@@ -15,7 +15,7 @@ class Api::V1::BusinessesController < ApplicationController
   end
 
   def current
-    @business = current_stylist.business
+    @business = current_user.business
   end
 
   # GET /businesses/new
@@ -63,7 +63,7 @@ class Api::V1::BusinessesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_business
       # @business = Business.find(params[:id])
-      @business = current_stylist.business
+      @business = current_user.business
     end
 
     # Only allow a list of trusted parameters through.

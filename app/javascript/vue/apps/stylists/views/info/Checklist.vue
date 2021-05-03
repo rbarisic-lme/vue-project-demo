@@ -41,16 +41,16 @@ export default {
     checkCategories() {
       return [
         {title: 'Persönliche Informationen', route: '/info/profile/personal-information', key: 'checksPersonal', collection: [
-          {title: 'Beschreibung', done: this.$store.state.account.about_me != null },
-          {title: 'Adresse', done: this.$store.getters['account/addressPresent'] },
-          {title: 'Sprachen', done: this.$store.state.account.languages.length > 0 },
+          {title: 'Beschreibung', done: this.$store.state.stylist.about_me != null },
+          {title: 'Adresse', done: this.$store.getters['stylist/addressPresent'] },
+          {title: 'Sprachen', done: this.$store.state.stylist.languages.length > 0 },
         ]},
         {title: 'Mein Service', route: '/info/profile/my-service', key: 'checksPersonal', collection: [
-          {title: 'Produkte & Marken', done: this.$store.state.account.brands.length > 0 },
-          {title: 'Workspace', done: this.$store.getters['account/workspacePresent'] },
-          {title: 'Umkreis', done: this.$store.state.account.service_radius != null },
-          {title: 'Paketpreise', done: this.$store.getters['account/servicePackagePricesPresent'] },
-          {title: 'Extras', done: this.$store.state.account.extras.length > 0 },
+          {title: 'Produkte & Marken', done: this.$store.state.stylist.brands.length > 0 },
+          {title: 'Workspace', done: this.$store.getters['stylist/workspacePresent'] },
+          {title: 'Umkreis', done: this.$store.state.stylist.service_radius != null },
+          {title: 'Paketpreise', done: this.$store.getters['stylist/servicePackagePricesPresent'] },
+          {title: 'Extras', done: this.$store.state.stylist.extras.length > 0 },
         ]},
         {title: 'Unternehmensdaten', route: '/info/business/company-data', key: 'checksBusiness', collection: [
           {title: 'Firmenanschrift', done: this.$store.getters['business/businessDataComplete'] },

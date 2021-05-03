@@ -1,9 +1,9 @@
 class Api::V1::BankAccountsController < ApplicationController
-  before_action :set_stylist, only: %i[ show update destroy ]
+  before_action :set_user, only: %i[ show update destroy ]
   before_action :set_bank_account, only: %i[ show edit update destroy ]
 
-  before_action :authenticate_stylist!, unless: -> { request.format == :json }
-  before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
+  before_action :authenticate_user!, unless: -> { request.format == :json }
+  before_action :check_current_user, only: %i[ current show update destroy authenticated ]
 
   # GET /bank_accounts or /bank_accounts.json
   def index
@@ -15,7 +15,7 @@ class Api::V1::BankAccountsController < ApplicationController
   end
 
   def current
-    @bank_account = current_stylist.bank_account
+    @bank_account = current_user.bank_account
   end
 
   # GET /bank_accounts/new

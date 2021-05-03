@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_26_170925) do
+ActiveRecord::Schema.define(version: 2021_05_03_192313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,11 +47,11 @@ ActiveRecord::Schema.define(version: 2021_04_26_170925) do
     t.string "jti", null: false
     t.string "aud"
     t.datetime "exp", null: false
-    t.bigint "stylist_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
-    t.index ["stylist_id"], name: "index_allowlisted_jwts_on_stylist_id"
+    t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
   end
 
   create_table "bank_accounts", force: :cascade do |t|
@@ -78,11 +78,11 @@ ActiveRecord::Schema.define(version: 2021_04_26_170925) do
     t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
-  create_table "brands_stylists", force: :cascade do |t|
+  create_table "brands_users", force: :cascade do |t|
     t.bigint "brand_id"
-    t.bigint "stylist_id"
-    t.index ["brand_id"], name: "index_brands_stylists_on_brand_id"
-    t.index ["stylist_id"], name: "index_brands_stylists_on_stylist_id"
+    t.bigint "user_id"
+    t.index ["brand_id"], name: "index_brands_users_on_brand_id"
+    t.index ["user_id"], name: "index_brands_users_on_user_id"
   end
 
   create_table "businesses", force: :cascade do |t|
@@ -94,11 +94,11 @@ ActiveRecord::Schema.define(version: 2021_04_26_170925) do
     t.string "legal_form"
     t.string "tax_id"
     t.string "vat"
-    t.integer "tax_rate"
-    t.bigint "stylist_id"
+    t.integer "tax_rate", default: 19
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["stylist_id"], name: "index_businesses_on_stylist_id"
+    t.index ["user_id"], name: "index_businesses_on_user_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -110,16 +110,16 @@ ActiveRecord::Schema.define(version: 2021_04_26_170925) do
     t.index ["name"], name: "index_languages_on_name", unique: true
   end
 
-  create_table "languages_stylists", force: :cascade do |t|
+  create_table "languages_users", force: :cascade do |t|
     t.bigint "language_id"
-    t.bigint "stylist_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["language_id"], name: "index_languages_stylists_on_language_id"
-    t.index ["stylist_id"], name: "index_languages_stylists_on_stylist_id"
+    t.index ["language_id"], name: "index_languages_users_on_language_id"
+    t.index ["user_id"], name: "index_languages_users_on_user_id"
   end
 
-  create_table "stylists", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -142,32 +142,17 @@ ActiveRecord::Schema.define(version: 2021_04_26_170925) do
     t.decimal "service_package_basic_makeup_price"
     t.decimal "service_package_standard_price"
     t.decimal "service_package_premium_price"
-    t.index ["email"], name: "index_stylists_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_stylists_on_reset_password_token", unique: true
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "first_name"
-    t.string "last_name"
-    t.string "street"
-    t.string "city"
-    t.string "zipcode"
-    t.string "country"
-    t.string "phone"
-    t.string "address_latitude"
-    t.string "address_longitude"
+    t.string "role"
+    t.string "type"
+    t.string "workspace_street"
+    t.string "workspace_city"
+    t.string "workspace_zipcode"
+    t.string "workspace_country"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "allowlisted_jwts", "stylists", on_delete: :cascade
+  add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
 end

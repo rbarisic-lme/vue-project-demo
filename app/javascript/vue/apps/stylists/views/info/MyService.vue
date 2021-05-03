@@ -8,7 +8,7 @@
             p.text-h6
               v-icon.text-h6.mr-2(color="black") mdi-home-city-outline
               span Workspace
-            AddressForm
+            WorkspaceAddressForm
             v-divider.my-8
             p.text-h6
               v-icon.text-h6.mr-2(color="black") mdi-compass-outline
@@ -28,17 +28,17 @@
 
 <script>
 import EditableOverlay from '@/components/editable_overlay.vue'
-import AddressForm from '@/components/account/forms/address.vue'
-import ExtrasForm from '@/components/account/forms/extras.vue'
-import RadiusForm from '@/components/account/forms/radius.vue'
-import PackagesForm from '@/components/account/forms/packages.vue'
+import WorkspaceAddressForm from '@/components/stylist/forms/workspace_address.vue'
+import ExtrasForm from '@/components/stylist/forms/extras.vue'
+import RadiusForm from '@/components/stylist/forms/radius.vue'
+import PackagesForm from '@/components/stylist/forms/packages.vue'
 
 import { mdiChatProcessingOutline } from '@mdi/js';
 
 export default {
   components: {
     EditableOverlay,
-    AddressForm,
+    WorkspaceAddressForm,
     ExtrasForm,
     RadiusForm,
     PackagesForm,

@@ -42,7 +42,7 @@ v-app(id="stylists" :style="appStyle")
 import Header from '@/components/header.vue'
 import Footer from '@/components/landing_page/footer.vue'
 
-import StylistAvatar from '@/components/stylist/avatar'
+import StylistAvatar from '@/components/user/avatar'
 
 export default {
   components: {
@@ -81,7 +81,7 @@ export default {
       this.redirectUnauthorized()
     })
 
-    await this.$store.dispatch('account/loadAccount')
+    await this.$store.dispatch('stylist/loadAccount')
     await this.$store.dispatch('business/loadBusiness')
     await this.$store.dispatch('bankAccount/loadBankAccount')
   },

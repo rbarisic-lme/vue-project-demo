@@ -3,18 +3,17 @@ class Api::V1::StylistsController < ApplicationController
 
   before_action :authenticate_stylist!, unless: -> { request.format == :json }
 
-  # hinder users from tempering with other users
+  # hinder stylists from tempering with other stylists
   before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
-
   before_action :sanitize_params, only: %i[ create update ]
 
   def current
     @stylist = current_stylist
   end
 
-  def authenticated
-    render inline: {authorized: true}.to_json
-  end
+  # def authenticated
+    # render inline: {authorized: true}.to_json
+  # end
  
   # GET /api/v1/stylists or /api/v1/stylists.json
   def index
@@ -71,6 +70,10 @@ class Api::V1::StylistsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_stylist
       @stylist = Stylist.with_attached_avatar.find(params[:id])
+    end
+
+    def current_stylist
+      Stylist.find(current_user.id)
     end
 
     def check_current_stylist

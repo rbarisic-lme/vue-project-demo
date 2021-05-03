@@ -13,7 +13,7 @@ class StaticPagesController < ApplicationController
   end
 
   def become_a_stylist
-    if current_stylist
+    if current_user && current_user.role == "stylist"
       redirect_to stylist_app_path
     end
 

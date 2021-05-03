@@ -15,12 +15,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def set_stylist
-      @stylist = current_stylist
+    def set_user
+      @user = current_user
     end
 
-    def check_current_stylist
-      render 'redirect_unauthorized' and return unless current_stylist
+    def check_current_user
+      render 'redirect_unauthorized' and return unless current_user
     end
 
 

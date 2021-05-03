@@ -1,7 +1,7 @@
 <template lang="pug">
   .container
-    DashboardView(v-if="$store.state.account.account_completed")
-    IntroView(v-else="$store.state.account.account_completed")
+    DashboardView(v-if="$store.state.stylist.account_completed")
+    IntroView(v-else="$store.state.stylist.account_completed")
 </template>
 
 <script>

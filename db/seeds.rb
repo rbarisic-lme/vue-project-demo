@@ -30,6 +30,16 @@
 #   # kyc_completed: false
 # )
 
+# Bride
+User.create!(
+  email: "bride@example.com",
+  password: "alpine123",
+  password_confirmation: "alpine123",
+  first_name: "Testman",
+  last_name: "Examplesson",
+  role: 'bride'
+)
+
 # Stylist
 Stylist.create!(
   email: "stylist@example.com",
@@ -37,6 +47,7 @@ Stylist.create!(
   password_confirmation: "alpine123",
   first_name: "Testman",
   last_name: "Examplesson",
+  role: 'stylist'
 )
 
 # Populate Brands

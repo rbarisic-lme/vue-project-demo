@@ -8,15 +8,26 @@
 import Vue from 'vue'
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 import VModal from 'vue-js-modal'
+import VueCookies from 'vue-cookies'
 
 import App from '../vue/apps/landing_page/app.vue'
-import _ from 'lodash';
+import axios from 'axios'
+
+// import _ from 'lodash';
 
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 Vue.use(VueToast, { position: 'bottom' });
+Vue.use(VueCookies)
 
 Vue.use(VModal)
+
+let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+axios.defaults.headers.common['X-CSRF-Token'] = token
+axios.defaults.headers.common['Accept'] = 'application/json'
+
+Vue.prototype.$axios = axios;
+Vue.prototype.$cookies = VueCookies;
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

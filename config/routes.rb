@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
 
   # resources :stylists, only: [:index]
-  devise_for :stylists, defaults: {format: :json}, controllers: {
-    sessions: 'stylists/sessions',
-    registrations: 'stylists/registrations'
+  devise_for :users, defaults: {format: :json}, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
-
-  devise_for :users
 
   root 'static_pages#landing_page'
 
@@ -34,6 +32,11 @@ Rails.application.routes.draw do
 
       resources :businesses do
         get 'current', on: :collection
+      end
+
+      scope :auth do
+        get 'current', to: 'auth#current'
+        get 'authenticated', to: 'auth#authenticated'
       end
 
       resources :stylists do

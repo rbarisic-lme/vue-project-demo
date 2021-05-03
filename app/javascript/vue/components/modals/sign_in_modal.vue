@@ -1,19 +1,11 @@
 <template lang="pug">
-Modal(name="stylistSignIn" height="auto" :maxWidth="300")
+Modal(name="signIn" height="auto" :maxWidth="300")
   div.m-8.text-center
     h3.heading-h3.mb-5
-      | Als
-      b {{ accountType == 'bride' ? ' Braut ' : ' Stylist ' }}
       | bei bridlX
       span {{ tab === 0 ? ' registrieren ' : ' anmelden ' }}
 
   v-card
-    v-container.p-4
-      v-row
-        v-col
-          v-btn(text block @click="setAccountType('bride')" :outlined="accountType == 'bride'") Braut
-        v-col
-          v-btn(text block @click="setAccountType('stylist')" :outlined="accountType == 'stylist'") Stylist
     v-tabs(v-model="tab" grow show-arrows)
       v-tab(color="green") Registrieren
       v-tab(color="green") Anmelden
@@ -42,13 +34,9 @@ export default {
   data() {
     return {
       tab: 0,
-      accountType: 'bride',
     }
   },
   methods: {
-   setAccountType(val) {
-    this.accountType = val
-   }
   }
 }
 </script>

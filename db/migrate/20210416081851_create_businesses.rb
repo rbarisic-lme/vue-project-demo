@@ -11,10 +11,10 @@ class CreateBusinesses < ActiveRecord::Migration[6.1]
       t.string :vat
       t.integer :tax_rate, default: 19
 
-      t.references :stylist, index: true
+      t.references :user, index: true
 
       t.timestamps
     end
-    # add_index :businesses, :stylist_id
+    # add_index :businesses, :user_id
   end
 end

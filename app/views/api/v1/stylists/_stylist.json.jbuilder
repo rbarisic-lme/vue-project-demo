@@ -16,7 +16,11 @@ json.extract! stylist,
   :service_package_basic_hair_price,
   :service_package_basic_makeup_price,
   :service_package_standard_price,
-  :service_package_premium_price
+  :service_package_premium_price,
+  :workspace_street,
+  :workspace_city,
+  :workspace_zipcode,
+  :workspace_country
 
 json.avatar_url url_for(stylist.avatar) if stylist.avatar.attached?
 json.url api_v1_stylist_url(stylist, format: :json)

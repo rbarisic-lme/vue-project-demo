@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import VueCookies from 'vue-cookies'
 
+import VueI18n from 'vue-i18n'
+
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 import VModal from 'vue-js-modal'
 
@@ -23,6 +25,9 @@ Vue.use(Vuex)
 Vue.use(VueCookies)
 
 Vue.use(VModal)
+// Vue.use(VueI18n)
+
+import i18n from '@/lib/i18n.js'
 
 let token = document.getElementsByName('csrf-token')[0].getAttribute('content')
 axios.defaults.headers.common['X-CSRF-Token'] = token
@@ -33,6 +38,7 @@ Vue.prototype.$cookies = VueCookies;
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
+    i18n,
     axios,
     router,
     store,

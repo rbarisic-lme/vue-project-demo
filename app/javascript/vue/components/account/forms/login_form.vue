@@ -30,11 +30,8 @@ export default {
     authenticate() {
       this.loading = true;
 
-      // this.$store.dispatch('auth/login').then(response => {
-      // })
-
-      this.$axios.post('/stylists/sign_in', {
-        stylist: {
+      this.$axios.post('/users/sign_in', {
+        user: {
           email: this.email,
           password: this.password,
         }
