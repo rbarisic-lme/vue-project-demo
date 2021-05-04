@@ -1,4 +1,4 @@
-json.user do
-  json.(current_user, :id, :email)
-end
+# json.user do
+#   json.(current_user, :id, :email)
+# end
 json.token @token
