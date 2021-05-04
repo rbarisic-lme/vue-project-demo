@@ -1,19 +1,15 @@
 class Api::V1::StylistsController < ApplicationController
   before_action :set_stylist, only: %i[ show update destroy ]
 
-  before_action :authenticate_stylist!, unless: -> { request.format == :json }
+  before_action :authenticate_user!, unless: -> { request.format == :json }
 
   # hinder stylists from tempering with other stylists
-  before_action :check_current_stylist, only: %i[ current show update destroy authenticated ]
+  before_action :check_current_stylist, only: %i[ current update destroy ]
   before_action :sanitize_params, only: %i[ create update ]
 
   def current
     @stylist = current_stylist
   end
-
-  # def authenticated
-    # render inline: {authorized: true}.to_json
-  # end
  
   # GET /api/v1/stylists or /api/v1/stylists.json
   def index
