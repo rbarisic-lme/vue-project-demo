@@ -1,7 +1,7 @@
 class Api::V1::StylistsController < ApplicationController
   before_action :set_stylist, only: %i[ show update destroy ]
 
-  before_action :authenticate_user!#, unless: -> { request.format == :json }
+  before_action :authenticate_user!, unless: -> { request.format == :json }
 
   # hinder stylists from tempering with other stylists
   before_action :check_current_stylist, only: %i[ current update destroy ]

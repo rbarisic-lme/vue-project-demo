@@ -2,11 +2,29 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  # before_action :authenticate_stylist!, unless: -> { request.format == :json }
+
   # before_action :authenticate_http if Rails.env.production?
   # callback to set CSRF TOKEN for non-idempotent Ajax request
   after_action :add_csrf_token_to_json_request_header
 
   private
+
+    def auth_header
+      request.headers['Authorization']
+    end
+
+    def jwt_token
+      auth_header.split[1]
+    end
+
+    def current_user
+      if auth_header.match? /\ABearer .+\z/
+        Warden::JWTAuth::UserDecoder.new.call(jwt_token, :user, nil)
+      else
+        nil
+      end
+    end
 
     def add_csrf_token_to_json_request_header
       if request.format.json? && protect_against_forgery?

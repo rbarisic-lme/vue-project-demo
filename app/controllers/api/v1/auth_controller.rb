@@ -5,8 +5,4 @@ class Api::V1::AuthController < ApplicationController
   def authenticated
     render inline: {authorized: true}.to_json
   end
-
-  def check_current_user
-    render 'redirect_unauthorized' and return unless current_user
-  end
 end
