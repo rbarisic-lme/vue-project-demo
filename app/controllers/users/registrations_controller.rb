@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   # before_action :authenticate_user!
   # skip_before_action :authenticate_user!, only: [:new]
-  # skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def create
     super do
