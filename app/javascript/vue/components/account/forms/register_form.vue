@@ -47,7 +47,7 @@ export default {
     signup() {
       this.loading = true
 
-      this.$axios.post('/stylists', {
+      this.$axios.post('/users', {
         stylist: {
           first_name: this.first_name,
           last_name: this.last_name,
