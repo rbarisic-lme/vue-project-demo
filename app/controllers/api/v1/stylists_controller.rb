@@ -85,6 +85,7 @@ class Api::V1::StylistsController < ApplicationController
       params.fetch(:stylist).permit(
         :avatar, :about_me,
         :street, :city, :zipcode, :country,
+        :workspace_street, :workspace_city, :workspace_zipcode, :workspace_country,
         :service_radius,
         :service_package_basic_hair_price,
         :service_package_basic_makeup_price,

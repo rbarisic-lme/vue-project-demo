@@ -18,23 +18,24 @@ const state = () => ({
   brands: [],
   languages: [],
   extras: [],
+  extras_prices: {},
   street: undefined,
   city: undefined,
   zipcode: undefined,
   country: undefined,
   service_radius: undefined,
   account_completed: false,
+  workspace_street: undefined,
+  workspace_city: undefined,
+  workspace_zipcode: undefined,
+  workspace_country: undefined,
   service_package_basic_hair_price: 0.0,
-  service_package_basic__makeup_price: 0.0,
+  service_package_basic_makeup_price: 0.0,
   service_package_standard_price: 0.0,
   service_package_premium_price: 0.0,
   snackSuccess: false,
   snackError: false,
   dataParsing: false,
-  workspace_street: undefined,
-  workspace_city: undefined,
-  workspace_zipcode: undefined,
-  workspace_country: undefined,
 })
 
 // getters
@@ -57,7 +58,10 @@ const getters = {
     }
   },
   servicePackagePricesPresent: state => {
-    if (state.service_package_basic_hair_price && service_package_basic__makeup_price && service_package_standard_price && service_package_premium_price) {
+    if (state.service_package_basic_hair_price
+        && state.service_package_basic_makeup_price
+        && state.service_package_standard_price
+        && state.service_package_premium_price) {
       return true
     } else {
       return false
@@ -119,12 +123,15 @@ const actions = {
       await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
       })
-
-      this._vm.$toast.open(i18n.t('form.message.update.success'))
+      // setTimeout(() => {
+        this._vm.$toast.open(i18n.t('form.message.update.success'))
+      // }, 1000)
     } catch {
       this._vm.$toast.open({message: i18n.t('form.message.update.failure'), type: 'error'});
     } finally {
-      ctx.state.dataParsing = false
+      setTimeout(() => {
+        ctx.state.dataParsing = false
+      }, 1000)
     }
 
   },

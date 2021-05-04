@@ -21,7 +21,7 @@ v-app(id="stylists" :style="appStyle")
       v-list
         v-list-item(link to="/")
           v-list-item-title Zur Hauptseite
-        v-list-item(link to="/sign_out")
+        v-list-item(link to="/sign_out" @click="signOut")
           v-list-item-title Ausloggen
   v-main(v-if="$store.state.auth.authenticated")
     v-container(fluid)
@@ -64,8 +64,15 @@ export default {
     }
   }),
   methods: {
+    signOut() {
+      this.$cookies.remove('jwt')
+      localStorage.jwt = undefined
+      window.location = '/become-a-stylist'
+    },
     redirectUnauthorized() {
       this.$cookies.remove('jwt')
+      this.$cookies.remove('_bridlx_web_session ')
+      localStorage.jwt = undefined
       window.location = '/become-a-stylist'
     }
   },

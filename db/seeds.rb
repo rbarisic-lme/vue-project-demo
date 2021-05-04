@@ -53,18 +53,27 @@ Stylist.create!(
 # Populate Brands
 
 begin
-  brands_file = File.read Rails.root.join('app', 'javascript', 'vue', 'data' '/brands.json')
+  extras_file = File.read Rails.root.join('app', 'javascript', 'vue', 'data' '/service_extras.json')
 
-  JSON.parse(brands_file).each do |brand_name|
-    pp Brand.create!(name: brand_name)
+  JSON.parse(extras_file).each do |extra|
+    pp ServiceExtra.create!(extra)
   end
 end
+
 
 begin
   languages_file = File.read Rails.root.join('app', 'javascript', 'vue', 'data' '/languages.json')
 
   JSON.parse(languages_file).each do |language|
     pp Language.create!(name: language["name"])
+  end
+end
+
+begin
+  brands_file = File.read Rails.root.join('app', 'javascript', 'vue', 'data' '/brands.json')
+
+  JSON.parse(brands_file).each do |brand_name|
+    pp Brand.create!(name: brand_name)
   end
 end
 

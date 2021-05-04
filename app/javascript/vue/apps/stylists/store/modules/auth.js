@@ -5,7 +5,7 @@ import VueCookies from 'vue-cookies'
 // shape: [{ id, quantity }]
 const state = () => ({
   authenticated: false,
-  jwt: VueCookies.get('jwt') || undefined, //JSON Web Token
+  jwt:  localStorage.jwt || undefined, //JSON Web Token
   initials: 'CJ',
   profilePicture: '',
 })

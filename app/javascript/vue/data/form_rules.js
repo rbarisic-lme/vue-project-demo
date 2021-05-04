@@ -19,6 +19,38 @@ const rules = {
     "country": [
         value => !!value || i18n.t('form.error.missing'),
     ],
+    "service_package_basic_hair_price": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (parseFloat(value) || 0) >= 90 || i18n.t('form.error.minimum', {amount: '90€'}),
+    ],
+    "service_package_basic_makeup_price": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (parseFloat(value) || 0) >= 80 || i18n.t('form.error.minimum', {amount: '80€'}),
+
+    ],
+    "service_package_standard_price": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (parseFloat(value) || 0) >= 300 || i18n.t('form.error.minimum', {amount: '300€'}),
+    ],
+    "service_package_premium_price": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (parseFloat(value) || 0) >= 350 || i18n.t('form.error.minimum', {amount: '350€'}),
+    ],
+    "extras": [
+      // value => !!value || i18n.t('form.error.missing'),
+    ],
+    "extra_item": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (parseFloat(value) || 0) >= 90 || i18n.t('form.error.minimum', {amount: '20€'}),
+    ]
+  },
+  "bank_account": {
+    "full_name": [
+      value => !!value || i18n.t('form.error.missing')
+    ],
+    "iban": [
+      value => !!value || i18n.t('form.error.missing'),
+    ],
   }
 }
 

@@ -7,6 +7,10 @@
       .col-12.col-md-2
           .text-center
             img.tree-logo(src="@images/bridlx-for-tomorrow.png")
+    .row
+      .col-12.text-center
+        a(href="#")
+          img.for-tomorrow(src="@images/bridlx-x-forTomorrow.png")
 </template>
 
 <script>
@@ -29,5 +33,9 @@ export default {
   img.tree-logo {
     display: inline-block;
     max-height: 96px;
+  }
+  img.for-tomorrow {
+    max-height: 120px;
+    margin: 0 auto;
   }
 </style>

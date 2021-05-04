@@ -1,32 +1,32 @@
 <template lang="pug">
-  ContainerSlider(transitionSpeed="5000" height="460")
-    .container-slider(key="1" style="height: 460px")
+  ContainerSlider(transitionSpeed="5000" height="600")
+    .container-slider(key="1" style="height: 600px")
       .row.h100p.no-gutters(style="background: #c6d8b6;")
         .col-6.d-none.d-lg-block
           .flex-horizontal
-            img(src="~@images/lp/become-a-stylist/portrait-1.jpg" style="height: 460px")
-            img(src="~@images/lp/become-a-stylist/portrait-2.jpg" style="height: 460px")
-            img(src="~@images/lp/become-a-stylist/portrait-3.jpg" style="height: 460px")
-        .col-12.col-lg-6
+            img.stylist-portrait(v-show="portraitIndex == 0" src="~@images/lp/become-a-stylist/b-portrait-1.jpg" style="height: 600px")
+            img.stylist-portrait(v-show="portraitIndex == 1" src="~@images/lp/become-a-stylist/b-portrait-2.jpg" style="height: 600px")
+            img.stylist-portrait(v-show="portraitIndex == 2" src="~@images/lp/become-a-stylist/b-portrait-3.jpg" style="height: 600px")
+        .col-12.col-lg-6.h-100.centered-item
           .p-8.mw-50-md-up
             h2.heading-h2.serif.mb-4 Werde Stylist.
             p.lead Teile dein Profil und mache zukünftig noch mehr Bräute glücklich.
             a.lead-btn-stylist-1(href="#") Erfahre mehr
-    .container-slider(key="2" style="height: 460px")
+    .container-slider(key="2" style="height: 600px")
       .row.h100p.no-gutters(style="background: #f5ecdc;")
         .col-6.d-none.d-lg-block
           .img-centered
             img(src="~@images/logos/bridlx-and-beyond-purple-and-black.svg")
-        .col-12.col-lg-6
+        .col-12.col-lg-6.h-100.centered-item
           .p-8.mw-50-md-up
             h2.heading-h2.serif.mb-4 Grenzenlos genießen.
             p.lead bridlx and beyond – der exklusive 24/7 Rundum-Service speziell für Weddingplanner, internationale Hochzeiten und vieles mehr.
             a.lead-btn-stylist-1(href="#") Entdecke mehr dazu
-    .container-slider(key="3" style="height: 460px")
+    .container-slider(key="3" style="height: 600px")
       .row.h100p.no-gutters(style="background: rgb(27 42 85); color: #fff;")
         .container
-          .row
-            .col-12.col-lg-6
+          .row.h-100
+            .col-12.col-lg-6.h-100.centered-item
               .p-8
                 h2.heading-h2.serif.mb-4
                   img(src="~@images/logos/bridlx-business-bright.svg" style="max-height: 96px;")
@@ -47,12 +47,12 @@
               video(autoplay loop muted playsinline preload="metadata" style="height: 400px; margin-left: auto; margin-right: 32px;")
                 source(src="@assets/videos/bridlx-business-trailer.mp4" type="video/mp4")
                 | Your browser does not support the video tag.
-    .container-slider(key="4" style="height: 460px")
+    .container-slider(key="4" style="height: 600px")
       .row.h100p.no-gutters
         .col-6.d-none.d-lg-block
           .img-centered
             img(src="~@images/AdobeStock_355334010.jpg" style="height: 380px;")
-        .col-12.col-lg-6(style="background: #dcb3a5;")
+        .col-12.col-lg-6.h-100(style="background: #dcb3a5;").centered-item
           .p-8
             h2.heading-h2.serif.mb-4 Digital Add-Ons
             p.lead Neben unserem bridlx E-Learning Kurs bereiten dich unsere hochqualifizierten Coaches perfekt auf deine Hochzeit vor.
@@ -72,8 +72,19 @@ export default {
   },
   data() {
     return {
-      
-  }}
+      portraitIndex: 0,
+      eventId: undefined,
+  }},
+  mounted() {
+    this.eventId = setInterval(() => {
+      if (this.portraitIndex > 1) {
+        this.portraitIndex = 0
+      } else {
+        this.portraitIndex++
+      }
+
+    }, 1000)
+  }
 }
 </script>
 
@@ -141,11 +152,21 @@ export default {
   }
 
   .flex-horizontal {
+    position: relative;
     display: flex;
     max-width: 100%;
     overflow: hidden;
     img {
 
     }
+    .stylist-portrait {
+    }
+  }
+
+  .centered-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 </style>

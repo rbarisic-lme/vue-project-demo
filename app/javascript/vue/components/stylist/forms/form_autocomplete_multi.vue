@@ -1,5 +1,8 @@
 <template lang="pug">
   EditableOverlay(:clickPen="getBackendItems" :height="height" ref="overlay")
+    template(v-slot:overlay-text)
+      slot(name="overlay-text")
+
     template(v-slot:default="slotProps")
 
       v-form(v-model="valid" ref="form" @submit="saveItems" @submit.prevent).mb-8

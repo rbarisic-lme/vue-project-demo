@@ -4,6 +4,8 @@ class Stylist < User
   has_and_belongs_to_many :brands, foreign_key: :user_id
   has_and_belongs_to_many :languages, foreign_key: :user_id
 
+  has_and_belongs_to_many :service_extras, foreign_key: :user_id
+
   validate :brands_format
 
   private

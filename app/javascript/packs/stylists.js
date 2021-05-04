@@ -7,7 +7,7 @@ import VueI18n from 'vue-i18n'
 
 import vuetify from '@/plugins/vuetify' // path to vuetify export
 import VModal from 'vue-js-modal'
-
+ 
 import App from '../vue/apps/stylists/app.vue'
 import _ from 'lodash';
 
