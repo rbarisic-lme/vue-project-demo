@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-      if auth_header.match? /\ABearer .+\z/
+      if auth_header && auth_header.match? /\ABearer .+\z/
         Warden::JWTAuth::UserDecoder.new.call(jwt_token, :user, nil)
       else
         nil
