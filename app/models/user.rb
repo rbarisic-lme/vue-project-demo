@@ -26,7 +26,11 @@ class User < ApplicationRecord
 
   has_one_attached :avatar
 
-  enum role: [:bride, :stylist, :admin]
+  enum role: {
+    bride: 'bride',
+    stylist: 'stylist',
+    admin: 'admin'
+  }
 
   # def on_jwt_dispatch(token, payload)
   #   super

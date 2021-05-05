@@ -1,5 +1,7 @@
 json.extract! stylist,
   :id,
+  :role,
+  :type,
   :first_name,
   :last_name,
   :street,

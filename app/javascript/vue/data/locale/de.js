@@ -35,6 +35,9 @@ export default {
       regex_invalid: 'Das Format stimmt nicht',
       minimum: 'Der Wert muss mindestens {amount} betragen',
       maximum: 'Der Wert darf nicht größer als {amount} sein',
+      email_mismatch: 'Ungültige E-Mail Adresse',
+      passsword_too_short: 'Ihr Passwort ist zu kurz',
+      pw_confirm_mismatch: 'Passwort Bestätigung muss übereinstimmen'
     }
   },
   message: {

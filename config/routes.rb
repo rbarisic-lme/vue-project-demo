@@ -15,10 +15,22 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  # Common User Vue App
+  scope :dashboard do
+    get "/", to: "vue#user_app", format: false, as: 'user_app'
+    get "/*path", to: "vue#user_app", format: false
+  end
+
+  # Brides Vue App
+  scope :brides do
+    get "/", to: "vue#bride_app", format: false, as: 'bride_app'
+    get "/*path", to: "vue#bride_app", format: false
+  end
+
   # Stylist Vue App
   scope :stylists do
-    get "/", to: "stylists#app", format: false, as: 'stylist_app'
-    get "/*path", to: "stylists#app", format: false
+    get "/", to: "vue#stylist_app", format: false, as: 'stylist_app'
+    get "/*path", to: "vue#stylist_app", format: false
   end
 
   namespace :api, defaults: {format: :json} do
@@ -37,6 +49,11 @@ Rails.application.routes.draw do
       scope :auth do
         get 'current', to: 'auth#current'
         get 'authenticated', to: 'auth#authenticated'
+      end
+
+      resources :users do
+        get 'current', on: :collection
+        get 'authenticated', on: :collection        
       end
 
       resources :stylists do

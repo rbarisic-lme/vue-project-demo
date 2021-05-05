@@ -17,7 +17,7 @@ v-app(id="stylists" :style="appStyle")
     v-menu(offset-y)
       template(v-slot:activator="{ on, attrs }")
         div(elevation="0" opacity="0" v-on="on" v-bind="attrs")
-          Avatar(store="stylist")
+          Avatar(store="user")
       v-list
         v-list-item(link to="/")
           v-list-item-title Zur Hauptseite
@@ -54,10 +54,7 @@ export default {
     drawer: false,
     menuItems: [
       {url: "/", text: "Dashboard"},
-      {url: "/info/profile/personal-information", text: "Info"},
-      {url: "/nachrichten", text: "Nachrichten"},
-      {url: "/order", text: "Order"},
-      {url: "/kalender", text: "Kalender"},
+      // {url: "/nachrichten", text: "Nachrichten"},
     ],
     appStyle: {
       background: '#f3f3f5'
@@ -74,9 +71,6 @@ export default {
       this.$cookies.remove('_bridlx_web_session ')
       localStorage.jwt = undefined
       window.location = '/become-a-stylist'
-    },
-    redirectNoRole() {
-      window.location = '/dashboard'
     }
   },
   async mounted() {
@@ -91,13 +85,7 @@ export default {
       this.redirectUnauthorized()
     })
 
-    try {
-      await this.$store.dispatch('stylist/loadAccount')
-    } catch {
-      this.redirectNoRole()
-    }
-    await this.$store.dispatch('business/loadBusiness')
-    await this.$store.dispatch('bankAccount/loadBankAccount')
+    await this.$store.dispatch('user/loadAccount')
   },
 }
 </script>

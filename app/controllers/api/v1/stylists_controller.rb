@@ -3,7 +3,7 @@ class Api::V1::StylistsController < ApplicationController
 
   before_action :authenticate_user!, unless: -> { request.format == :json }
 
-  # hinder stylists from tempering with other stylists
+  # hinder stylists from tampering with other stylists
   before_action :check_current_stylist, only: %i[ current update destroy ]
   before_action :sanitize_params, only: %i[ create update ]
 
@@ -69,11 +69,13 @@ class Api::V1::StylistsController < ApplicationController
     end
 
     def current_stylist
-      Stylist.find(current_user.id)
+      # Stylist.find(current_user.id)
+      current_user
     end
 
     def check_current_stylist
-      render 'redirect_unauthorized' and return unless current_stylist
+      #unauthorized = 401
+      render('redirect_unauthorized', status: :unauthorized) and return unless current_stylist && current_stylist.stylist?
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,9 +1,23 @@
 import i18n from '@/lib/i18n.js'
 
-console.log(i18n)
+let emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
 const rules = {
   "stylist": {
+    "email": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (value || '').match(emailRegex) || i18n.t('form.error.email_mismatch')
+    ],
+    "password": [
+      value => !!value || i18n.t('form.error.missing'),
+      value => (value || '').length >= 8 || i18n.t('form.error.passsword_too_short'),
+    ],
+    "first_name": [
+      value => !!value || i18n.t('form.error.missing'),
+    ],
+    "last_name": [
+      value => !!value || i18n.t('form.error.missing'),
+    ],
     "street": [
         value => !!value || i18n.t('form.error.missing'),
         value => (value || '').length <= 150 || i18n.t('form.error.too_long', {length: 150}),

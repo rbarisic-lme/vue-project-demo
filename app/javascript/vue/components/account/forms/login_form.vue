@@ -4,8 +4,8 @@
     v-btn(block large color="#DC2626" dark).mb-4 Weiter mit Google
 
     div.mb-4 Oder
-    v-text-field(v-model="email" label="E-Mail" clearable)
-    v-text-field(v-model="password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
+    v-text-field(v-model="email" label="E-Mail" autocomplete="email" clearable)
+    v-text-field(v-model="password" label="Passwort" autocomplete="current-password" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
 
     v-btn(block large color="#6ccc52" @click="authenticate" dark :loading="loading").mb-4 Weiter
 </template>
@@ -39,7 +39,7 @@ export default {
         if (response.status == 200 && response.data.token != null) {
           localStorage.jwt = response.data.token
           this.$cookies.set('jwt', response.data.token, {expires: '24h'});
-          window.location = '/stylists'
+          window.location = '/dashboard'
         }
       }).catch( error => {
        this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});

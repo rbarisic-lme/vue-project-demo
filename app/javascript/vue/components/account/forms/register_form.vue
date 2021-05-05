@@ -7,23 +7,26 @@
       v-icon(left) mdi-google
       |  Mit Google registrieren
     div.my-4.text-center Oder
-    v-container(fluid)
-      v-row
-        v-col.py-0
-          v-text-field(v-model="first_name" autocomplete="new-password" label="Vorname")
-        v-col.py-0
-          v-text-field(v-model="last_name" autocomplete="new-password" label="Nachname")
-      v-row
-        v-text-field(v-model="email" autocomplete="new-password" label="E-Mail")
-      v-row
-        v-text-field(v-model="password" autocomplete="new-password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
-      v-row
-        v-text-field(v-model="password_confirmation" autocomplete="new-password" label="Passwort bestätigen" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
+    v-form(v-model="valid")
+      v-container(fluid)
+        v-row
+          v-col.py-0
+            v-text-field(lazy-validation :rules="fr.stylist.first_name" v-model="first_name" label="Vorname" autocomplete="first-name")
+          v-col.py-0
+            v-text-field(lazy-validation :rules="fr.stylist.last_name" v-model="last_name" label="Nachname" autocomplete="family-name")
+        v-row
+          v-text-field(lazy-validation :rules="fr.stylist.email" v-model="email" label="E-Mail" autocomplete="email" type="email")
+        v-row
+          v-text-field(lazy-validation :rules="fr.stylist.password" v-model="password" autocomplete="new-password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
+        v-row
+          v-text-field(lazy-validation :rules="pwConfirmRule" v-model="password_confirmation" autocomplete="new-password" label="Passwort bestätigen" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
 
-    v-btn(block large color="#6ccc52" @click="signup" dark :loading="loading").mb-4 Weiter
+    v-btn(block large color="#6ccc52" @click="signup" :loading="loading" :disabled="!valid").mb-4 Weiter
 </template>
 
 <script>
+import i18n from '@/lib/i18n'
+import FormRules from '@/data/form_rules.js';
 
 export default {
   components: {
@@ -35,12 +38,18 @@ export default {
   data() {
     return {
       showPw: false,
+      valid: false,
       loading: false,
+      fr: FormRules,
       first_name: '',
       last_name: '',
       email: '',
       password: '',
       password_confirmation: '',
+      pwConfirmRule: [
+        value => !!value || i18n.t('form.error.missing'),
+        value => (value || '') === this.password || i18n.t('form.error.pw_confirm_mismatch')
+      ]
     }
   },
   methods: {
@@ -48,7 +57,7 @@ export default {
       this.loading = true
 
       this.$axios.post('/users', {
-        stylist: {
+        user: {
           first_name: this.first_name,
           last_name: this.last_name,
           email: this.email,
@@ -74,8 +83,8 @@ export default {
       // this.$store.dispatch('auth/login').then(response => {
       // })
 
-      this.$axios.post('/stylists/sign_in', {
-        stylist: {
+      this.$axios.post('/users/sign_in', {
+        user: {
           email: this.email,
           password: this.password,
         }
@@ -83,13 +92,13 @@ export default {
         if (response.status == 200 && response.data.token != null) {
           localStorage.jwt = response.data.token
           this.$cookies.set('jwt', response.data.token, {expires: '24h'});
-          window.location = '/stylists'
+          window.location = '/dashboard'
         }
       }).catch(error => {
        this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+      }).finally(() => {
+        this.loading = false;
       })
-
-      this.loading = false;
     }
   }
 }
