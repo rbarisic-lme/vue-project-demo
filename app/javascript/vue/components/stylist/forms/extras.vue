@@ -30,7 +30,7 @@
               div
                 v-checkbox(v-model="extras" :value="item.id" :label="$t(item.label || item.name)")
               div()
-                v-text-field(v-model="extras" :rules="extras.includes(item.id) ? fr.stylist.extra_item : []" :disabled="!extras.includes(item.id)" :label="$t('form.label.price')" append-icon="mdi-currency-eur" :placeholder="$t('form.placeholder.extra_item')")
+                v-text-field( :rules="extras.includes(item.id) ? fr.stylist.extra_item : []" :disabled="!extras.includes(item.id)" :label="$t('form.label.price')" append-icon="mdi-currency-eur" :placeholder="$t('form.placeholder.extra_item')")
       v-divider.my-4
       v-btn(rounded color="primary" @click="save" :disabled="!valid" :loading="$store.state.stylist.dataParsing") Speichern
 </template>

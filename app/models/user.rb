@@ -67,8 +67,6 @@ class User < ApplicationRecord
     def sanitize_strings
     end
 
-    # def sanitize_numbers
-    #   self.service_radius.to_i
-    # end
-
+    def sanitize_numbers
+    end
 end 
