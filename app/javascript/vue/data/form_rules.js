@@ -55,7 +55,7 @@ const rules = {
     ],
     "extra_item": [
       value => !!value || i18n.t('form.error.missing'),
-      value => (parseFloat(value) || 0) >= 90 || i18n.t('form.error.minimum', {amount: '20€'}),
+      value => (parseFloat(value) || 0) >= 20 || i18n.t('form.error.minimum', {amount: '20€'}),
     ]
   },
   "bank_account": {

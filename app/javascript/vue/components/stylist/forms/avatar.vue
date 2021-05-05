@@ -39,7 +39,7 @@ export default {
     uploadAvatar() {
       this.loading = true
 
-      this.$store.dispatch("account/updateAvatar", this.avatar)
+      this.$store.dispatch("stylist/updateAvatar", this.avatar)
       .then(response => {
         this.$toast.open('Profilbild erfolgreich hochgeladen');
 

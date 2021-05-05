@@ -87,6 +87,15 @@ export default {
     })
 
     await this.$store.dispatch('user/loadAccount')
+
+    if (this.$store.getters['user/getAccountType'] == 'stylist') {
+      window.location = '/stylists'
+    } else if (this.$store.getters['user/getAccountType'] == 'bride') {
+      this.accountLoaded = true
+      // todo
+    } else {
+      this.accountLoaded = true
+    }
   },
 }
 </script>

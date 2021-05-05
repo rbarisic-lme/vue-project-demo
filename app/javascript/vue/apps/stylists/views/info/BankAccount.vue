@@ -18,8 +18,8 @@
                   v-text-field(:rules="fr.stylist.zipcode" v-model="zipcode" label="Postleitzahl" outlined)
                   v-text-field(:rules="fr.stylist.city" v-model="city" label="Stadt" outlined)
                   v-select(select v-model="country" :items="countries" item-value="name" item-text="name" label="Land" outlined)
-                  VCleaveInput.font-mono(:rules="fr.bank_account.iban" v-model="iban" label="IBAN" outlined :options="cleaveIban")
-
+                  v-text-field(:rules="fr.bank_account.iban" v-model="iban" label="IBAN" outlined :options="cleaveIban")
+                  //- VCleaveInput.font-mono(:rules="fr.bank_account.iban" v-model="iban" label="IBAN" outlined :options="cleaveIban")
                   .text-right
                     v-btn(rounded color="primary" x-large @click="save" :loading="loading" :disabled="!valid") Speichern
               v-col(sm="12" md="3").d-flex.justify-center.align-center
@@ -78,7 +78,9 @@ export default {
         {name: "zipcode", value: this.zipcode},
         {name: "country", value: this.country},
         {name: "iban", value: this.iban},
-      ]).catch(error => {
+      ]).then(response => {
+        this.$toast.open({message: 'Bankkonto erfolgreich aktualisiert', type: 'success'})
+      }).catch(error => {
         this.$toast.open({message: 'Leider konnte dein Bankkonto nicht aktualisiert werden', type: 'error'})
       }).finally(result => {
         setTimeout(() => {this.loading = false}, 1000)

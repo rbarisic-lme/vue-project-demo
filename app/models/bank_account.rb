@@ -3,15 +3,15 @@ class BankAccount < ApplicationRecord
 
   belongs_to :owner, polymorphic: true
   # validates :full_name, :street, :zipcode, :city, :country, :iban, presence: true
+  before_validation :sanitize_input
+
   validates :iban, format: { with: /\A\S{1,2}\d{2}[\da-zA-Z]{8,32}\z/ }, if: -> { iban.present? }
 
   validate :validate_all_fields
 
-  before_validation :sanitize_input
-
   private
     def sanitize_input
-      iban.delete(" \t\r\n") if iban.present?
+      self.iban = iban.delete(" \t\r\n") if iban.present?
     end
 
     def validate_all_fields
