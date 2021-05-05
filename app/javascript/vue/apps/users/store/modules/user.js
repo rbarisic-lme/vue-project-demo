@@ -26,6 +26,13 @@ const getters = {
   getField,
   getProp: (state, payload) => {
       state[payload.prop]
+  },
+  getAccountType: state => {
+    if (state.role) {
+      return state.role
+    } else {
+      return undefined
+    }
   }
 }
 

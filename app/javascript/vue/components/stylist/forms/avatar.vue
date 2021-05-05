@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    Avatar(size="120").mb-4
+    Avatar(size="120" store="stylist").mb-4
     v-file-input(v-model="avatar" accept="image/png, image/jpeg, image/bmp" placeholder="Profilbild hochladen" prepend-icon="mdi-camera" label="Profilbild")
     v-btn(elevation="0" rounded v-if="avatarSize > 0" color="primary" @click="uploadAvatar" :loading="loading") Speichern
 </template>

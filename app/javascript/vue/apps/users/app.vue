@@ -23,11 +23,11 @@ v-app(id="stylists" :style="appStyle")
           v-list-item-title Zur Hauptseite
         v-list-item(link to="/sign_out" @click="signOut")
           v-list-item-title Ausloggen
-  v-main(v-if="$store.state.auth.authenticated")
+  v-main(v-if="$store.state.auth.authenticated && accountLoaded")
     v-container(fluid)
       transition(name="fade" mode="out-in")
         router-view
-  v-main(v-else="$store.state.auth.authenticated")
+  v-main(v-else="$store.state.auth.authenticated && accountLoaded")
     v-container
       v-row
         v-col(md="4")
@@ -51,6 +51,7 @@ export default {
     Avatar,
   },
   data: () => ({
+    accountLoaded: false,
     drawer: false,
     menuItems: [
       {url: "/", text: "Dashboard"},
