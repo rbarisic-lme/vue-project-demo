@@ -46,7 +46,6 @@ class Api::V1::UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    byebug
     exit if params["user"].include? "role" && params["user"]["role"] == "admin"
 
     respond_to do |format|
