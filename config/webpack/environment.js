@@ -16,6 +16,10 @@ environment.loaders.prepend('pug', pug)
 // environment.loaders.prepend('scss', sassResourcesLoader)
 // environment.loaders.prepend('style!css!sass!sass-resources', sassResourcesLoader)
 
+environment.config.externals = {
+  getidWebSdk: 'getidWebSdk'
+}
+
 environment.config.merge({
   resolve: {
     alias: {

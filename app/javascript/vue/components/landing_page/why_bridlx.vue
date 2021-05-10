@@ -3,7 +3,7 @@
     .container.pt-5.pb-4.mt-5
       .row
         .col-12.col-md-5.flex-centered
-          h2.heading-h2.serif.mb-4.font-light Warum bridlX?
+          h2.heading-h2.serif.mb-4.font-light Warum bridlx?
           p Wir begleiten dich auf deiner Reise zu deinem schönsten Tag.
           p Genieße den einzigartigen Service eines individuell auf dich abgestimmten Brautstylings.
           //- a.lead-btn-why.mt-2.serif(href="#") Jetzt entdecken

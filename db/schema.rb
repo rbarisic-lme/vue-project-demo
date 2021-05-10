@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_124723) do
+ActiveRecord::Schema.define(version: 2021_05_10_181912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2021_05_04_124723) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["jti"], name: "index_allowlisted_jwts_on_jti", unique: true
     t.index ["user_id"], name: "index_allowlisted_jwts_on_user_id"
+  end
+
+  create_table "available_extras", force: :cascade do |t|
+    t.bigint "service_extra_id"
+    t.bigint "user_id"
+    t.decimal "price", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["service_extra_id"], name: "index_available_extras_on_service_extra_id"
+    t.index ["user_id"], name: "index_available_extras_on_user_id"
   end
 
   create_table "bank_accounts", force: :cascade do |t|
@@ -155,6 +165,11 @@ ActiveRecord::Schema.define(version: 2021_05_04_124723) do
     t.string "workspace_city"
     t.string "workspace_zipcode"
     t.string "workspace_country"
+    t.boolean "stylist_tutorial_read", default: false
+    t.datetime "kyc_verified_at"
+    t.datetime "kyc_updated_at"
+    t.datetime "kyc_denied_at"
+    t.string "kyc_verified_with_workflow"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

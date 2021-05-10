@@ -35,7 +35,11 @@ class Api::V1::StylistsController < ApplicationController
 
   # PATCH/PUT /api/v1/stylists/1 or /api/v1/stylists/1.json
   def update
+    # @stylist.available_extras.build
+
     respond_to do |format|
+      # @stylist.available_extras.build(stylist_params["available_extras_attributes"])
+
       if @stylist.update(stylist_params)
         format.json { render :show, status: :ok }
       else
@@ -61,6 +65,17 @@ class Api::V1::StylistsController < ApplicationController
           params["stylist"][ar] = params["stylist"][ar].split(',')
         end
       end
+
+      available_extras = params["stylist"]["available_extras_attributes"]
+
+      if available_extras
+        params["stylist"]["available_extras_attributes"] = available_extras.map do |extra|
+          json_extra = JSON.parse(extra).merge user_id: current_stylist.id
+          # AvailableExtra.find_or_initialize_by(service_extra_id: json_extra["service_extra_id"], price: json_extra["price"], user_id: current_stylist.id)
+        end
+      end
+
+
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -89,7 +104,13 @@ class Api::V1::StylistsController < ApplicationController
         :service_package_basic_makeup_price,
         :service_package_standard_price,
         :service_package_premium_price,
-        brand_ids: [], language_ids: []
+        :stylist_tutorial_read,
+        brand_ids: [], language_ids: [],
+        available_extras_attributes: [
+          :service_extra_id,
+          :user_id,
+          :price,
+        ]
       )
     end
 end

@@ -8,7 +8,7 @@
             p Diese Angaben sind für die Erstellung Ihrer Rechnungen notwendig. Sie erscheinen nicht auf Ihrem Profil.
             p.body-2.mb-8
               span Zu kompliziert? Lassen Sie sich den Vorgang von unserem Partner
-              a(href="#")
+              a(href="https://app.getsorted.de/#anonymous_login")
                 |  GetSorted
               span
                 |  vereinfachen.
@@ -16,14 +16,14 @@
               v-col(md="8")
                 v-form
                   v-text-field(v-model="name" label="Firmenname" outlined)
-                  v-text-field(v-model="city" label="Stadt" outlined)
-                  v-text-field(v-model="street" label="Strasse" outlined)
-                  v-text-field(v-model="zipcode" label="Postleitzahl" outlined)
+                  v-text-field(v-model="city" :rules="fr.stylist.city" label="Stadt" outlined)
+                  v-text-field(v-model="street" :rules="fr.stylist.street" label="Strasse" outlined)
+                  v-text-field(v-model="zipcode" :rules="fr.stylist.zipcode" label="Postleitzahl" outlined)
                   v-select(select v-model="country" :items="countries" item-value="name" item-text="name" label="Land" outlined)
                   v-divider.my-4
                   //- v-text-field(v-model="address_extra" label="Adresszusatz" outlined)
-                  v-select(v-model="legal_form" :items="legalForms" label="Rechtsform" outlined)
-                  v-text-field(v-model="tax_id" label="Steuer-ID" outlined)
+                  v-select(v-model="legal_form" :rules="fr.basic.presence" :items="legalForms" label="Rechtsform" outlined)
+                  v-text-field(v-model="tax_id" :rules="fr.basic.presence" label="Steuer-ID" outlined)
                   v-text-field(v-model="vat" label="Umsatzsteuernummer (Ust-ID)" outlined)
 
                   v-container
@@ -57,6 +57,8 @@ import EditableOverlay from '@/components/editable_overlay.vue'
 import LegalFormsJSON from '@/data/legal_forms.json'
 import CountriesJSON from '@/data/countries.json'
 
+import FormRules from '@/data/form_rules.js'
+
 import { createHelpers } from 'vuex-map-fields';
 
 const { mapFields } = createHelpers({
@@ -76,6 +78,7 @@ export default {
       loading: false,
       legalForms: LegalFormsJSON,
       countries: CountriesJSON,
+      fr: FormRules,
     }
   },
   computed: {
@@ -95,7 +98,10 @@ export default {
         {name: "tax_id", value: this.tax_id},
         {name: "vat", value: this.vat},
         {name: "tax_rate", value: this.tax_rate},
-      ]).catch(error => {
+      ]).then(response => {
+        location.reload();
+      })
+      .catch(error => {
 
       }).finally(result => {
         setTimeout(() => {this.loading = false}, 1000)

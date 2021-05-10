@@ -1,7 +1,7 @@
 <template lang="pug">
   v-container
     .text-center
-      h1.heading-h1.mt-8.mb-4 Danke für Ihre Anmeldung bei bridlX!
+      h1.heading-h1.mt-8.mb-4 Danke für Ihre Anmeldung bei bridlx!
       p.lead.mb-8 Entscheiden Sie sich, auf welche Art Sie die Seite benutzen möchten.
       .d-flex.justify-center.align-center.myc
         v-card(max-width="240")

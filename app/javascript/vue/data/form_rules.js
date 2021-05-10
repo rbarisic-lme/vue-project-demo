@@ -3,6 +3,11 @@ import i18n from '@/lib/i18n.js'
 let emailRegex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
 
 const rules = {
+  "basic": {
+    "presence": [
+      value => !!value || i18n.t('form.error.missing'),
+    ]
+  },
   "stylist": {
     "email": [
       value => !!value || i18n.t('form.error.missing'),

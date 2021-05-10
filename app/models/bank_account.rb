@@ -9,6 +9,16 @@ class BankAccount < ApplicationRecord
 
   validate :validate_all_fields
 
+  def bank_account_data_complete?
+    complete = true
+
+    %i(full_name street zipcode city country encrypted_iban).each do |attr|
+      complete = false if self[attr].blank?
+    end
+
+    return complete
+  end
+
   private
     def sanitize_input
       self.iban = iban.delete(" \t\r\n") if iban.present?

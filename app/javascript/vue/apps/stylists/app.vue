@@ -9,7 +9,7 @@ v-app(id="stylists" :style="appStyle")
  app) 
   v-app-bar(app)
     v-app-bar-nav-icon(class="hidden-md-and-up" @click="drawer = !drawer")
-    v-img(:src="require('@images/logos/bridlx-dark.svg')" contain max-height="40" max-width="100" alt="bridlX")
+    v-img(:src="require('@images/logos/bridlx-dark.svg')" contain max-height="40" max-width="100" alt="bridlx")
     v-toolbar-title
     v-spacer
     v-toolbar-items(class="hidden-xs-only")
@@ -83,8 +83,6 @@ export default {
     let result = await this.$store.dispatch('auth/checkAuthentication').then(result => {
       if (result.data.authorized == false) {
         this.redirectUnauthorized()
-      } else {
-        this.$store.state.auth.authenticated = true
       }
     }).catch(error => {
       // todo: this.showLoginDialog()
@@ -93,11 +91,14 @@ export default {
 
     try {
       await this.$store.dispatch('stylist/loadAccount')
+
+      await this.$store.dispatch('business/loadBusiness')
+      await this.$store.dispatch('bankAccount/loadBankAccount')
+
+      this.$store.state.auth.authenticated = true
     } catch {
       this.redirectNoRole()
     }
-    await this.$store.dispatch('business/loadBusiness')
-    await this.$store.dispatch('bankAccount/loadBankAccount')
   },
 }
 </script>

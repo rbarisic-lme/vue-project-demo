@@ -1,6 +1,11 @@
 <template lang="pug">
 .splash
   BGVideoSlider(:videoNames="['become_a_stylist/banner_1_mobile.mp4', 'become_a_stylist/banner_2_mobile.mp4', 'become_a_stylist/banner_todo_mobile.mp4']")
+    template(v-slot:default)
+      v-container
+        div
+          h2.heading-h2(style="font-weight: 600") When passion becomes your profession.
+          v-btn.mt-8(x-large color="accent" elevation="0") Jetzt anmelden
 </template>
 
 <script>

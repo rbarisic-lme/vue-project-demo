@@ -29,6 +29,14 @@ class Api::V1::UsersController < ApplicationController
   def edit
   end
 
+  def request_jwt_getid
+    @result = current_user.request_getid_jwt_token
+
+    respond_to do |format|
+      format.json { render json: @result.body }
+    end
+  end
+
   # POST /users or /users.json
   def create
     @user = User.new(user_params)

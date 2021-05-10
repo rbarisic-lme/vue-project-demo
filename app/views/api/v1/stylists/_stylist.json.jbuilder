@@ -2,6 +2,7 @@ json.extract! stylist,
   :id,
   :role,
   :type,
+  :stylist_tutorial_read,
   :first_name,
   :last_name,
   :street,
@@ -24,5 +25,10 @@ json.extract! stylist,
   :workspace_zipcode,
   :workspace_country
 
+json.available_extras stylist.available_extras
+
+json.ready_for_kyc stylist.ready_for_kyc?
+
 json.avatar_url url_for(stylist.avatar) if stylist.avatar.attached?
 json.url api_v1_stylist_url(stylist, format: :json)
+

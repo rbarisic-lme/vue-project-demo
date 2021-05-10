@@ -3,24 +3,24 @@
     h2.heading-h2.serif.mt-4.mb-8.text-center Sag „JA“- ohne Stress
     .row.feature-elements
       .col-md.p-4.feature-element
-        img.mb-3.text-center(src="@images/icons/bridlx-icons-complete-set-watch.svg")
+        img.mb-3.text-center(src="@images/icons/svg/bridlx-icons-complete-set-watch.svg")
         h3.small-title.text-center.mb-2 Effizienz
         p Spare dir wertvolle Zeit während deiner Hochzeitsplanung und genieße stattdessen die Vorfreude.
         p Mithilfe unserer intelligenten Matching-Tools erleichtern wir dir die Entscheidungsfindung.
       .col-md.p-4.feature-element
-        img.mb-3.text-center(src="@images/icons/bridlx-icons-complete-set--lock.svg")
+        img.mb-3.text-center(src="@images/icons/Schloss.png")
         h3.small-title.text-center.mb-2 100%ige Absicherung
         p Verlasse dich zu jeder Zeit auf eine abgesicherte Buchung sowie Serviceleistung mit Zufriedenheitsgarantie.
       .col-md.p-4.feature-element
-        img.mb-3.text-center(src="@images/icons/bridlx-icons-complete-set-magnifier.svg")
+        img.mb-3.text-center(src="@images/icons/Profilsichtbarkeit.png")
         h3.small-title.text-center.mb-2 Perfect Match
         p Finde deinen verifizierten Top- Stylisten gemäß deiner Wünsche und Vorstellungen.
       .col-md.p-4.feature-element
-        img.mb-3.text-center(src="@images/icons/bridlx-icons-complete-set-messages.svg")
+        img.mb-3.text-center(src="@images/icons/Kommunikation.png")
         h3.small-title.text-center.mb-2 Kommunikation
         p Profitiere von einer zielgerichteten und transparenten Kommunikation. Du kannst uns an deinen Wünschen messen.
       .col-md.p-4.feature-element
-        img.mb-3.text-center(src="@images/icons/bridlx-icons-complete-set-pinpoint.svg")
+        img.mb-3.text-center(src="@images/icons/Location.png")
         h3.small-title.text-center.mb-2 Wunschlocation
         p Genieße an deinem Hochzeitstag ein stressfreies, auf dich abgestimmtes Brautstyling an deinem Wunschort.
 </template>

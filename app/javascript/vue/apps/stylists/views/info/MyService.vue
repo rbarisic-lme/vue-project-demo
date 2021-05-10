@@ -3,7 +3,7 @@
     .row
       .col-12.col-lg-5
         v-sheet.h-100.px-8.py-4.mb-8(rounded elevation="2")
-          h3.heading-h3.serif.mb-8 Auftragspräferenzen
+          h3.heading-h3.serif.mb-8 Auftragspräferenzen Probetermin
           p.text-h6
             v-icon.text-h6.mr-2(color="black") mdi-home-city-outline
             span Workspace

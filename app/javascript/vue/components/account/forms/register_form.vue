@@ -3,7 +3,7 @@
     v-btn(block large color="#4267b2" dark).mb-4
       v-icon(left) mdi-facebook
       |  Mit Facebook registrieren
-    v-btn(block large color="#DC2626" dark).mb-4
+    v-btn(block large color="#fff" dark).mb-4.text--black
       v-icon(left) mdi-google
       |  Mit Google registrieren
     div.my-4.text-center Oder
@@ -108,4 +108,5 @@ export default {
   .bg-fb { background: #4267b2; }
   .bg-google { background: #DC2626; }
   .bg-btn { background: #6ccc52; }
+  .text--black { color: black; }
 </style>

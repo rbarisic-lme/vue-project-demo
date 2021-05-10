@@ -33,6 +33,10 @@ Rails.application.routes.draw do
     get "/*path", to: "vue#stylist_app", format: false
   end
 
+  scope :wh, :defaults => { :format => :json } do#webhooks
+    post ENV['wh_getid_complete_url'], controller: 'webhooks', action: 'getid_complete', as: 'getid_complete'
+  end
+
   namespace :api, defaults: {format: :json} do
     namespace :v1 do
       resources :brands, only: [:index, :show]
@@ -54,6 +58,7 @@ Rails.application.routes.draw do
       resources :users do
         get 'current', on: :collection
         get 'authenticated', on: :collection        
+        get 'request_jwt_getid', on: :collection
       end
 
       resources :stylists do

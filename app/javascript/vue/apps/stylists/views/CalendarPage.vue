@@ -22,11 +22,11 @@ v-container
           v-btn.mr-4(outlined color='grey darken-2' @click='setToday')
             | Heute
         v-toolbar(flat)
-          v-toolbar-title(v-if='$refs.calendar')
-            | {{ $refs.calendar.title }}
           v-btn(fab text small color='grey darken-2' @click='prev')
             v-icon(small)
               | mdi-chevron-left
+          v-toolbar-title(v-if='$refs.calendar')
+            | {{ $refs.calendar.title }}
           v-btn(fab text small color='grey darken-2' @click='next')
             v-icon(small)
               | mdi-chevron-right

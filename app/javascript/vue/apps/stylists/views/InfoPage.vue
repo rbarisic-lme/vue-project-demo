@@ -4,6 +4,7 @@
       .col-12.col-md-3
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h1 {{$route.name}}
+          h2 {{ready_for_kyc}}
           v-list
             v-list-group(no-action v-for="(item, i) in treeItems" v-bind:key="item.text" :value="$route.path.toString().match('/'+item.url+'/')")
               template(v-slot:activator)
@@ -19,6 +20,13 @@
 </template>
 
 <script>
+
+import { createHelpers } from 'vuex-map-fields';
+const { mapFields } = createHelpers({
+  getterType: 'stylist/getField',
+  mutationType: 'stylist/updateField',
+});
+
 export default {
   components: {
 
@@ -30,7 +38,11 @@ export default {
   },
   data() {
     return {
-      treeItems: [
+    }
+  },
+  computed: {
+    treeItems() {
+      return [
         {
           text: "Profil", url: 'profile', items: [
             {url: 'personal-information', text: 'Persönliche Informationen'},
@@ -40,15 +52,18 @@ export default {
         { text: "Mein Business", url: 'business', items: [
             {url: 'company-data', text: 'Unternehmensdaten'},
             {url: 'bank-account', text: 'Bankverbindung', disabled: false},
-            {url: 'verification', text: 'Nachweise', disabled: false},
+            {url: 'verification', text: 'Nachweise', disabled: !this.ready_for_kyc},
           ]
         },
-      ],
-      plainItems: [
+      ]
+    },
+    plainItems() {
+      return [
         { url: '/info/skills', text: "Skills", disabled: true},
         { url: '/info/checklist', text: "Checkliste"},
       ]
-    }
+    },
+    ...mapFields(['ready_for_kyc'])
   }
 }
 </script>

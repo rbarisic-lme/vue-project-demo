@@ -1,7 +1,6 @@
 <template lang="pug">
   EditableOverlay(height="100" ref="overlay")
     template(v-slot:hideInactive)
-
       v-form(v-model="valid" ref="form").mb-8
         v-text-field(:rules="fr.stylist.street" name="street" v-model="street" label="Strasse und Hausnummer")
         v-text-field(:rules="fr.stylist.city" name="city" v-model="city" label="Stadt")
@@ -17,10 +16,10 @@
 
 <script>
 import EditableOverlay from '@/components/editable_overlay.vue'
-import { createHelpers } from 'vuex-map-fields';
 
 import FormRules from '@/data/form_rules.js';
 
+import { createHelpers } from 'vuex-map-fields';
 const { mapFields } = createHelpers({
   getterType: 'stylist/getField',
   mutationType: 'stylist/updateField',

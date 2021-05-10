@@ -30,7 +30,7 @@ const getters = {
       && state.country
       && state.legal_form
       && state.tax_id
-      && state.vat
+      // && state.vat
       && state.tax_rate
     ) {
       return true

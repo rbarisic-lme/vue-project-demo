@@ -2,7 +2,7 @@
 Modal(name="signIn" height="auto" :maxWidth="300")
   div.m-8.text-center
     h3.heading-h3.mb-5
-      | bei bridlX
+      | bei bridlx
       span {{ tab === 0 ? ' registrieren ' : ' anmelden ' }}
 
   v-card

@@ -1,15 +1,15 @@
 <template lang="pug">
   div
     .d-block.d-lg-none
-      v-app-bar(dark fixed elevate-on-scroll style="z-index: 9900;")
+      v-app-bar(fixed elevate-on-scroll style="z-index: 9900;")
         v-app-bar-nav-icon(@click="drawer = true")
-        v-toolbar-title bridlX
+        v-toolbar-title bridlx
 
 
       v-navigation-drawer(v-model="drawer" absolute temporary style="z-index: 9910;")
         v-list-item
           v-list-item-content
-            v-list-item-title.title bridlX
+            v-list-item-title.title bridlx
         v-divider
         v-list(nav dense)
           v-list-item-group
@@ -21,14 +21,17 @@
       .header.flex.animate__animated(:class="{scrolled: scrolled, sticky: isSticky, animate__fadeInDown: !isSticky}")
         .header-logos.flex
           .item.p-3
-            a(href="/")
-              img.logo-bridlx(src="@images/logos/bridlx-bright.svg" alt="bridlX")
+            //- a(href="/")
+            div
+              img.logo-bridlx(src="@images/logos/bridlx-bright.svg" alt="bridlx")
           .item.half-visible.p-3
-            a(href="#")
-              img.logo-bridlx-beyond(src="@images/logos/bridlx-and-beyond-bright.svg" alt="bridlX Business")
+            //- a(href="#")
+            div
+              img.logo-bridlx-beyond(src="@images/logos/bridlx-and-beyond-bright.svg" alt="bridlx Business")
           .item.half-visible.p-3
-            a(href="#")
-              img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlX and Beyond")
+            //- a(href="#")
+            div
+              img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlx and Beyond")
         .header-items.text-right
           span(v-for="link in links" :key="link.text")
             span(v-if="link.modal" @click="$modal.show(link.modal)" class="link-btn").p-3
@@ -99,7 +102,7 @@ export default {
     &.sticky {
       position: sticky !important;
       padding: 4px;
-      background: #000;
+      background: #999;
     }
     .header-logos {
       width: 50%;
@@ -109,9 +112,9 @@ export default {
         max-width: 30vw;
         &.half-visible {
           opacity: 0.5;
-          &:hover {
-            opacity: 1;
-          }
+          // &:hover {
+            // opacity: 1;
+          // }
         }
         img {
           display: inline-block;
@@ -152,8 +155,9 @@ export default {
       }
     }
     &.scrolled {
-      background: #000;
+      background: #dcb6aa;
       padding: 0 16px;
+      box-shadow: 0 0 4px 0 rgba(0,0,0,0.4);
       .header-logos {
         .item {
           img.logo-bridlx {

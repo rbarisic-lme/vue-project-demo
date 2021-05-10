@@ -811,6 +811,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.12.13":
+  version "7.14.0"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
+  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.12.13":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.12.13.tgz#530265be8a2589dbb37523844c5bcb55947fb327"
@@ -3428,6 +3435,13 @@ get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/get-value/-/get-value-2.0.6.tgz#dc15ca1c672387ca76bd37ac0a395ba2042a2c28"
   integrity sha1-3BXKHGcjh8p2vTesCjlbogQqLCg=
+
+getid-launcher@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/getid-launcher/-/getid-launcher-2.1.0.tgz#6266761b300df05cb75717f03332e5924edf5308"
+  integrity sha512-krLUL932oWESI6SPN4+S1MzkXjEAgGK7sl1eVVCBXzSXGjD0Ud51lh/aRTTZgdCeCmisV3wFz28t59FZfHbH7g==
+  dependencies:
+    "@babel/runtime" "^7.12.13"
 
 getpass@^0.1.1:
   version "0.1.7"

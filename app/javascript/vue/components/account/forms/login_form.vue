@@ -1,7 +1,7 @@
 <template lang="pug">
   .form--rows
     v-btn(block large color="#4267b2" dark).mb-4 Weiter mit Facebook
-    v-btn(block large color="#DC2626" dark).mb-4 Weiter mit Google
+    v-btn(block large color="#fff" dark).mb-4.text--black Weiter mit Google
 
     div.mb-4 Oder
     v-text-field(v-model="email" label="E-Mail" autocomplete="email" clearable)
@@ -55,4 +55,5 @@ export default {
   .bg-fb { background: #4267b2; }
   .bg-google { background: #DC2626; }
   .bg-btn { background: #6ccc52; }
+  .text--black { color: #000; }
 </style>

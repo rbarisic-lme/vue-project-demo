@@ -8,6 +8,8 @@ const state = () => ({
   id: undefined,
   type: undefined,
   role: undefined,
+  stylist_tutorial_read: undefined,
+  ready_for_kyc: false,
   initials: undefined,
   first_name: undefined,
   last_name: undefined,
@@ -20,7 +22,9 @@ const state = () => ({
   brands: [],
   languages: [],
   extras: [],
-  extras_prices: {},
+  available_extras: [],
+  available_extra_ids: [],
+  available_extra_values: {},
   street: undefined,
   city: undefined,
   zipcode: undefined,
@@ -80,11 +84,15 @@ const getters = {
 
 // actions
 const actions = {
+  setAvailableExtras(ctx, payload) {
+    ctx.commit('updateProp', {prop: 'available_extras_attributes', value: payload})
+  },
   async loadAccount(ctx, payload) {
     let result = await this._vm.$axios.get(`/api/v1/stylists/current`)
 
     if(result.status == 200) {
       ctx.commit('setAccount', result.data)
+      ctx.commit('setAvailableExtrasValues')
     } else {
 
     }
@@ -112,6 +120,20 @@ const actions = {
       headers: { "Content-Type": "multipart/form-data" }
     })
   },
+  async updateAvailableExtras(ctx, payload) {
+    let formData = new FormData();
+
+    payload.forEach(available_extra => {
+      console.log(JSON.stringify(available_extra))
+      formData.append("stylist[available_extras_attributes][]", JSON.stringify(available_extra))
+    })
+
+    console.log(formData)
+
+    let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+      headers: { "Content-Type": "multipart/form-data" }
+    })
+  },
   async updateAccount(ctx, payload) {
     ctx.state.dataParsing = true
 
@@ -122,14 +144,19 @@ const actions = {
     })
 
     try {
-      await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+      let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
         headers: { "Content-Type": "multipart/form-data" }
       })
       // setTimeout(() => {
         this._vm.$toast.open(i18n.t('form.message.update.success'))
       // }, 1000)
+
+        ctx.dispatch('loadAccount')
+
+      return result
     } catch {
       this._vm.$toast.open({message: i18n.t('form.message.update.failure'), type: 'error'});
+      return {error: 'update failed'}
     } finally {
       setTimeout(() => {
         ctx.state.dataParsing = false
@@ -145,12 +172,29 @@ const actions = {
       headers: { "Content-Type": "multipart/form-data" }
     })
   },
+  async requestGetIdJwtToken(ctx, payload) {
+    try {
+      let result = await this._vm.$axios.get(`/api/v1/users/request_jwt_getid`, {
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+
+      return result
+    } catch(err) {
+      console.log(err)
+    }
+  }
 }
 
 // mutations
 const mutations = {
   updateProp(state, payload) {
       state[payload.prop] = payload.value
+  },
+  setAvailableExtrasValues(state) {
+    state.available_extras.forEach(item => {
+      state.available_extra_values[item.service_extra_id] = item.price
+      state.available_extra_ids.push(item.service_extra_id)
+    })
   },
   setProfilePicture(state, payload) {
     state.profilePicture = payload

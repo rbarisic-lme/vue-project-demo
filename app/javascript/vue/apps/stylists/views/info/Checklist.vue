@@ -55,8 +55,12 @@ export default {
         {title: 'Unternehmensdaten', route: '/info/business/company-data', key: 'checksBusiness', collection: [
           {title: 'Firmenanschrift', done: this.$store.getters['business/businessDataComplete'] },
         ]},
-        {title: 'Bankkonto', route: '/info/business/bank-account', key: 'checksBusiness', collection: [
+        {title: 'Bankkonto', route: '/info/business/bank-account', key: 'checksBankAccount', collection: [
           {title: 'Kontodaten', done: this.$store.getters['bankAccount/dataComplete']}
+          ]
+        },
+        {title: 'Nachweise (Verifikation)', route: '/info/business/verification', key: 'checksKyc', collection: [
+          {title: 'Nachweise', done: this.$store.getters['stylist/verificationComplete']}
           ]
         },
         // {title: 'Verifizierung', route: '/info/business/bank-account', key: 'checksBusiness', collection: [

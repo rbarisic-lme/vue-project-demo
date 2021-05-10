@@ -5,6 +5,8 @@
         video(autoplay loop muted playsinline preload="metadata")
           source(:src="videos[index]" type="video/mp4")
           | Your browser does not support the video tag.
+        .overlay-x
+          slot
 </template>
 
 <script>
@@ -69,6 +71,15 @@ export default {
       object-fit: cover;
 
     }
+  }
+
+  .overlay-x {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 500px;
+    height: 100%;
+    width: 100%;
   }
 
   .bg-video-slider {

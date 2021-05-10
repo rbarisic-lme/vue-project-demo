@@ -60,6 +60,10 @@
                 p.lead
                   b Performance
                 p Großartige Arbeit zahlt sich aus. Mach weiter so.
+      .row
+        .col-12
+          .text-center
+            v-btn(color="primary" @click="tutorialRead" :loading="this.$store.state.stylist.dataParsing") Verstanden
 </template>
 
 <script>
@@ -72,7 +76,15 @@ export default {
   },
   data() {
     return {
-      
+    }
+  },
+  methods: {
+    tutorialRead() {
+      this.$store.dispatch('stylist/updateAccount', [{
+        name: "stylist_tutorial_read", value: true
+      }]).then(result => {
+        this.$store.state.stylist['stylist_tutorial_read'] = true
+      })
     }
   }
 }

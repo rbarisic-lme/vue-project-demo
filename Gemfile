@@ -49,6 +49,8 @@ gem "recursive-open-struct"
 
 gem 'geocoder'
 
+gem 'ed25519', '~> 1.2', '>= 1.2.4' # signature verification
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 

@@ -9,7 +9,7 @@ v-app(id="stylists" :style="appStyle")
  app) 
   v-app-bar(app)
     v-app-bar-nav-icon(class="hidden-md-and-up" @click="drawer = !drawer")
-    v-img(:src="require('@images/logos/bridlx-dark.svg')" contain max-height="40" max-width="100" alt="bridlX")
+    v-img(:src="require('@images/logos/bridlx-dark.svg')" contain max-height="40" max-width="100" alt="bridlx")
     v-toolbar-title
     v-spacer
     v-toolbar-items(class="hidden-xs-only")

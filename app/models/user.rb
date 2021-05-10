@@ -41,6 +41,11 @@ class User < ApplicationRecord
   validates :last_name, presence: true
 
 
+  def kyc_verified?
+    !self.kyc_denied_at? && self.kyc_verified_at? && self.kyc_verified_at > self.kyc_updated_at && self.kyc_verified_with_workflow
+
+  end
+
   def initials
     self.first_name[0] + self.last_name[0]
   end
@@ -51,6 +56,23 @@ class User < ApplicationRecord
 
   def workspace_address
     [workspace_street, workspace_zipcode, workspace_city, workspace_country].compact.join(', ')
+  end
+
+  def request_getid_jwt_token
+    # curl -H "X-SDK-Key: 'sdk-key'" -H "Content-Type: application/json" -X POST https://brildlx.getid.ee/sdk/v2/token
+    # result = nil
+
+    # begin
+      result = HTTParty.post(ENV['getid_jwt_endpoint'], headers: {
+        'Content-Type' => 'application/json',
+        'X-SDK-Key'    => ENV['getid_sdk_key'],
+      })
+
+    # rescue
+
+    # end
+
+    result
   end
 
   private

@@ -80,10 +80,12 @@ export default {
         {name: "iban", value: this.iban},
       ]).then(response => {
         this.$toast.open({message: 'Bankkonto erfolgreich aktualisiert', type: 'success'})
+        
+        location.reload();
       }).catch(error => {
         this.$toast.open({message: 'Leider konnte dein Bankkonto nicht aktualisiert werden', type: 'error'})
       }).finally(result => {
-        setTimeout(() => {this.loading = false}, 1000)
+        setTimeout(() => {this.loading = false; }, 1000)
       })
     }
   },

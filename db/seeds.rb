@@ -56,7 +56,7 @@ begin
   extras_file = File.read Rails.root.join('app', 'javascript', 'vue', 'data' '/service_extras.json')
 
   JSON.parse(extras_file).each do |extra|
-    pp ServiceExtra.create!(extra)
+    pp ServiceExtra.create!(name: extra["label"], requires_trial_date: extra["requires_trial_date"])
   end
 end
 

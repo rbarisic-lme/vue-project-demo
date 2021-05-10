@@ -4,9 +4,29 @@ class Stylist < User
   has_and_belongs_to_many :brands, foreign_key: :user_id
   has_and_belongs_to_many :languages, foreign_key: :user_id
 
-  has_and_belongs_to_many :service_extras, foreign_key: :user_id
+  has_many :available_extras, foreign_key: :user_id
+  has_many :service_extras, through: :available_extras, foreign_key: :user_id, class_name: 'AvailableExtras'
 
   validate :brands_format
+
+  accepts_nested_attributes_for :available_extras
+
+  def tutorial_read!
+    self.stylist_tutorial_read = true
+    self.save!
+  end
+
+  def tutorial_read?
+    self.stylist_tutorial_read
+  end
+
+  def business_data_completed?
+    self.business
+  end
+
+  def ready_for_kyc?
+    self.bank_account.bank_account_data_complete? && self.business.business_data_complete?
+  end
 
   private
     def sanitize_strings
