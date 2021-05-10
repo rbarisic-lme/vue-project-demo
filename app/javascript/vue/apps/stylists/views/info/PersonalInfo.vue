@@ -65,6 +65,8 @@
             span Nachhaltige Produkte
           EditableOverlay(height="100")
             template(v-slot:overlay-text)
+            template(v-slot:hideInactive)
+              SustainableMaterialForm
 </template>
 
 <script>
@@ -73,6 +75,7 @@ import { mdiChatProcessingOutline } from '@mdi/js'
 import AvatarForm from '@/components/stylist/forms/avatar.vue'
 import AboutYouForm from '@/components/stylist/forms/about_you.vue'
 import AddressForm from '@/components/stylist/forms/address.vue'
+import SustainableMaterialForm from '@/components/stylist/forms/sustainable_materials.vue'
 // import BrandsForm from '@/components/stylist/forms/brands.vue'
 import FormAutocompleteMulti from '@/components/stylist/forms/form_autocomplete_multi.vue'
 
@@ -84,6 +87,7 @@ export default {
     AddressForm,
     AboutYouForm,
     // BrandsForm,
+    SustainableMaterialForm,
     FormAutocompleteMulti,
   },
   props: {

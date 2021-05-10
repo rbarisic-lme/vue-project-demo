@@ -4,7 +4,6 @@
       .col-12.col-md-3
         v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           h1 {{$route.name}}
-          h2 {{ready_for_kyc}}
           v-list
             v-list-group(no-action v-for="(item, i) in treeItems" v-bind:key="item.text" :value="$route.path.toString().match('/'+item.url+'/')")
               template(v-slot:activator)
