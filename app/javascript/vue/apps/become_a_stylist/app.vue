@@ -70,9 +70,8 @@
               .col-12
                 h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") Der erste Eindruck zählt.
               .col-6.d-none.d-lg-block
-                p.lead.w-50 Steigere deine Sichtbarkeit und sorge für eine positive Kundenwahrnehmung durch ein authentisches, professionelles Profil. Was es hierbei zu berücksichtigen gibt, findest du
-                  a(href="#").this-weird-link
-                    |  hier
+                p.lead.w-50 Steigere deine Sichtbarkeit und sorge für eine positive Kundenwahrnehmung durch ein authentisches, professionelles Profil. Was es hierbei zu berücksichtigen gibt, findest du&nbsp;
+                  a(href="#").this-weird-link hier
               .col-12.col-lg-6
                 img.img-stylist(src="@images/illustrations/bridlx-magnet.png" height="400")
       CustomerStories

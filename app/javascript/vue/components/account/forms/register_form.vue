@@ -15,11 +15,11 @@
           v-col.py-0
             v-text-field(lazy-validation :rules="fr.stylist.last_name" v-model="last_name" label="Nachname" autocomplete="family-name")
         v-row
-          v-text-field(lazy-validation :rules="fr.stylist.email" v-model="email" label="E-Mail" autocomplete="email" type="email")
+          v-text-field(lazy-validation :rules="fr.stylist.email" v-model="email" label="E-Mail" autocomplete="email" type="email" prepend-inner-icon="mdi-at")
         v-row
-          v-text-field(lazy-validation :rules="fr.stylist.password" v-model="password" autocomplete="new-password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
+          v-text-field(lazy-validation :rules="fr.stylist.password" v-model="password" autocomplete="new-password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
         v-row
-          v-text-field(lazy-validation :rules="pwConfirmRule" v-model="password_confirmation" autocomplete="new-password" label="Passwort bestätigen" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw")
+          v-text-field(lazy-validation :rules="pwConfirmRule" v-model="password_confirmation" autocomplete="new-password" label="Passwort bestätigen" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
 
     v-btn(block large color="#6ccc52" @click="signup" :loading="loading" :disabled="!valid").mb-4 Weiter
 </template>

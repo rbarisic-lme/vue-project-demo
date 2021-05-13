@@ -6,16 +6,16 @@
         v-toolbar-title bridlx
 
 
-      v-navigation-drawer(v-model="drawer" absolute temporary style="z-index: 9910;")
+      v-navigation-drawer(v-model="drawer" temporary style="z-index: 9910; position:fixed; top:0; left:0; overflow-y:scroll;")
         v-list-item
           v-list-item-content
             v-list-item-title.title bridlx
         v-divider
         v-list(nav dense)
           v-list-item-group
-            v-list-item(v-for="link in links", :key="link.text")
-              v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal); drawer = false") {{link.text}}
-              v-list-item-title(v-else="link.modal" link :to="link.url") {{link.text}}
+            v-list-item(v-for="link in links", :key="link.text" :href="link.url")
+              //- v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal); drawer = false") {{link.text}}
+              v-list-item-title {{link.text}}
 
     .d-none.d-lg-block
       .header.flex.animate__animated(:class="{scrolled: scrolled, sticky: isSticky, animate__fadeInDown: !isSticky}")

@@ -75,7 +75,7 @@ class Api::V1::StylistsController < ApplicationController
         end
       end
 
-
+      # params["stylist"]["sustainable_materials_percent"]&.to_f
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -100,11 +100,13 @@ class Api::V1::StylistsController < ApplicationController
         :street, :city, :zipcode, :country,
         :workspace_street, :workspace_city, :workspace_zipcode, :workspace_country,
         :service_radius,
+        :service_mobility,
         :service_package_basic_hair_price,
         :service_package_basic_makeup_price,
         :service_package_standard_price,
         :service_package_premium_price,
         :stylist_tutorial_read,
+        :sustainable_materials_percent,
         brand_ids: [], language_ids: [],
         available_extras_attributes: [
           :service_extra_id,

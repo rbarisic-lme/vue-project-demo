@@ -36,8 +36,6 @@ const actions = {
     let result = await this._vm.$axios.get('/api/v1/bank_accounts/current')
     if(result.status == 200) {
       ctx.commit('setBankAccount', result.data)
-    console.log(this._vm)
-      
     } else {
 
     }

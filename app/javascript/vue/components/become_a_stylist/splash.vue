@@ -63,4 +63,5 @@ export default {
   .align-bottom {
     margin-bottom: 80px;
   }
+
 </style>

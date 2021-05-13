@@ -11,7 +11,7 @@ const rules = {
   "stylist": {
     "email": [
       value => !!value || i18n.t('form.error.missing'),
-      value => (value || '').match(emailRegex) || i18n.t('form.error.email_mismatch')
+      value => (value || '').match(emailRegex) ? true : false || i18n.t('form.error.email_mismatch')
     ],
     "password": [
       value => !!value || i18n.t('form.error.missing'),

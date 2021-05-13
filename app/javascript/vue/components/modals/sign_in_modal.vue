@@ -44,6 +44,8 @@ export default {
 <style lang="scss" scoped>
 
   /deep/ .vm--modal {
-    overflow-y: scroll;
+    @media screen and (max-width: 720) {
+      overflow-y: scroll;
+    }
   }
 </style>

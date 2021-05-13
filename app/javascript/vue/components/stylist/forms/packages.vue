@@ -13,7 +13,7 @@
           v-container
             v-row
               v-col(v-for="(pack, i) in servicePacks" :key="pack.title")
-                VCleaveInput(:rules="fr.stylist[pack.attribute]" :label="'Preis ' + pack.title" :placeholder="`${(i + 1) * 100}`" @click.native="tab = i" autocomplete="off" append-icon="mdi-currency-eur" :options="cleavePrice" v-model="myself[pack.attribute]")
+                VCleaveInput(:rules="fr.stylist[pack.attribute]" :label="'Preis ' + pack.title" :placeholder="`ab ${pack.min_price}€`" @click.native="tab = i" autocomplete="off" append-icon="mdi-currency-eur" :options="cleavePrice" v-model="myself[pack.attribute]")
                 //- v-text-field(:rules="fr.stylist[pack.attribute]" :label="'Preis ' + pack.title" :placeholder="`${(i + 1) * 100}`" @click="tab = i" autocomplete="off" append-icon="mdi-currency-eur" v-model.lazy="$store.state.stylist['zipcode']" :options="{ date: true, datePattern: ['d', 'm', 'Y'] }" )
 
     v-divider
@@ -84,10 +84,10 @@ export default {
   computed: {
     servicePacks() {
       return [
-        {title: "Basic Hair", attribute: 'service_package_basic_hair_price', services: ServicePackagesJSON['basic_hair']},
-        {title: "Basic Make-up", attribute: 'service_package_basic_makeup_price', services: ServicePackagesJSON['basic_makeup']},
-        {title: "Standard", attribute: 'service_package_standard_price', services: ServicePackagesJSON['standard']},
-        {title: "Premium", attribute: 'service_package_premium_price', services: ServicePackagesJSON['premium']},
+        {title: "Basic Hair", min_price: 90,attribute: 'service_package_basic_hair_price', services: ServicePackagesJSON['basic_hair']},
+        {title: "Basic Make-up", min_price: 80,attribute: 'service_package_basic_makeup_price', services: ServicePackagesJSON['basic_makeup']},
+        {title: "Standard", min_price: 300,attribute: 'service_package_standard_price', services: ServicePackagesJSON['standard']},
+        {title: "Premium", min_price: 350,attribute: 'service_package_premium_price', services: ServicePackagesJSON['premium']},
       ]
     },
     ...mapFields(['service_package_basic_hair_price', 'service_package_basic_makeup_price', 'service_package_standard_price', 'service_package_premium_price'])

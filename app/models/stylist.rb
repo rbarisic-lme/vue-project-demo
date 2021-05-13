@@ -9,6 +9,8 @@ class Stylist < User
 
   validate :brands_format
 
+  validates :sustainable_materials_percent, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
+
   accepts_nested_attributes_for :available_extras
 
   def tutorial_read!

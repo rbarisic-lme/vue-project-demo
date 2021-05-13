@@ -5,13 +5,13 @@
         .h-100
           v-sheet.px-8.py-4.mb-8(rounded elevation="2")
             h3.heading-h3.serif.mb-8 Bankverbindung
-            v-tabs.mb-4
-              v-tab IBAN
-              v-tab(disabled) Bankkonto USA
-              v-tab(disabled) Kanadisches Bankkonto
-              v-tab(disabled) Sonstige
+            //- v-tabs.mb-4
+            //-   v-tab IBAN
+            //-   v-tab(disabled) Bankkonto USA
+            //-   v-tab(disabled) Kanadisches Bankkonto
+            //-   v-tab(disabled) Sonstige
             v-row
-              v-col(sm="12" md="8")
+              v-col.col-12(sm="12" md="8")
                 v-form(v-model="valid")
                   v-text-field(:rules="fr.bank_account.full_name" v-model="full_name" label="Name und Vorname" outlined)
                   v-text-field(:rules="fr.stylist.street" v-model="street" label="Anschrift des Kontoinhabers" outlined autocomplete="street")

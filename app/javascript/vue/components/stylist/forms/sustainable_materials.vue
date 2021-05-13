@@ -1,20 +1,33 @@
 <template lang="pug">
-  div
-    .flex-leaf
-      div Ich benutze nachhaltige Produkte:
-      .eco-leaf-bg.ml-4
-        LeafSVG.eco-leaf--gray(:size="leafSize" fillStyle="#333333")
-        LeafSVG.eco-leaf(:size="leafSize" fillStyle="#62C370" :style="leafStyle")
-      div.big-text {{sustainable_materials}}%
-    v-slider(v-model="sustainable_materials" thumb-label="always" ticks="always" step="25" tick-size="4" min="0" max="100")
+EditableOverlay(height="100" ref="overlay")
+  template(v-slot:overlay-text)
+
+  template(v-slot:hideInactive)
+    div
+      .flex-leaf
+        div Ich benutze nachhaltige Produkte:
+        .eco-leaf-bg.ml-4
+          LeafSVG.eco-leaf--gray(:size="leafSize" fillStyle="#333333" :style="bgLeafStyle")
+          LeafSVG.eco-leaf(:size="leafSize" fillStyle="#62C370" :style="leafStyle")
+        div.big-text {{sustainable_materials_percent}}%
+      v-slider(v-model="sustainable_materials_percent" thumb-label="always" ticks="always" step="25" tick-size="4" min="0" max="100")
+    v-btn(rounded color="primary" @click="save" :loading="$store.state.stylist.dataParsing") Speichern
 </template>
 
 <script>
+import EditableOverlay from '@/components/editable_overlay.vue'
 import Leaf from '@images/leaf.svg'
 import LeafSVG from './leaf.vue'
+import { createHelpers } from 'vuex-map-fields';
+
+const { mapFields } = createHelpers({
+  getterType: 'stylist/getField',
+  mutationType: 'stylist/updateField',
+});
 
 export default {
   components: {
+    EditableOverlay,
     LeafSVG
   },
   props: {
@@ -25,20 +38,28 @@ export default {
       leaf: Leaf,
       leafSize: 24,
       leafImg: new Image(),
-      sustainable_materials: 0,
     }
   },
   computed: {
     fillAmount() {
-      return this.inverseNormalize(this.sustainable_materials, 0, 100) * 64
+      return this.inverseNormalize(this.sustainable_materials_percent, 0, 100) * 64
+    },
+    fillScale() {
+      return this.normalize(this.sustainable_materials_percent / 8, 0, 100) + 0.825
+    },
+    bgLeafStyle() {
+      return {
+        'transform': `scale(${this.fillScale})`
+      }
     },
     leafStyle() {
-      console.log(this.fillAmount)
       return {
-        'opacity': 0.1 + this.sustainable_materials * 0.01,
+        'opacity': 0.1 + this.sustainable_materials_percent * 0.01,
         'clip-path': `inset(${this.fillAmount}px 0 0 0)`,
+        'transform': `scale(${this.fillScale})`
       }
-    }
+    },
+    ...mapFields(['sustainable_materials_percent'])
   },
   methods: {
     normalize(val, min, max) {
@@ -48,6 +69,13 @@ export default {
     inverseNormalize(val, min, max) {
       let delta = max - min;
       return (max - val) / delta;
+    },
+    save() {
+      this.$store.dispatch('stylist/updateAccount', [
+        {name: "sustainable_materials_percent", value: parseFloat(this.sustainable_materials_percent)},
+      ]).then(() => {
+        this.$refs.overlay.resetOverlay()
+      })
     }
   },
   mounted() {

@@ -63,10 +63,7 @@
           p.text-h6
             v-icon.text-h6.mr-2(color="black") mdi-leaf
             span Nachhaltige Produkte
-          EditableOverlay(height="100")
-            template(v-slot:overlay-text)
-            template(v-slot:hideInactive)
-              SustainableMaterialForm
+          SustainableMaterialForm
 </template>
 
 <script>

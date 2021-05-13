@@ -5,15 +5,22 @@
 //-     Footer
 
 v-app(id="stylists" :style="appStyle")
-  v-navigation-drawer(v-model="drawer"
- app) 
+  v-navigation-drawer(v-model="drawer" app)
+    v-list-item
+      v-list-item-content
+        v-list-item-title.title bridlx
+    v-divider
+    v-list(nav dense)
+      v-list-item-group
+        v-list-item(v-for="item in menuItems" :key="item.text" link :to="item.url")
+          v-list-item-title {{item.text}}
   v-app-bar(app)
     v-app-bar-nav-icon(class="hidden-md-and-up" @click="drawer = !drawer")
     v-img(:src="require('@images/logos/bridlx-dark.svg')" contain max-height="40" max-width="100" alt="bridlx")
     v-toolbar-title
     v-spacer
     v-toolbar-items(class="hidden-xs-only")
-      v-btn(text v-for="item in menuItems" :key="item.text" :to="item.url") {{ item.text }}
+      v-btn(text v-for="item in menuItems" :key="item.text" :to="{path: item.url}") {{ item.text }}
     v-menu(offset-y)
       template(v-slot:activator="{ on, attrs }")
         div(elevation="0" opacity="0" v-on="on" v-bind="attrs")
@@ -55,9 +62,9 @@ export default {
     menuItems: [
       {url: "/", text: "Dashboard"},
       {url: "/info/profile/personal-information", text: "Info"},
-      {url: "/nachrichten", text: "Nachrichten"},
-      {url: "/order", text: "Order"},
-      {url: "/kalender", text: "Kalender"},
+      {url: "/messages", text: "Nachrichten"},
+      {url: "/orders", text: "Order"},
+      {url: "/calendar", text: "Kalender"},
     ],
     appStyle: {
       background: '#f3f3f5'

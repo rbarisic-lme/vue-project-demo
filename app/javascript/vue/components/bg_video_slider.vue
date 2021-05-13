@@ -78,9 +78,16 @@ export default {
     position: absolute;
     left: 0;
     top: 0;
-    padding-top: 500px;
     height: 100%;
     width: 100%;
+
+    text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0,0,0,0.1);
   }
 
   .bg-video-slider {
