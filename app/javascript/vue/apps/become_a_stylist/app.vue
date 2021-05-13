@@ -72,6 +72,8 @@
                     |  hier
               .col-12.col-lg-6
                 img.img-stylist(src="@images/illustrations/bridlx-magnet.png" height="400")
+      CustomerStories
+      QuestionsAndAnswers
       Footer
 </template>
 
@@ -79,6 +81,8 @@
 import Header from '@/components/header.vue'
 import Splash from '@/components/become_a_stylist/splash.vue'
 import Features from '@/components/become_a_stylist/features.vue'
+import CustomerStories from '@/components/become_a_stylist/customer_stories.vue'
+import QuestionsAndAnswers from '@/components/become_a_stylist/questions_and_answers.vue'
 import Footer from '@/components/landing_page/footer.vue'
 import ContainerSlider from '@/components/container_slider.vue'
 import SizedComponent from '@/components/landing_page/sized_component.vue'
@@ -89,6 +93,8 @@ export default {
     Splash,
     Features,
     ContainerSlider,
+    CustomerStories,
+    QuestionsAndAnswers,
     Footer
   },
   data() {
@@ -156,6 +162,10 @@ export default {
     display: flex;
     padding: 8px;
     justify-content: space-evenly;
+    @media screen and (max-width: 720px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
   .fact-item {
     padding: 8px;
@@ -167,7 +177,7 @@ export default {
     .fact-box {
       display: flex;
       flex-direction: column;
-      justify-content: space-between
+      justify-content: center;
     }
     .fact-title {
       color: #454645;

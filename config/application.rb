@@ -12,6 +12,9 @@ module BridlxWeb
     config.load_defaults 6.1
 
     config.hosts << "435423dcc670.ngrok.io"
+    config.hosts << "bridlx.herokuapp.com"
+    config.hosts << "bridlx.com"
+    config.hosts << "bridlx.de"
 
     # Configuration for the application, engines, and railties goes here.
     #
