@@ -14,12 +14,14 @@ import axios from 'axios'
 
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import VueNumber from 'vue-number-animation'
 
 import i18n from '@/lib/i18n.js'
 
 const initApp = function(appName, routerName = false, storeName = false) {
 
   Vue.use(VueToast, { position: 'bottom' });
+  Vue.use(VueNumber)
 
   Vue.use(VueRouter)
   Vue.use(Vuex)

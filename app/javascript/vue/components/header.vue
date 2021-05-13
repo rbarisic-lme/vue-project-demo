@@ -14,7 +14,7 @@
         v-list(nav dense)
           v-list-item-group
             v-list-item(v-for="link in links", :key="link.text")
-              v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal)") {{link.text}}
+              v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal); drawer = false") {{link.text}}
               v-list-item-title(v-else="link.modal" link :to="link.url") {{link.text}}
 
     .d-none.d-lg-block

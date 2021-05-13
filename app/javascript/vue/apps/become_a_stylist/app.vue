@@ -5,21 +5,24 @@
       Splash
       v-container.py-8(fluid style="background: #f1ecdf")
         .my-facts
-          .fact-item
+          .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Netzwerk.png" width="92")
             div.text-center.fact-box
               b.lead.fact-title Wachsende Community
-              div.lead.fact-number 0
-          .fact-item
+              div.lead.fact-number
+                number(:from="0" :to="800" :duration="5" :delay="1")
+          .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Wallet.png" width="92")
             div.text-center.fact-box
               b.lead.fact-title Transaktionen
-              div.lead.fact-number 600
-          .fact-item
+              div.lead.fact-number
+                number(:from="0" :to="600" :duration="5.2" :delay="1")
+          .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Herzschlag.png" width="92")
             div.text-center.fact-box
               b.lead.fact-title Happy Brides
-              div.lead.fact-number 500
+              div.lead.fact-number
+                number(:from="0" :to="500" :duration="4.8" :delay="1")
       .container.bridlx-features.pt-8.pb-8
       h2.heading-h2.serif.mt-4.mb-8.text-center Schließe dich unserer Community an
       v-item-group.mb-8.pb-8
@@ -86,6 +89,7 @@ import QuestionsAndAnswers from '@/components/become_a_stylist/questions_and_ans
 import Footer from '@/components/landing_page/footer.vue'
 import ContainerSlider from '@/components/container_slider.vue'
 import SizedComponent from '@/components/landing_page/sized_component.vue'
+import VueNumber from 'vue-number-animation'
 
 export default {
   components: {

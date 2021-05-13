@@ -1,12 +1,13 @@
 <template lang="pug">
-  transition(name="fade" mode="out-in")
-    transition-group.bg-slider-wrapper(name="bg-slider" tag="div" ref="videoWrapper")
-      .bg-video-slider(v-for="(video, index) in videos" :key="video" v-show="active == index")
-        video(autoplay loop muted playsinline preload="metadata")
-          source(:src="videos[index]" type="video/mp4")
-          | Your browser does not support the video tag.
-        .overlay-x
-          slot
+  div
+    transition(name="fade" mode="out-in")
+      transition-group.bg-slider-wrapper(name="bg-slider" tag="div" ref="videoWrapper")
+        .bg-video-slider(v-for="(video, index) in videos" :key="video" v-show="active == index")
+          video(autoplay loop muted playsinline preload="metadata")
+            source(:src="videos[index]" type="video/mp4")
+            | Your browser does not support the video tag.
+    .overlay-x
+      slot
 </template>
 
 <script>

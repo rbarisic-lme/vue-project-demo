@@ -1,5 +1,5 @@
 <template lang="pug">
-Modal(name="signIn" height="auto" :maxWidth="300")
+Modal(name="signIn" height="auto" :maxWidth="600" :adaptive="true")
   div.m-8.text-center
     h3.heading-h3.mb-5
       | bei bridlx
