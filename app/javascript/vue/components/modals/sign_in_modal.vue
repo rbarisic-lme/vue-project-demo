@@ -43,4 +43,7 @@ export default {
 
 <style lang="scss" scoped>
 
+  /deep/ .vm--modal {
+    overflow-y: scroll;
+  }
 </style>
