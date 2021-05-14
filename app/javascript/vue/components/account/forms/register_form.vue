@@ -1,8 +1,6 @@
 <template lang="pug">
   .form--rows
-    v-btn(block large color="#4267b2" dark).mb-4
-      v-icon(left) mdi-facebook
-      |  Mit Facebook registrieren
+    OAuthFacebookBtn(type="register")
     v-btn(block large color="#fff" dark).mb-4.text--black
       v-icon(left) mdi-google
       |  Mit Google registrieren
@@ -27,10 +25,11 @@
 <script>
 import i18n from '@/lib/i18n'
 import FormRules from '@/data/form_rules.js';
+import OAuthFacebookBtn from './oauth_facebook.vue';
 
 export default {
   components: {
-
+    OAuthFacebookBtn,
   },
   props: {
 

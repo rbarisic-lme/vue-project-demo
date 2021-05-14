@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem "attr_encrypted", "~> 3.1.0" # Encrypt and Decrypt attributes
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 
 gem "standardrb" # Coding Standards (linter etc.)
 gem "kaminari" # pagination

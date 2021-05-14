@@ -37,6 +37,11 @@ export default {
     }
   },
   methods: {
+  },
+  mounted() {
+    // this.$axios.get('/api/v1/auth/fb_oauth_path').then(response => {
+      // console.log(response)
+    // })
   }
 }
 </script>

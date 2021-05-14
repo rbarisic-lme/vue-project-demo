@@ -12,6 +12,10 @@ class StaticPagesController < ApplicationController
   def privacy
   end
 
+  def terms
+
+  end
+
   def become_a_stylist
     if current_user && current_user.type == "Stylist"
       redirect_to stylist_app_path

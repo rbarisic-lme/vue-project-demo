@@ -5,4 +5,8 @@ class Api::V1::AuthController < ApplicationController
   def authenticated
     render inline: {authorized: true}.to_json
   end
+
+  def fb_oauth_path
+    render json: {path: user_facebook_omniauth_authorize_path}
+  end
 end

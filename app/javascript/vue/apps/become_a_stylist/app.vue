@@ -28,17 +28,17 @@
       v-item-group.mb-8.pb-8
         v-container
           v-row
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card().img-stylist.stylist-1
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card().img-stylist.stylist-2
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card().img-stylist.stylist-3
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card().img-stylist.stylist-4
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card().img-stylist.stylist-5
-            .col-12.col-md-6.col-lg-3
+            .col-12.col-md-6.col-lg-4.col-xl-3
               v-card(style="height: 600px; background: #e7e6e6").lead-card.h-100
                 div.d-flex.text-center.cursor-pointer.clickable-card
                   p.p-8.text-h5 Zauberst du anderen auch gerne ein Lächeln ins Gesicht?
@@ -48,23 +48,23 @@
                     v-icon.text-h3(color="black") mdi-heart
       Features
       ContainerSlider(height="600" transitionSpeed="50000")
-        .container-slider(key="1" style="height: 600px; background: #dcb6aa; color: #fff")
+        .container-slider(key="1" style="height: 600px; background: #EECBC1; color: #fff")
           .container.h-100
             .row.h100p.h-100.d-100.no-gutters
               .col-12
                 h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") Zeit für ein neues Kapitel?
               .col-6.d-none.d-lg-block.h-100
-                p.lead.w-50 Wir helfen dir dabei dein Herzensbusiness aufzubauen! Zusammen mit unserem Kooperationspartner sorted erledigst du stressfrei und unbürokratisch alle Formalitäten #getsorted
+                p.lead.w-50.mb-4(style="display: inline-block;") Wir helfen dir dabei dein Herzensbusiness aufzubauen! Zusammen mit unserem Kooperationspartner sorted erledigst du stressfrei und unbürokratisch alle Formalitäten #getsorted
                 p.mt-4
-                  a.mt-4.btn-lead(href="#") Starte jetzt
+                  a.mt-4.btn-lead(href="https://app.getsorted.de/#anonymous_login" target="_blank") Starte jetzt
               .col-12.col-lg-6
                 img.img-stylist(src="@images/illustrations/bridlx-painting.jpg" height="400")
-        .container-slider(key="2" style="height: 600px; background: #FAD68F")
+        .container-slider(key="2" style="height: 600px; background: #FDE4AE")
           .h-100.d-100(style="color: #fff;").p-4
             div(style="max-width: 1200px; margin: 0 auto;")
                 h2.heading-h2.pt-8(style="font-weight: bold") „ Mein größter Wunsch ist es vielen talentierten Stylisten eine Oberfläche zu bieten. Somit können sie sich genau auf das konzentrieren, was sie lieben – Menschen ein lächeln ins Gesicht zu zaubern. “
                 h3.heading-h3.text-right.serif Alisa, Gründerin und CO-CEO bridlx
-        .container-slider(key="3" style="height: 600px; background: #6E7A96; color: #fff")
+        .container-slider(key="3" style="height: 600px; background: #98A3B4; color: #fff")
           .container.h-100
             .row.h100p.h-100.d-100.no-gutters
               .col-12
@@ -115,13 +115,13 @@ export default {
 
 <style lang="scss" scoped>
   .img-stylist {
-    height: 400px;
+    height: 500px;
     background-size: cover;
     background-position: center;
     background-position-y: top;
     &.stylist-1 { background-image: url(~@images/become_a_stylist/stylist-1.jpg) }
     &.stylist-2 { background-image: url(~@images/become_a_stylist/stylist-2.jpg) }
-    &.stylist-3 { background-image: url(~@images/become_a_stylist/stylist-3.jpg) }
+    &.stylist-3 { background-position: center; background-image: url(~@images/become_a_stylist/stylist-3.jpg) }
     &.stylist-4 { background-image: url(~@images/become_a_stylist/stylist-4.jpg) }
     &.stylist-5 { background-image: url(~@images/become_a_stylist/stylist-5.jpg) }
   }

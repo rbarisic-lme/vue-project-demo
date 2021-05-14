@@ -7,7 +7,7 @@
       v-icon(left) mdi-google
       |  Weiter mit Google
 
-    div.mb-4 Oder
+    div.my-4.text-center Oder
     v-text-field(v-model="email" label="E-Mail" autocomplete="email" clearable prepend-inner-icon="mdi-at")
     v-text-field(v-model="password" label="Passwort" autocomplete="current-password" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
 

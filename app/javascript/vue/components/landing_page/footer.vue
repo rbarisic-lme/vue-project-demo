@@ -30,15 +30,15 @@
     .row.mt-8
       .col-12.col-md-5
         .footer-social-icons.flex
-          a(href="#")
+          a(href="https://www.instagram.com/bridlx/?hl=en" target="_blank")
             img.ml-0(src="~@images/icons/social/bridlx-instagram-circle.svg")
-          a(href="#")
+          a(href="https://www.facebook.com/bridlx/" target="_blank")
             img(src="~@images/icons/social/bridlx-facebook-circle.svg")
-          a(href="#")
+          a(href="https://www.youtube.com/channel/UCjwKh88ytpUxFbSS6kzRf2A/videos" target="_blank")
             img(src="~@images/icons/social/bridlx-youtube-circle.svg")
-          a(href="#")
+          a(href="https://www.pinterest.de/bridlx/" target="_blank")
             img(src="~@images/icons/social/bridlx-pinterest-circle.svg")
-          a(href="#")
+          a(href="https://www.linkedin.com/company/bridlx/?originalSubdomain=de" target="_blank")
             img.mr-0(src="~@images/icons/social/bridlx-linkedin-circle.svg")
       .col-12.col-md-6.offset-md-1
         .footer-links.flex

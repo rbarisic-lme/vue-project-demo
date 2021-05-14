@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#landing_page'
 
+  get 'terms', to: 'static_pages#terms'
   get 'about_us', to: 'static_pages#about_us'
   get 'imprint', to: 'static_pages#imprint'
   get 'privacy', to: 'static_pages#privacy'
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
       scope :auth do
         get 'current', to: 'auth#current'
         get 'authenticated', to: 'auth#authenticated'
+        get 'fb_oauth_path', to: 'auth#fb_oauth_path'
       end
 
       resources :users do
