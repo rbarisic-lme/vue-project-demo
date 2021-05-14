@@ -13,7 +13,7 @@
               span {{value}} km
             template(v-slot:append) KM
         v-btn(rounded color="primary" @click="save" :loading="$store.state.stylist.dataParsing") Speichern
-
+      
 </template>
 
 <script>

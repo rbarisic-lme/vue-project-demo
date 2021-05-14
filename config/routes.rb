@@ -57,6 +57,10 @@ Rails.application.routes.draw do
         get 'fb_oauth_path', to: 'auth#fb_oauth_path'
       end
 
+      resources :service_extras, only: [:index] do
+
+      end
+
       resources :users do
         get 'current', on: :collection
         get 'authenticated', on: :collection        

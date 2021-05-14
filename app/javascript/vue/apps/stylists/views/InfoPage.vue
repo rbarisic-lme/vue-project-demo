@@ -66,7 +66,7 @@ export default {
     },
     plainItems() {
       return [
-        { url: '/info/skills', text: "Skills", disabled: true},
+        { url: '/info/skills', text: "Skills", disabled: false},
         { url: '/info/checklist', text: "Checkliste"},
       ]
     },

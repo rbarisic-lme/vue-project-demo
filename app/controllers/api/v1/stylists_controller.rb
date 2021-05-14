@@ -58,13 +58,13 @@ class Api::V1::StylistsController < ApplicationController
 
   private
     def sanitize_params
-      array_relations = %w(brand_ids language_ids)
+      # array_relations = %w(brand_ids language_ids)
 
-      array_relations.each do |ar|
-        if params["stylist"][ar] && params["stylist"][ar].class == String
-          params["stylist"][ar] = params["stylist"][ar].split(',')
-        end
-      end
+      # array_relations.each do |ar|
+      #   if params["stylist"][ar] && params["stylist"][ar].class == String
+      #     params["stylist"][ar] = params["stylist"][ar].split(',')
+      #   end
+      # end
 
       available_extras = params["stylist"]["available_extras_attributes"]
 
@@ -107,11 +107,15 @@ class Api::V1::StylistsController < ApplicationController
         :service_package_premium_price,
         :stylist_tutorial_read,
         :sustainable_materials_percent,
+        :invoice_mandate_accepted,
+        :empty_available_extras,
         brand_ids: [], language_ids: [],
         available_extras_attributes: [
+          :id,
           :service_extra_id,
           :user_id,
           :price,
+          :_destroy,
         ]
       )
     end

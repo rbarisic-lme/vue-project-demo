@@ -1,9 +1,13 @@
 <template lang="pug">
   EditableOverlay(height="200" ref="overlay")
     template(v-slot:overlay-text)
-      .flex-centered.h-100.text-center(v-if="extras.length < 1")
-        v-icon.mr-2(color="black") mdi-chat-processing-outline
-        span.mt-2 Erhöhe deine Chancen und biete weitere Extras an. Die Bräute werden es lieben.
+      .flex-centered.h-100.text-center
+        div(v-if="available_extras.length < 1")
+          v-icon.mr-2(color="black") mdi-chat-processing-outline
+          span.mt-2 Erhöhe deine Chancen und biete weitere Extras an. Die Bräute werden es lieben.
+
+        div(v-else="available_extras.length < 1")
+          span {{available_extras.length}} Angebot(e)
     template(v-slot:default="slotProps")
 
       //- v-form(v-model="valid" ref="form" @submit="save" @submit.prevent)
@@ -31,7 +35,7 @@
             //- v-list-item(dense)
               v-list-item-content
             v-col
-              v-checkbox(v-model="available_extra_ids" :value="item.id" :label="$t(`form.label.service_extra.${item.label}`)")              
+              v-checkbox(v-model="available_extra_ids" :value="item.id" :label="$t(`form.label.service_extra.${item.name}`)")              
             v-col
               v-text-field( :rules="available_extra_ids.includes(item.id) ? fr.stylist.extra_item : []" :disabled="!available_extra_ids.includes(item.id)" :label="$t('form.label.price')" append-icon="mdi-currency-eur" :placeholder="$t('form.placeholder.extra_item')" :ref="'available_extra_field_'+item.id" v-model="available_extra_values[item.id]")
       v-divider.my-4
@@ -59,13 +63,18 @@ export default {
   data() {
     return {
       fr: FormRules,
-      extrasJson: ExtrasJSON,
+      extrasJson: [],
       valid: false,
     }
   },
   computed: {
     ...mapFields(['extras', 'available_extras', 'available_extra_ids', 'available_extra_values'])
     // ...mapState('account', ['about_me'])
+  },
+  mounted() {
+    this.$store.dispatch('stylist/getExtrasList').then(result => {
+      this.extrasJson = result.data
+    })
   },
   methods: {
     calculateAvailableExtras() {
@@ -76,31 +85,33 @@ export default {
 
         let included = this.available_extras.filter(item => {
           if (item['id']) {
-            return item.id == id
+            return item.service_extra_id == id
           }
         })
 
         if (included.length > 0) {
-          array.push(this.available_extras[id])
+          let updatedExtra = included[0]
+
+          delete updatedExtra.created_at
+          delete updatedExtra.updated_at
+
+          updatedExtra.price = this.available_extra_values[updatedExtra.service_extra_id]
+
+          array.push(updatedExtra)
         } else {
-          console.log("not included!", id)
           array.push({service_extra_id: id, price: price})
         }
       })
 
       // this.$store.dispatch('stylist/setAvailableExtras', array)
-      this.available_extras = array
+      // this.available_extras = array
+      return array
     },
     save() {
-      this.calculateAvailableExtras()
-
-      this.$store.dispatch('stylist/updateAvailableExtras', this.available_extras)
-
-      // this.$store.dispatch('stylist/updateAccount', [
-      //   {name: "available_extras", value: this.available_extras}
-      // ]).then(result => {
-      //     this.$refs.overlay.resetOverlay()
-      // })
+      let tempExtras = this.calculateAvailableExtras()
+      this.$store.dispatch('stylist/updateAvailableExtras', tempExtras).then(result => {
+        this.$refs.overlay.resetOverlay()
+      })
     }
   }
 }

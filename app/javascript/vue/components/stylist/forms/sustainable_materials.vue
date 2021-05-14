@@ -1,7 +1,9 @@
 <template lang="pug">
 EditableOverlay(height="100" ref="overlay")
   template(v-slot:overlay-text)
-
+      .flex-centered.h-100.text-center
+        span(v-if="sustainable_materials_percent > 0") Du verwendest zu {{sustainable_materials_percent}}% nachhaltige Produkte.
+        span(v-else="sustainable_materials_percent > 0") Wähle aus, wie nachhaltig deine Produkte sind.
   template(v-slot:hideInactive)
     div
       .flex-leaf

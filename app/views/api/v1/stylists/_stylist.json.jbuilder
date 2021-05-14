@@ -25,7 +25,8 @@ json.extract! stylist,
   :workspace_street,
   :workspace_city,
   :workspace_zipcode,
-  :workspace_country
+  :workspace_country,
+  :invoice_mandate_accepted
 
 json.available_extras stylist.available_extras
 

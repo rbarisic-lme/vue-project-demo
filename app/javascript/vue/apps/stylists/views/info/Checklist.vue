@@ -1,29 +1,30 @@
 <template lang="pug">
-  .container.p-0
-    .row
-      .col-12
-        .h-100
-          v-sheet.px-8.py-4.mb-8(rounded elevation="2")
-            h3.heading-h3.serif.mb-8 Checkliste
-            p Schauen wir, ob alles abgehakt ist!
-            v-container(fluid)
-              v-row(v-for="category in checkCategories")
-                v-col(sm="12")
-                  h4.text-h6 {{category.title}}
-                v-divider
-                v-col(v-for="check in category.collection" :key="check.title" sm="6")
-                  p
-                    v-icon(color="green" v-if="check.done") mdi-check
-                    v-icon(color="red" v-else="check.done") mdi-plus
-                    v-btn(text :to="category.route") {{check.title}}
+.container.p-0
+  BlockWithInfo(title="Checkliste")
+    p Schauen wir, ob alles abgehakt ist!
+    v-container(fluid)
+      v-row(v-for="category in checkCategories")
+        v-col(sm="12")
+          h4.text-h6 {{category.title}}
+        v-divider
+        v-col(v-for="check in category.collection" :key="check.title" sm="6")
+          p
+            v-icon(color="green" v-if="check.done") mdi-check
+            v-icon(color="red" v-else="check.done") mdi-plus
+            v-btn(text :to="category.route") {{check.title}}
+    template(v-slot:info-image)
+      img(style="" src="@images/icons/Rakete.png" width="92")
+    template(v-slot:info-text)
+      span Alle Punkte abgehakt? Ready, steady, go!
 </template>
 
 <script>
 import {mapGetters} from 'vuex';
+import BlockWithInfo from '@/components/block_with_info.vue'
 
 export default {
   components: {
-
+    BlockWithInfo
   },
   props: {
 
@@ -60,7 +61,8 @@ export default {
           ]
         },
         {title: 'Nachweise (Verifikation)', route: '/info/business/verification', key: 'checksKyc', collection: [
-          {title: 'Nachweise', done: this.$store.getters['stylist/verificationComplete']}
+          {title: 'Verifizierung', done: this.$store.getters['stylist/verificationComplete']},
+          {title: 'Bestätigung', done: this.$store.state.stylist.invoice_mandate_accepted},
           ]
         },
         // {title: 'Verifizierung', route: '/info/business/bank-account', key: 'checksBusiness', collection: [
