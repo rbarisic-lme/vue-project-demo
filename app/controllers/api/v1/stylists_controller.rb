@@ -67,11 +67,18 @@ class Api::V1::StylistsController < ApplicationController
       # end
 
       available_extras = params["stylist"]["available_extras_attributes"]
+      skills  = params["stylist"]["skills_attributes"]
 
       if available_extras
         params["stylist"]["available_extras_attributes"] = available_extras.map do |extra|
           json_extra = JSON.parse(extra).merge user_id: current_stylist.id
           # AvailableExtra.find_or_initialize_by(service_extra_id: json_extra["service_extra_id"], price: json_extra["price"], user_id: current_stylist.id)
+        end
+      end
+
+      if skills
+        params["stylist"]["skills_attributes"] = skills.map do |skill|
+          json_skill = JSON.parse(skill).merge user_id: current_stylist.id
         end
       end
 
@@ -110,6 +117,14 @@ class Api::V1::StylistsController < ApplicationController
         :invoice_mandate_accepted,
         :empty_available_extras,
         brand_ids: [], language_ids: [],
+        skill_ids: [],
+        skills_attributes: [
+          :id,
+          :user_id,
+          :name,
+          :level,
+          :_destroy,
+        ],
         available_extras_attributes: [
           :id,
           :service_extra_id,

@@ -5,8 +5,9 @@
       v-sheet.px-8.py-4.mb-8(rounded elevation="2")
         .block-container
           .bc--content
-            h3.heading-h3.serif.mb-8(v-if="title") {{title}}
-            slot
+            .bc--content-main
+              h3.heading-h3.serif.mb-8(v-if="title") {{title}}
+              slot
             .bc--actions
               slot(name="actions")
           .bc--info
@@ -40,7 +41,17 @@ export default {
     text-align: right;
   }
   .bc--content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     flex-grow: 1;
+    .bc--content--main {
+
+    }
+    .bc--actions {
+
+    }
   }
   .bc--info {
     display: flex;

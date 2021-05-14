@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Stylist::SkillTest < ActiveSupport::TestCase
+class SkillTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

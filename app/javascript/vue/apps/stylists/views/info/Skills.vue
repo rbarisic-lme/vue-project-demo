@@ -6,13 +6,7 @@
       template(v-slot:info-image)      
         img(style="" src="@images/icons/Profilsichtbarkeit.png" width="92")
 
-    BlockWithInfo(title="Fähigkeiten")
-      v-btn(color="primary" rounded) Hinzufügen
-
-      template(v-slot:info-text)
-        span Deine Fähigkeiten müssen entsprechend honoriert werden! Teile sie wahrheitsgemäß mit zukünftigen Kunden!
-      template(v-slot:info-image)      
-        img(style="" src="@images/icons/Bewertungen.png" width="92")
+    SkillsForm
 
     BlockWithInfo(title="Zertifizierungen")
       h3.heading-h3(color="primary") Lass dir deine Skills bestätigen
@@ -24,11 +18,13 @@
 </template>
 
 <script>
+import SkillsForm from '@/components/stylist/forms/skills_form.vue'
 import BlockWithInfo from '@/components/block_with_info.vue'
 
 export default {
   components: {
-    BlockWithInfo
+    BlockWithInfo,
+    SkillsForm,
   },
   props: {
 

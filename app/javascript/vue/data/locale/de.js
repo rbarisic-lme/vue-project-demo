@@ -28,6 +28,12 @@ export default {
       service_package_standard_price: 'Paket Standard',
       service_package_premium_price: 'Paket Premium',
       price: 'Preis',
+      skill: {
+        "contouring":           "Contouring",
+        "pin_hairs":            "Hochsteckfrisuren",
+        "smokey_eyes":          "Smokey Eyes",
+        "beach_waves":          "Beach Waves",
+      },
       service_extra: {
         "manicure_nails":       "Maniküre mit Nagellack",
         "manicure_shellac":     "Maniküre mit Shellac",

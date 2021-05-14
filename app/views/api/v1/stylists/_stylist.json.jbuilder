@@ -28,7 +28,13 @@ json.extract! stylist,
   :workspace_country,
   :invoice_mandate_accepted
 
-json.available_extras stylist.available_extras
+json.available_extras do
+  json.array! stylist.available_extras, :id, :user_id, :service_extra_id, :price
+end
+
+json.skills do
+  json.array! stylist.skills, :id, :user_id, :name, :level
+end
 
 json.ready_for_kyc stylist.ready_for_kyc?
 

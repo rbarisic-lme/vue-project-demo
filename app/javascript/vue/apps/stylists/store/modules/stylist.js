@@ -21,6 +21,7 @@ const state = () => ({
   accountLoading: true,
   brands: [],
   languages: [],
+  skills: [],
   extras: [],
   available_extras: [],
   available_extra_ids: [],
@@ -125,6 +126,31 @@ const actions = {
       headers: { "Content-Type": "multipart/form-data" }
     })
   },
+  async updateSkills(ctx, payload) {
+    ctx.state.dataParsing = true
+
+    let formData = new FormData();
+    payload.forEach(skill => {
+      formData.append("stylist[skills_attributes][]", JSON.stringify(skill))
+    })
+
+    try {  
+      let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+
+      await ctx.dispatch('loadAccount')
+
+      this._vm.$toast.open(i18n.t('form.message.update.success'))
+
+      return result
+    } catch {
+      this._vm.$toast.open({message: i18n.t('form.message.update.failure'), type: 'error'});
+      return {error: 'update failed'}
+    } finally {
+      ctx.state.dataParsing = false      
+    }
+  },
   async updateAvailableExtras(ctx, payload) {
     ctx.state.dataParsing = true
     let formData = new FormData();
@@ -158,7 +184,7 @@ const actions = {
       
       this._vm.$toast.open(i18n.t('form.message.update.success'))
 
-      ctx.dispatch('loadAccount')
+      await ctx.dispatch('loadAccount')
 
       return result
     } catch {
@@ -188,7 +214,7 @@ const actions = {
         this._vm.$toast.open(i18n.t('form.message.update.success'))
       // }, 1000)
 
-        ctx.dispatch('loadAccount')
+        await ctx.dispatch('loadAccount')
 
       return result
     } catch {
