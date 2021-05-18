@@ -15,6 +15,7 @@ class User < ApplicationRecord
   
   before_create :build_default_business
   before_create :build_default_bank_account
+  before_create :generate_md5_identifier
 
   after_validation :geocode
 
@@ -41,8 +42,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  def md5_identifier
-    Digest::MD5.new.update(self.created_at.hash.to_s + self.first_name + self.last_name + self.id.to_s).hexdigest
+  def generate_md5_identifier
+    self.md5_identifier = Digest::MD5.new.update(self.created_at.hash.to_s + self.first_name + self.last_name + self.id.to_s).hexdigest
   end
 
   def kyc_verified?

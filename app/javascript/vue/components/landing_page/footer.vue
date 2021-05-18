@@ -44,8 +44,8 @@
         .footer-links.flex
           .copyright.p-4 &copy; 2021 bridlx
           a(href="#").p-4 Hilfe & Support
-          a(href="privacy").p-4 Datenschutz
-          a(href="imprint").p-4 Impressum
+          a(href="/privacy").p-4 Datenschutz
+          a(href="/imprint").p-4 Impressum
 </template>
 
 <script>

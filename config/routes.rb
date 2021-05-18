@@ -75,6 +75,7 @@ Rails.application.routes.draw do
 
       resources :stylists do
         get 'current', on: :collection
+        get 'public/:md5_identifier', action: 'public', on: :collection
         get 'authenticated', on: :collection
         get 'user_mandate', on: :collection
         # get 'business', on: :collection, action: :show_current

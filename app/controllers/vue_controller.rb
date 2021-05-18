@@ -1,7 +1,7 @@
 class VueController < ApplicationController
   # before_action :authenticate_stylist!
 
-  before_action :redirect_unless_logged_in
+  before_action :redirect_unless_logged_in, except: [:public_app]
 
   def stylist_app
     @vue_app = "stylists"
@@ -13,6 +13,10 @@ class VueController < ApplicationController
 
   def user_app
     @vue_app = "users"
+  end
+
+  def public_app
+    @vue_app = "public"
   end
 
   private

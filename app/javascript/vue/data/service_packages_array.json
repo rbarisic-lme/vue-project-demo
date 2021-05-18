@@ -1,0 +1,34 @@
+[
+  {"title": "basic_hair", "services": [
+    "Bridal Hairstyling",
+    "Probetermin optional (zzgl. 80%)",
+    "Typanalyse + Individuelle Beratung bei Probetermin Buchung",
+    "Integration von Hairaccessoires*"
+  ]},
+  {"title": "basic_makeup", "services": [
+    "Bridal  Make-up",
+    "Probetermin optional (zzgl. 80%)",
+    "Hautvorbereitung/- pflege",
+    "Typanalyse + Individuelle Beratung bei Probetermin Buchung"
+  ]},
+  {"title": "standard", "services": [
+    "Bridal Hairstyling",
+    "Bridal  Make-up",
+    "Probetermin inklusive",
+    "Typanalyse + Individuelle Beratung",
+    "Hautvorbereitung/- pflege",
+    "Integration von Hairaccessoires*",
+    "Skin Prep Package Light (Gesicht)"
+  ]},
+  {"title": "premium", "services": [
+    "Bridal Hairstyling",
+    "Bridal  Make-up",
+    "Probetermin inklusive",
+    "Typanalyse + Individuelle Beratung",
+    "Hautvorbereitung/- pflege",
+    "Integration von Hairaccessoires*",
+    "Skin Prep Package Plus (Gesicht & Augen)",
+    "Extra Lashes (Einzelwimpern oder Bandwimpern)",
+    "Bodyglow Dekoltée/Arme/Beine"
+  ]}
+]

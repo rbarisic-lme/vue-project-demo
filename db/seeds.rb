@@ -50,13 +50,31 @@ User.create!(
 )
 
 # Stylist
-Stylist.create!(
+stylist = Stylist.create!(
   email: "stylist@example.com",
   password: "alpine123",
   password_confirmation: "alpine123",
   first_name: "Testman",
   last_name: "Examplesson",
   role: 'stylist'
+)
+
+stylist.reviews.create!(
+  author: 'Hannelore Frank',
+  email: 'hanni@lore.com',
+  rating_quality: 5,
+  rating_timeliness: 5,
+  rating_communication: 5,
+  body: 'Ich war mit den angebotenen Services sehr zufrieden! Meine Hochzeitsbilder sehen prima aus.'
+)
+
+stylist.reviews.create!(
+  author: 'Majke Muckelbaum',
+  email: 'majke@schermajke.de',
+  rating_quality: 5,
+  rating_timeliness: 3,
+  rating_communication: 5,
+  body: 'Der Stylist kam etwas zu spät, aber die Arbeit war top!'
 )
 
 # Static Pages content

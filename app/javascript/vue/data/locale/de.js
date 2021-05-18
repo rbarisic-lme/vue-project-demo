@@ -24,7 +24,7 @@ export default {
       zipcode: 'Postleitzahl',
       country: 'Land',
       service_package_basic_hair_price: 'Paket Hair Basic',
-      service_package_basic__makeup_price: 'Paket Make-Up Basic',
+      service_package_basic_makeup_price: 'Paket Make-Up Basic',
       service_package_standard_price: 'Paket Standard',
       service_package_premium_price: 'Paket Premium',
       price: 'Preis',

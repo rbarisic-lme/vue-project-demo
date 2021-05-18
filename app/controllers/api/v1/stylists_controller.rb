@@ -7,6 +7,13 @@ class Api::V1::StylistsController < ApplicationController
   before_action :check_current_stylist, only: %i[ current update destroy ]
   before_action :sanitize_params, only: %i[ create update ]
 
+  def public
+    @stylist = Stylist.find_by(md5_identifier: params[:md5_identifier])
+    respond_to do |format|
+      format.json { render :show_public, status: :ok }
+    end
+  end
+
   def current
     @stylist = current_stylist
   end
@@ -117,6 +124,13 @@ class Api::V1::StylistsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def stylist_params
+      %w(language brand).each do |col|
+        if params[:stylist]["reset_#{col}s".to_sym] == '_empty'
+          params[:stylist].delete "reset_#{col}s".to_sym
+          params[:stylist]["#{col}_ids".to_sym] = []
+        end
+      end
+
       params.fetch(:stylist).permit(
         :avatar, :about_me,
         :street, :city, :zipcode, :country,
@@ -131,8 +145,8 @@ class Api::V1::StylistsController < ApplicationController
         :sustainable_materials_percent,
         :invoice_mandate_accepted,
         :empty_available_extras,
+        :profile_published,
         brand_ids: [], language_ids: [],
-        skill_ids: [],
         skills_attributes: [
           :id,
           :user_id,

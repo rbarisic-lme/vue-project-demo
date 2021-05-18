@@ -12,6 +12,8 @@ class Stylist < User
 
   has_many :certifications, foreign_key: :user_id, dependent: :delete_all
 
+  has_many :reviews, foreign_key: :user_id, dependent: :delete_all
+
   has_many :available_extras, foreign_key: :user_id, dependent: :delete_all
   has_many :service_extras, through: :available_extras, foreign_key: :user_id, class_name: 'AvailableExtras'
 
@@ -22,6 +24,26 @@ class Stylist < User
   accepts_nested_attributes_for :available_extras, allow_destroy: true
   accepts_nested_attributes_for :skills, allow_destroy: true
   accepts_nested_attributes_for :certifications, allow_destroy: true
+
+  def overall_ratings
+    (self.reviews.pluck(:overall_rating).reduce do |sum, rating|
+      sum + rating
+    end / self.reviews.count).to_f
+  end
+
+  def ratings_by_stars
+    self.reviews.pluck(:overall_rating).reduce({}) do |sum, rating|
+      key = rating.round.to_s
+
+      if sum[key]
+        sum[key] += 1
+      else
+        sum[key] = 1
+      end
+
+      sum
+    end
+  end
 
   def tutorial_read!
     self.stylist_tutorial_read = true

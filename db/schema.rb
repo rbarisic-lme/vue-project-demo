@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_18_104055) do
+ActiveRecord::Schema.define(version: 2021_05_18_150405) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,20 @@ ActiveRecord::Schema.define(version: 2021_05_18_104055) do
     t.index ["user_id"], name: "index_languages_users_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "author"
+    t.string "email"
+    t.text "body"
+    t.decimal "rating_quality"
+    t.decimal "rating_timeliness"
+    t.decimal "rating_communication"
+    t.decimal "overall_rating"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "service_extras", force: :cascade do |t|
     t.string "name"
     t.boolean "requires_trial_date", default: false
@@ -203,6 +217,8 @@ ActiveRecord::Schema.define(version: 2021_05_18_104055) do
     t.string "provider"
     t.string "uid"
     t.boolean "invoice_mandate_accepted"
+    t.string "md5_identifier"
+    t.boolean "profile_published", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -211,5 +227,6 @@ ActiveRecord::Schema.define(version: 2021_05_18_104055) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "allowlisted_jwts", "users", on_delete: :cascade
   add_foreign_key "certifications", "users"
+  add_foreign_key "reviews", "users"
   add_foreign_key "skills", "users"
 end

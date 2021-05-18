@@ -1,7 +1,7 @@
 <template lang="pug">
-  v-avatar.ml-3(color="accent" :size="size")
-    img(v-if="avatar" :src="$store.state.stylist.avatar_url")
-    span(v-else="avatar").white--text.headline {{$store.state[store].initials}}
+  v-avatar(color="accent" :size="size" :tile="tile")
+    img(v-if="avatar" :src="avatar")
+    span(v-else="avatar").white--text.headline {{getInitials}}
 </template>
 
 <script>
@@ -10,6 +10,9 @@ export default {
 
   },
   props: {
+    tile: Boolean,
+    avatarImg: undefined,
+    initials: undefined,
     store: String,
     size: {
       type: String,
@@ -21,8 +24,11 @@ export default {
     }
   },
   computed: {
+    getInitials() {
+      return this.store ? this.$store.state[this.store].initials : this['initials']
+    },
     avatar() {
-      return this.$store.state[this.store].avatar_url
+      return this.store ? this.$store.state[this.store].avatar_url : this['avatarImg']
     }
   },
 }

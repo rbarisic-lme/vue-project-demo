@@ -5,7 +5,7 @@
       v-form(ref="form")
         v-container
           v-row
-            v-text-field(:rules="fr.basic.presence" v-model="title" label="Titel des Zertifikats" autocomplete="off" placeholder="z.B. Make-Up Kurs")
+            v-text-field(:rules="fr.basic.presence" v-model="title" label="Titel des Zertifikats" autocomplete="off" placeholder="z.B. Make-Up Artist")
           v-row
             v-text-field(:rules="fr.basic.presence" v-model="certified_by" label="Aussteller des Zertifikats / Firma" autocomplete="off")
           v-row

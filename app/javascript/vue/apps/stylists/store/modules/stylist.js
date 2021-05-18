@@ -9,6 +9,7 @@ const state = () => ({
   md5_identifier: undefined,
   type: undefined,
   role: undefined,
+  profile_published: undefined,
   stylist_tutorial_read: undefined,
   ready_for_kyc: false,
   initials: undefined,
@@ -125,7 +126,14 @@ const actions = {
   },
   async updateBrands(ctx, payload) {
     let formData = new FormData();
-    formData.append("stylist[brand_ids]", payload)
+
+    payload.forEach(item => {
+      formData.append("stylist[brand_ids][]", item)
+    })
+
+    if(payload.length === 0) {
+      formData.append("stylist[reset_brands]", "_empty")
+    }
 
     return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
@@ -262,7 +270,14 @@ const actions = {
   },
   async updateLanguages(ctx, payload) {
     let formData = new FormData();
-    formData.append("stylist[language_ids]", payload)
+
+    payload.forEach(item => {
+      formData.append("stylist[language_ids][]", item)
+    })
+
+    if(payload.length === 0) {
+      formData.append("stylist[reset_languages]", "_empty")
+    }
 
     return await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
       headers: { "Content-Type": "multipart/form-data" }
