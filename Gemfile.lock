@@ -357,6 +357,7 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     wkhtmltopdf-binary (0.12.6.5)
+    wkhtmltopdf-heroku (2.12.6.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.2)
@@ -403,6 +404,7 @@ DEPENDENCIES
   webdrivers
   webpacker (~> 5.0)
   wkhtmltopdf-binary
+  wkhtmltopdf-heroku (= 2.12.6.0)
 
 RUBY VERSION
    ruby 2.7.2p137
