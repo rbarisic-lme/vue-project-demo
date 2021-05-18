@@ -78,6 +78,8 @@ class Api::V1::UsersController < ApplicationController
 
   private
     def sanitize_params
+      raise 'tried to hack admin!' if params["user"]["role"] == 'admin'
+      raise 'tried to hack admin!' if params["user"]["type"] == 'admin'
     end
 
     # Use callbacks to share common setup or constraints between actions.

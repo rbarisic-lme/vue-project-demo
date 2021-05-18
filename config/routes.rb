@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'privacy', to: 'static_pages#landing_page'
   get 'become-a-stylist', to: 'static_pages#landing_page'
 
+  get 'profiles/:md5_identifier', to: 'static_pages#landing_page'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # Common User Vue App

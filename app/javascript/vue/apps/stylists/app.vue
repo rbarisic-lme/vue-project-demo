@@ -26,6 +26,8 @@ v-app(id="stylists" :style="appStyle")
         div(elevation="0" opacity="0" v-on="on" v-bind="attrs")
           Avatar(store="stylist")
       v-list
+        v-list-item(link :href="$store.getters['stylist/profileLink']" target="_blank")
+          v-list-item-title Mein Profil
         v-list-item(link to="/")
           v-list-item-title Zur Hauptseite
         v-list-item(link to="/sign_out" @click="signOut")

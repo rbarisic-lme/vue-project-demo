@@ -1,5 +1,6 @@
 json.extract! stylist,
   :id,
+  :md5_identifier,
   :role,
   :type,
   :stylist_tutorial_read,
@@ -44,4 +45,3 @@ json.ready_for_kyc stylist.ready_for_kyc?
 
 json.avatar_url url_for(stylist.avatar) if stylist.avatar.attached?
 json.url api_v1_stylist_url(stylist, format: :json)
-

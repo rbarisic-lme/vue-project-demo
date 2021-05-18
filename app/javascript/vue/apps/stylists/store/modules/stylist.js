@@ -6,6 +6,7 @@ import i18n from '@/lib/i18n.js'
 // shape: [{ id, quantity }]
 const state = () => ({
   id: undefined,
+  md5_identifier: undefined,
   type: undefined,
   role: undefined,
   stylist_tutorial_read: undefined,
@@ -54,6 +55,9 @@ const getters = {
   getField,
   getProp: (state, payload) => {
       state[payload.prop]
+  },
+  profileLink: state => {
+    return '/profiles/' + state.md5_identifier
   },
   brands: state =>  {
     return state.brands
