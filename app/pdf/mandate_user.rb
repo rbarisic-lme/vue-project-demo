@@ -67,7 +67,8 @@ class MandateUser
     }
     kit = PDFKit.new(html, :page_size => 'Letter')
     pdf = kit.to_pdf
-    kit.to_file('./baby.pdf')
+
+    # kit.to_file('./mandate.pdf')
 
     # Prawn::Document.generate("hello.pdf") do
     #   text "Hello World!"

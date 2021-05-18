@@ -56,7 +56,7 @@ class Api::V1::StylistsController < ApplicationController
   end
 
   def user_mandate
-    send_file(
+    send_data(
       current_stylist.create_mandate_pdf,
       filename: "Abrechnungsvollmacht-#{current_stylist.initials}.pdf",
       type: "application/pdf"
@@ -146,6 +146,7 @@ class Api::V1::StylistsController < ApplicationController
         :invoice_mandate_accepted,
         :empty_available_extras,
         :profile_published,
+        :reset_languages,
         brand_ids: [], language_ids: [],
         skills_attributes: [
           :id,
