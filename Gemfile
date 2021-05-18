@@ -39,6 +39,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'wkhtmltopdf-heroku', '2.12.6.0'
 gem 'wkhtmltopdf-binary' # needed for wicked_pdf
 gem 'pdfkit' # pdf generation
 
