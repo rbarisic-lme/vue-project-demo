@@ -155,6 +155,7 @@ class Api::V1::StylistsController < ApplicationController
           :start_date,
           :end_date,
           :body,
+          :_destroy,
         ]
       )
     end

@@ -228,7 +228,11 @@ const actions = {
     let formData = new FormData();
 
     payload.forEach(attr => {
-      formData.append(`stylist[${attr.name}]`, attr.value)
+      if (attr.name.includes('[]')) {
+        formData.append(`stylist[${attr.name.replace('[]', '')}][]`, attr.value)
+      } else {
+        formData.append(`stylist[${attr.name}]`, attr.value)
+      }
     })
 
     try {

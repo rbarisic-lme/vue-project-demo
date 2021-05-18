@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   get "static_pages/:title", to: "static_pages#static_page_content"
 
-  # get 'terms', to: 'static_pages#terms'
-  # get 'about_us', to: 'static_pages#about_us'
-  # get 'imprint', to: 'static_pages#imprint'
-  # get 'privacy', to: 'static_pages#privacy'
-  # get 'become-a-stylist', to: 'static_pages#become_a_stylist'
+  get 'terms', to: 'static_pages#landing_page'
+  get 'about_us', to: 'static_pages#landing_page'
+  get 'imprint', to: 'static_pages#landing_page'
+  get 'privacy', to: 'static_pages#landing_page'
+  get 'become-a-stylist', to: 'static_pages#landing_page'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -82,5 +82,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/*path", to: "static_pages#landing_page", format: false
+  # get "/*path", to: "static_pages#landing_page", format: false
 end

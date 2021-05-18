@@ -37,7 +37,7 @@ json.skills do
 end
 
 json.certifications do
-  json.array! stylist.certifications, :id, :title, :certified_by, :body, :start_date, :end_date
+  json.array! stylist.certifications, :id, :title, :certified_by, :body, :start_date, :end_date, :created_at
 end
 
 json.ready_for_kyc stylist.ready_for_kyc?

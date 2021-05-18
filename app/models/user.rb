@@ -25,6 +25,7 @@ class User < ApplicationRecord
   has_one :bank_account, dependent: :destroy, as: :owner
 
   has_one_attached :avatar
+  validates :avatar, content_type: ["image/png", "image/jpeg"]
 
   enum role: {
     bride: 'bride',
