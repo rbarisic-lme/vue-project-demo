@@ -14,6 +14,7 @@ export default {
         success: 'Erfolgreich gespeichert',
         failure: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut'
       },
+      clipboard_copy_success: 'Der Link wurde in die Zwischenablage kopiert'
     },
     placeholder: {
       extra_item: "Wähle einen angemessenen Preis."

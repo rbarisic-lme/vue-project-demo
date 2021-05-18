@@ -45,6 +45,8 @@ const state = () => ({
   service_package_standard_price: 0.0,
   service_package_premium_price: 0.0,
   sustainable_materials_percent: 0,
+  reviews: undefined,
+  overall_ratings_detailed: {},
   invoice_mandate_accepted: false,
   snackSuccess: false,
   snackError: false,

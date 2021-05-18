@@ -28,7 +28,10 @@ json.extract! stylist,
   :workspace_city,
   :workspace_zipcode,
   :workspace_country,
-  :invoice_mandate_accepted
+  :invoice_mandate_accepted,
+  :overall_ratings_detailed
+  # :ratings_by_stars,
+  # :overall_ratings
 
 json.available_extras do
   json.array! stylist.available_extras, :id, :user_id, :service_extra_id, :price
@@ -40,6 +43,10 @@ end
 
 json.certifications do
   json.array! stylist.certifications, :id, :title, :certified_by, :body, :start_date, :end_date, :created_at
+end
+
+json.reviews do
+  json.array! stylist.reviews.slice(0,3), :id, :author, :body, :overall_rating_2f, :updated_at
 end
 
 json.ready_for_kyc stylist.ready_for_kyc?

@@ -31,6 +31,31 @@ class Stylist < User
     end / self.reviews.count).to_f
   end
 
+  def overall_ratings_detailed
+    if self.reviews.any?
+
+      ratings = self.reviews.pluck(:rating_quality, :rating_timeliness, :rating_communication).reduce({}) do |sum, ratings|
+        sum[:rating_quality].present? ? sum[:rating_quality] += ratings[0] : sum[:rating_quality] = ratings[0]
+        sum[:rating_timeliness].present? ? sum[:rating_timeliness] += ratings[0] : sum[:rating_timeliness] = ratings[1]
+        sum[:rating_communication].present? ? sum[:rating_communication] += ratings[0] : sum[:rating_communication] = ratings[2]
+
+        sum
+      end
+
+      ratings[:rating_quality] = (ratings[:rating_quality] / self.reviews.count).round.to_i
+      ratings[:rating_timeliness] = (ratings[:rating_timeliness] / self.reviews.count).round.to_i
+      ratings[:rating_communication] = (ratings[:rating_communication] / self.reviews.count).round.to_i
+
+      ratings
+    else
+      {}
+    end
+
+    # ratings = ratings.map do |key, rating|
+    #   [key, (rating / self.reviews.count).round.to_i]
+    # end
+  end
+
   def ratings_by_stars
     self.reviews.pluck(:overall_rating).reduce({}) do |sum, rating|
       key = rating.round.to_s
