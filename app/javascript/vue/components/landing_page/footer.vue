@@ -34,18 +34,18 @@
             img.ml-0(src="~@images/icons/social/bridlx-instagram-circle.svg")
           a(href="https://www.facebook.com/bridlx/" target="_blank")
             img(src="~@images/icons/social/bridlx-facebook-circle.svg")
-          a(href="https://www.youtube.com/channel/UCjwKh88ytpUxFbSS6kzRf2A/videos" target="_blank")
+          a(href="https://www.youtube.com/channel/UCjwKh88ytpUxFbSS6kzRf2A" target="_blank")
             img(src="~@images/icons/social/bridlx-youtube-circle.svg")
           a(href="https://www.pinterest.de/bridlx/" target="_blank")
             img(src="~@images/icons/social/bridlx-pinterest-circle.svg")
-          a(href="https://www.linkedin.com/company/bridlx/?originalSubdomain=de" target="_blank")
+          a(href="https://www.linkedin.com/company/feel-bridal/" target="_blank")
             img.mr-0(src="~@images/icons/social/bridlx-linkedin-circle.svg")
       .col-12.col-md-6.offset-md-1
         .footer-links.flex
           .copyright.p-4 &copy; 2021 bridlx
           a(href="#").p-4 Hilfe & Support
-          a(href="#").p-4 Datenschutz
-          a(href="#").p-4 Impressum
+          a(href="privacy").p-4 Datenschutz
+          a(href="imprint").p-4 Impressum
 </template>
 
 <script>

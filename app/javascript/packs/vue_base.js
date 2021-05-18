@@ -44,6 +44,8 @@ const initApp = function(appName, routerName = false, storeName = false) {
 
   document.addEventListener('DOMContentLoaded', () => {
     const app = new Vue({
+      components: {
+      },
       i18n,
       router,
       store,

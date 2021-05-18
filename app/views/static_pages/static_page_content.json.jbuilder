@@ -1,0 +1,1 @@
+json.extract! @content, :title, :body

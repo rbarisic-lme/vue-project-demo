@@ -5,8 +5,8 @@
     v-expansion-panels(accordion)
       v-expansion-panel(v-for="item in questions" :key="item.question")
         v-expansion-panel-header
-          b {{item.question}}
-        v-expansion-panel-content {{item.answer}}
+          b {{$t('q_and_a.question.'+item.key)}}
+        v-expansion-panel-content {{$t('q_and_a.answer.'+item.key)}}
 
 </template>
 

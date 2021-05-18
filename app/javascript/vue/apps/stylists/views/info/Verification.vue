@@ -15,11 +15,11 @@
       div(v-if="!invoice_mandate_accepted")
         p Wir kümmern uns bei bridlx auch um die unschöne & aufwendige Verwaltungsarbeit für dich. Die Rechnungen enthalten alle Daten, die du uns wahrheitsgemäß bereitgestellt hast.
 
-        v-btn(color="primary" small) Vollmacht lesen
+        v-btn(color="primary" small href="/api/v1/stylists/user_mandate") Vollmacht lesen
         v-checkbox(v-model="invoice_mandate_accepted_temp" label="Ich akzeptiere die Abrechnungsvollmacht")
       div(v-else="!invoice_mandate_accepted")
         p Du hast der Abrechnungsvollmacht bereits zugestimmt.
-        v-btn(color="primary" small) Vollmacht lesen
+        v-btn(color="primary" small href="/api/v1/stylists/user_mandate") Vollmacht lesen
       template(v-slot:info-image)
         img(style="" src="@images/icons/Gesetz.png" width="92")
       template(v-slot:info-text)

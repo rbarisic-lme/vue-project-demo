@@ -2,11 +2,15 @@ class Stylist < User
   attr_accessor :empty_available_extras
   before_save :check_empty_available_extras  
   before_save :sanitize_strings
+
+  after_create :create_mandate_pdf
   
   has_and_belongs_to_many :brands, foreign_key: :user_id
   has_and_belongs_to_many :languages, foreign_key: :user_id
 
   has_many :skills, foreign_key: :user_id, dependent: :delete_all
+
+  has_many :certifications, foreign_key: :user_id, dependent: :delete_all
 
   has_many :available_extras, foreign_key: :user_id, dependent: :delete_all
   has_many :service_extras, through: :available_extras, foreign_key: :user_id, class_name: 'AvailableExtras'
@@ -17,6 +21,7 @@ class Stylist < User
 
   accepts_nested_attributes_for :available_extras, allow_destroy: true
   accepts_nested_attributes_for :skills, allow_destroy: true
+  accepts_nested_attributes_for :certifications, allow_destroy: true
 
   def tutorial_read!
     self.stylist_tutorial_read = true
@@ -35,7 +40,12 @@ class Stylist < User
     self.bank_account.bank_account_data_complete? && self.business.business_data_complete?
   end
 
+  def create_mandate_pdf
+    MandateUser.new(self).generate
+  end
+
   private
+
     def check_empty_available_extras
       if empty_available_extras.present?
         self.available_extras.each do |ae|

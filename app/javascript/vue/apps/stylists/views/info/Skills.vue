@@ -1,30 +1,21 @@
 <template lang="pug">
   .container.p-0
-    BlockWithInfo(title="Portfolio")
-      template(v-slot:info-text)      
-        span Das Portfolio ist dein persönliches Aushängeschild und dient primär zur Entscheidungsfindung zukünftiger Kunden. Teile deine Highlights mit uns!
-      template(v-slot:info-image)      
-        img(style="" src="@images/icons/Profilsichtbarkeit.png" width="92")
-
+    PortfolioForm
     SkillsForm
+    CertificationsForm
 
-    BlockWithInfo(title="Zertifizierungen")
-      h3.heading-h3(color="primary") Lass dir deine Skills bestätigen
-
-      template(v-slot:info-text)      
-        span Dein Können wurde bereits prämiert- Gratulation! Teile es mit deinen Kunden.
-      template(v-slot:info-image)      
-        img(style="" src="@images/icons/Zertifikat.png" width="92")
 </template>
 
 <script>
+import PortfolioForm from '@/components/stylist/forms/portfolio_form.vue'
 import SkillsForm from '@/components/stylist/forms/skills_form.vue'
-import BlockWithInfo from '@/components/block_with_info.vue'
+import CertificationsForm from '@/components/stylist/forms/certifications_form.vue'
 
 export default {
   components: {
-    BlockWithInfo,
+    PortfolioForm,
     SkillsForm,
+    CertificationsForm,
   },
   props: {
 

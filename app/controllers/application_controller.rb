@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
     def current_user
       if auth_header && auth_header.match?(/\ABearer .+\z/)
         Warden::JWTAuth::UserDecoder.new.call(jwt_token, :user, nil)
+      elsif cookies[:jwt]
+        Warden::JWTAuth::UserDecoder.new.call(cookies[:jwt], :user, nil)
       else
         nil
       end

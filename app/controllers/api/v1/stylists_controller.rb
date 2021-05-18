@@ -48,6 +48,14 @@ class Api::V1::StylistsController < ApplicationController
     end
   end
 
+  def user_mandate
+    send_file(
+      current_stylist.create_mandate_pdf,
+      filename: "Abrechnungsvollmacht-#{current_stylist.initials}.pdf",
+      type: "application/pdf"
+    )
+  end
+
   # DELETE /api/v1/stylists/1 or /api/v1/stylists/1.json
   def destroy
   #   @stylist.destroy
@@ -68,6 +76,7 @@ class Api::V1::StylistsController < ApplicationController
 
       available_extras = params["stylist"]["available_extras_attributes"]
       skills  = params["stylist"]["skills_attributes"]
+      certifications  = params["stylist"]["certifications_attributes"]
 
       if available_extras
         params["stylist"]["available_extras_attributes"] = available_extras.map do |extra|
@@ -79,6 +88,12 @@ class Api::V1::StylistsController < ApplicationController
       if skills
         params["stylist"]["skills_attributes"] = skills.map do |skill|
           json_skill = JSON.parse(skill).merge user_id: current_stylist.id
+        end
+      end
+
+      if certifications
+        params["stylist"]["certifications_attributes"] = certifications.map do |cert|
+          json_cert = JSON.parse(cert).merge user_id: current_stylist.id
         end
       end
 
@@ -131,6 +146,15 @@ class Api::V1::StylistsController < ApplicationController
           :user_id,
           :price,
           :_destroy,
+        ],
+        certifications_attributes: [
+          :id,
+          :user_id,
+          :title,
+          :certified_by,
+          :start_date,
+          :end_date,
+          :body,
         ]
       )
     end

@@ -40,6 +40,15 @@ User.create!(
   role: 'bride'
 )
 
+User.create!(
+  email: 'admin@example.com',
+  password: 'alpine123',
+  password_confirmation: 'alpine123',
+  first_name: 'Admin',
+  last_name: 'bridlx',
+  role: 'admin',
+)
+
 # Stylist
 Stylist.create!(
   email: "stylist@example.com",
@@ -50,6 +59,13 @@ Stylist.create!(
   role: 'stylist'
 )
 
+# Static Pages content
+
+StaticPage.create!(title: 'imprint', body: File.read(Rails.root.join('app', 'javascript', 'vue', 'data' '/markdown/imprint.md')))
+StaticPage.create!(title: 'terms', body: File.read(Rails.root.join('app', 'javascript', 'vue', 'data' '/markdown/terms.md')))
+StaticPage.create!(title: 'privacy', body: File.read(Rails.root.join('app', 'javascript', 'vue', 'data' '/markdown/privacy.md')))
+StaticPage.create!(title: 'about_us')
+StaticPage.create!(title: 'mangopay_terms')
 # Populate Brands
 
 begin

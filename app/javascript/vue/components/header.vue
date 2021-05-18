@@ -1,7 +1,7 @@
 <template lang="pug">
   div
     .d-block.d-lg-none
-      v-app-bar(fixed elevate-on-scroll style="z-index: 9900;")
+      v-app-bar(:fixed="!static" elevate-on-scroll style="z-index: 9900;")
         v-app-bar-nav-icon(@click="drawer = true")
         v-toolbar-title bridlx
 
@@ -18,7 +18,7 @@
               v-list-item-title {{link.text}}
 
     .d-none.d-lg-block
-      .header.flex.animate__animated(:class="{scrolled: scrolled, sticky: isSticky, animate__fadeInDown: !isSticky}")
+      .header.flex.animate__animated(:class="{scrolled: scrolled || static, sticky: isSticky, animate__fadeInDown: !isSticky}")
         .header-logos.flex
           .item.p-3
             //- a(href="/")
@@ -58,6 +58,10 @@ export default {
   props: {
     type: String,
     links: Array,
+    static: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {

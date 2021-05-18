@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
@@ -37,6 +37,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-rails_csrf_protection'
 
+gem 'wkhtmltopdf-binary' # needed for wicked_pdf
+gem 'pdfkit' # pdf generation
+
 gem "standardrb" # Coding Standards (linter etc.)
 gem "kaminari" # pagination
 gem "figaro" # enables application.yml ENV
@@ -59,6 +62,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem "honeybadger", "~> 4.0"
 
+gem 'rails_admin', '~> 2.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -22,6 +22,7 @@ const state = () => ({
   brands: [],
   languages: [],
   skills: [],
+  certifications: [],
   extras: [],
   available_extras: [],
   available_extra_ids: [],
@@ -126,10 +127,34 @@ const actions = {
       headers: { "Content-Type": "multipart/form-data" }
     })
   },
+  async addNewCert(ctx, payload) {
+    ctx.state.dataParsing = true
+
+    let formData = new FormData();
+    formData.append("stylist[certifications_attributes][]", JSON.stringify(payload))
+
+    try {  
+      let result = await this._vm.$axios.put(`/api/v1/stylists/${ctx.state.id}`, formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+
+      await ctx.dispatch('loadAccount')
+
+      this._vm.$toast.open(i18n.t('form.message.update.success'))
+
+      return result
+    } catch {
+      this._vm.$toast.open({message: i18n.t('form.message.update.failure'), type: 'error'});
+      return {error: 'update failed'}
+    } finally {
+      ctx.state.dataParsing = false      
+    }
+  },
   async updateSkills(ctx, payload) {
     ctx.state.dataParsing = true
 
     let formData = new FormData();
+
     payload.forEach(skill => {
       formData.append("stylist[skills_attributes][]", JSON.stringify(skill))
     })

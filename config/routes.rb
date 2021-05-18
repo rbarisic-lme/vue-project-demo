@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/management', as: 'rails_admin'
+
   # resources :stylists, only: [:index]
   devise_for :users, defaults: {format: :json}, controllers: {
     sessions: 'users/sessions',
@@ -8,11 +10,13 @@ Rails.application.routes.draw do
 
   root 'static_pages#landing_page'
 
-  get 'terms', to: 'static_pages#terms'
-  get 'about_us', to: 'static_pages#about_us'
-  get 'imprint', to: 'static_pages#imprint'
-  get 'privacy', to: 'static_pages#privacy'
-  get 'become-a-stylist', to: 'static_pages#become_a_stylist'
+  get "static_pages/:title", to: "static_pages#static_page_content"
+
+  # get 'terms', to: 'static_pages#terms'
+  # get 'about_us', to: 'static_pages#about_us'
+  # get 'imprint', to: 'static_pages#imprint'
+  # get 'privacy', to: 'static_pages#privacy'
+  # get 'become-a-stylist', to: 'static_pages#become_a_stylist'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -70,10 +74,13 @@ Rails.application.routes.draw do
       resources :stylists do
         get 'current', on: :collection
         get 'authenticated', on: :collection
+        get 'user_mandate', on: :collection
         # get 'business', on: :collection, action: :show_current
         # put 'business' on: :collection, action: :update_current
         # resources :brands
       end
     end
   end
+
+  get "/*path", to: "static_pages#landing_page", format: false
 end

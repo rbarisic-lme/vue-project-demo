@@ -36,6 +36,10 @@ json.skills do
   json.array! stylist.skills, :id, :user_id, :name, :level
 end
 
+json.certifications do
+  json.array! stylist.certifications, :id, :title, :certified_by, :body, :start_date, :end_date
+end
+
 json.ready_for_kyc stylist.ready_for_kyc?
 
 json.avatar_url url_for(stylist.avatar) if stylist.avatar.attached?

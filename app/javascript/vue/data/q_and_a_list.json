@@ -1,10 +1,17 @@
 [
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"},
-  {"question": "what?", "answer": "why"}
+  {"key": "booking"},
+  {"key": "become_stylist"},
+  {"key": "stylist_who"},
+  {"key": "define_offer"},
+  {"key": "driving_cost"},
+  {"key": "only_stylist"},
+  {"key": "finanzamt"},
+  {"key": "signup_cost"},
+  {"key": "bride_cost"},
+  {"key": "provision"},
+  {"key": "international"},
+  {"key": "styling_where"},
+  {"key": "trials"},
+  {"key": "stuck"},
+  {"key": "skinprep"}
 ]
