@@ -18,7 +18,7 @@ BlockWithInfo(title="Bankverbindung")
         .text-right
           v-btn(rounded color="primary" x-large @click="save" :loading="loading" :disabled="!valid") Speichern
   template(v-slot:info-image)
-    img.img-annotation(src="@images/icons/bridlx icon complete set_page_16.svg")
+    img.img-annotation(src="@images/icons/Bankdaten.png")
   template(v-slot:info-text)
     p.body-2 Gute Leistung zahlt sich aus. Mithilfe deiner Angaben steht der Auszahlung nichts mehr im Wege.
 </template>

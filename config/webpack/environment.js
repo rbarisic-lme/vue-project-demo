@@ -4,6 +4,7 @@ const _ = require('lodash')
 const { environment } = require('@rails/webpacker')
 
 const { VueLoaderPlugin } = require('vue-loader')
+// const { VuetifyLoaderPlugin } = require('vuetify-loader')
 const vue = require('./loaders/vue')
 const pug = require('./loaders/pug')
 
@@ -11,8 +12,10 @@ const pug = require('./loaders/pug')
 
 // prepend loaders
 environment.plugins.prepend('VueLoaderPlugin', new VueLoaderPlugin())
+// environment.plugins.append('VuetifyLoaderPlugin', new VuetifyLoaderPlugin())
 environment.loaders.prepend('vue', vue)
 environment.loaders.prepend('pug', pug)
+
 // environment.loaders.prepend('scss', sassResourcesLoader)
 // environment.loaders.prepend('style!css!sass!sass-resources', sassResourcesLoader)
 

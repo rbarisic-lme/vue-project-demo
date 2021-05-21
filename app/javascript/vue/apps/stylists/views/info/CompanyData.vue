@@ -36,13 +36,13 @@
 
     template(v-slot:info-text)
       div.img-and-text.mb-8
-          img.img-annotation(src="@images/icons/bridlx icon complete set_page_25.svg")
+          img.img-annotation(src="@images/icons/Agreement.png")
           p.body-2 Wir erwarten gegenseitige Transparenz als Schlüssel einer tollen Zusammenarbeit.
       div.img-and-text.mb-8
-          img.img-annotation(src="@images/icons/bridlx icon complete set_page_16.svg")
+          img.img-annotation(src="@images/icons/Bankdaten.png")
           p.body-2 Alle Informationen müssen der landesspezifischen Gesetzgebung deiner Rechtsform entsprechen.
       div.img-and-text
-          img.img-annotation(src="@images/icons/bridlx icon complete set_page_31.svg")
+          img.img-annotation(src="@images/icons/Gesetz.png")
           p.body-2 Das Steuerrecht deines Landes gilt es einzuhalten.
 </template>
 

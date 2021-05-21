@@ -10,7 +10,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx icon complete set_page_01.svg")
+                img(style="max-width: 48px" src="@images/icons/Person.png")
               .col-12.col-md-9
                 p.lead
                   b Profil anlegen
@@ -19,7 +19,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx icon complete set_page_11.svg")
+                img(style="max-width: 48px" src="@images/icons/Kalender.png")
               .col-12.col-md-9
                 p.lead
                   b Kalender pflegen
@@ -28,7 +28,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx-icons-complete-set-magnifier.svg")
+                img(style="max-width: 48px" src="@images/icons/Profilsichtbarkeit.png")
               .col-12.col-md-9
                 p.lead
                   b Sichtbarkeit erhöhen
@@ -37,7 +37,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx icon complete set_page_25.svg")
+                img(style="max-width: 48px" src="@images/icons/Agreement.png")
               .col-12.col-md-9
                 p.lead
                   b Buchungen entgegennehmen
@@ -46,7 +46,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx-icons-complete-set-messages.svg")
+                img(style="max-width: 48px" src="@images/icons/Message.png")
               .col-12.col-md-9
                 p.lead
                   b Kommunikation
@@ -55,7 +55,7 @@
           .container
             .row
               .col-12.col-md-2.content-end
-                img(style="max-width: 48px" src="@images/icons/bridlx icon complete set_page_19.svg")
+                img(style="max-width: 48px" src="@images/icons/Bewertung v2.png")
               .col-12.col-md-9
                 p.lead
                   b Performance

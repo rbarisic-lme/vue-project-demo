@@ -3,25 +3,25 @@
     h2.heading-h2.serif.mt-4.mb-8.text-center Wie es funktioniert
     .row.feature-elements
       .col-md.p-4.feature-element
-        img.banner-img.mb-3.text-center(src="@images/icons/bridlx icon complete set_page_01.svg")
+        img.banner-img.mb-3.text-center(src="@images/icons/Person.png")
         h3.small-title.text-center.mb-2
           span.big-text 1.
           | Profil
         p Lege dein Profil an und lege nach der Verifizierung sofort los! 
       .col-md.p-4.feature-element
-        img.banner-img.mb-3.text-center(src="@images/icons/bridlx icon complete set_page_08.svg")
+        img.banner-img.mb-3.text-center(src="@images/icons/Rakete.png")
         h3.small-title.text-center.mb-2
           span.big-text 2.
           | Marketing
         p Lade ein aussagekräftiges Portfolio hoch und mache mit deinen besten Arbeiten auf dich aufmerksam.
       .col-md.p-4.feature-element
-        img.banner-img.mb-3.text-center(src="@images/icons/bridlx icon complete set_page_19.svg")
+        img.banner-img.mb-3.text-center(src="@images/icons/Bewertung v2.png")
         h3.small-title.text-center.mb-2
           span.big-text 3.
           | Performance
         p Kundenzufriedenheit steht bei bridlx an oberster Stelle. Kommunikation und professionelle Arbeit sind der Schlüssel zum Erfolg.
       .col-md.p-4.feature-element
-        img.banner-img.mb-3.text-center(src="@images/icons/bridlx icon complete set_page_20.svg")
+        img.banner-img.mb-3.text-center(src="@images/icons/Geld.png")
         h3.small-title.text-center.mb-2
           span.big-text 4.
           | Honorierung
