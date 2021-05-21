@@ -10,7 +10,7 @@
       template(v-slot:info-image)
         img(style="" src="@images/icons/Profilsichtbarkeit.png" width="92")
       template(v-slot:actions)
-        v-btn(color="primary" rounded @click="$modal.show('portfolioModal')") Hinzufügen
+        v-btn(color="primary" rounded @click="$modal.show('portfolioModal')" :loading="$store.state.stylist.dataParsing") Hinzufügen
     Modal(name="portfolioModal" height="auto" :maxWidth="600" :adaptive="true")
       .p-4
         p Bilder hinzufügen
@@ -24,7 +24,7 @@
           p.lead Bild bearbeiten
           v-card.mb-4
             img.big-image(:src="activeImage.image_url" v-if="activeImage")
-          v-btn.mt-3(@click="deleteImg" color="primary") Löschen
+          v-btn.mt-3(@click="deleteImg" color="primary" :loading="$store.state.stylist.dataParsing") Löschen
 </template>
 
 <script>
@@ -52,10 +52,15 @@ export default {
     }
   },
   computed: {
-    activeImage() {
-      return this.portfolio_images.find(el => {
-        return el.id === this.activeImageId
-      })
+    activeImage: {
+      get() {
+        return this.portfolio_images.find(el => {
+          return el.id === this.activeImageId
+        })
+      },
+      set(id) {
+        this.activeImageId = id
+      }
     },
     ...mapFields(['portfolio_images'])
   },

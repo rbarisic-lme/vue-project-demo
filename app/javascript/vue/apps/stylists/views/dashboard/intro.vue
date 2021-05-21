@@ -63,7 +63,7 @@
       .row
         .col-12
           .text-center
-            v-btn(color="primary" @click="tutorialRead" :loading="this.$store.state.stylist.dataParsing") Verstanden
+            v-btn(color="primary" @click="tutorialRead" :loading="$store.state.stylist.dataParsing") Verstanden
 </template>
 
 <script>
