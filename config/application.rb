@@ -11,7 +11,7 @@ module BridlxWeb
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
-    config.hosts << "435423dcc670.ngrok.io"
+    config.hosts << "6be65c748bcf.ngrok.io"
     config.hosts << "bridlx.herokuapp.com"
     config.hosts << "bridlx.com"
     config.hosts << "app.bridlx.com"

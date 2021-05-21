@@ -12,6 +12,8 @@ const state = () => ({
   profile_published: undefined,
   stylist_tutorial_read: undefined,
   ready_for_kyc: false,
+  kyc_verified: false,
+  kyc_pending: false,
   initials: undefined,
   first_name: undefined,
   last_name: undefined,
@@ -60,9 +62,8 @@ const getters = {
   getProp: (state, payload) => {
       state[payload.prop]
   },
-  profileLink: state => {
-    return '/profiles/' + state.md5_identifier
-  },
+  profileLink: state => { return '/profiles/' + state.md5_identifier},
+  reviewLink:  state => { return '/review/' + state.md5_identifier},
   brands: state =>  {
     return state.brands
   },
@@ -92,6 +93,31 @@ const getters = {
     } else {
       return false
     }
+  },
+  verificationComplete: state => {
+    return state.kyc_verified
+  },
+  readyForPublishing: (state, getters) => {
+    console.log(getters)
+    if (state.about_me != null
+      && getters.addressPresent
+      && state.languages.length > 0
+      && state.brands.length > 0
+      && getters.workspacePresent
+      && state.service_radius != null
+      && getters.servicePackagePricesPresent
+      && state.available_extras.length > 0
+      // && getters['business/businessDataComplete']
+      // && getters['bankAccount/dataComplete']
+      // && getters.verificationComplete
+      // && state.invoice_mandate_accepted
+    ) {
+      return true
+    } else {
+      return false
+    }
+
+
   }
 }
 
@@ -233,7 +259,7 @@ const actions = {
     } finally {
       setTimeout(() => {
         ctx.state.dataParsing = false
-      }, 1000)
+      }, 500)
     }
 
   },
@@ -258,7 +284,7 @@ const actions = {
     } finally {
       setTimeout(() => {
         ctx.state.dataParsing = false
-      }, 1000)
+      }, 500)
     }
   },
   async updateAccount(ctx, payload) {
@@ -280,7 +306,7 @@ const actions = {
       })
       // setTimeout(() => {
         this._vm.$toast.open(i18n.t('form.message.update.success'))
-      // }, 1000)
+      // }, 500)
 
         await ctx.dispatch('loadAccount')
 
@@ -291,7 +317,7 @@ const actions = {
     } finally {
       setTimeout(() => {
         ctx.state.dataParsing = false
-      }, 1000)
+      }, 500)
     }
 
   },

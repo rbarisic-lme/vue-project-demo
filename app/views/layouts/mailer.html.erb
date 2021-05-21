@@ -4,10 +4,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
       /* Email styles need to be inline */
+      body, html, .bg {
+        background-color: #EECBC1;
+        background: #EECBC1;
+      }
+      .container {
+        width: 700px;
+        max-width: 80%;
+        margin: 0 auto;
+
+        background: #fff;
+        padding: 32px;
+        border-radius: 6px;
+
+        font-family: "Helvetica", "Arial", sans-serif;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="bg">
+      <div class="container">
+        <h2>bridlx</h2>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

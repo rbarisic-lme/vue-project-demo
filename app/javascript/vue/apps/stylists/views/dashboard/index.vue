@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     shareLink() {
-      return window.location.host + this.$store.getters['stylist/profileLink']
+      return window.location.host + this.$store.getters['stylist/reviewLink']
     },
     fbLink() {
       return "https://www.facebook.com/sharer/sharer.php?u=https://www.bridlx.com&t=Besuche%20mein%20Profil%20auf%20bridlx.%20Dort%20biete%20ich%20meine%20Dienste%20als%20Stylist%20an!"

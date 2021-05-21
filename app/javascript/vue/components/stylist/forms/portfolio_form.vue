@@ -3,7 +3,7 @@
     BlockWithInfo(title="Portfolio")
       .container
         .row
-          .col-6.col-lg-4(v-for="image in portfolio_images" :key="image.id")
+          .col-6.col-lg-4.col-xl-3(v-for="image in portfolio_images" :key="image.id")
             PortfolioImage(:src="image.image_url" @click.native="showModalFor(image.id)")
       template(v-slot:info-text)      
         span Das Portfolio ist dein persönliches Aushängeschild und dient primär zur Entscheidungsfindung zukünftiger Kunden. Teile deine Highlights mit uns!

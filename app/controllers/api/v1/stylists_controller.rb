@@ -10,7 +10,13 @@ class Api::V1::StylistsController < ApplicationController
   def public
     @stylist = Stylist.find_by(md5_identifier: params[:md5_identifier])
     respond_to do |format|
-      format.json { render :show_public, status: :ok }
+      format.json do
+        if @stylist.profile_published || (current_stylist && current_stylist.id == @stylist.id)
+          render :show_public, status: :ok
+        else
+          redirect_unauthorized
+        end
+      end
     end
   end
 
@@ -153,6 +159,7 @@ class Api::V1::StylistsController < ApplicationController
         :empty_available_extras,
         :profile_published,
         :reset_languages,
+        :kyc_pending,
         brand_ids: [], language_ids: [],
         skills_attributes: [
           :id,

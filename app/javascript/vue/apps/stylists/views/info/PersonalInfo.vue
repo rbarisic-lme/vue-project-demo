@@ -21,7 +21,7 @@
           h3.heading-h3.serif.text-center.mb-8 Über dich
           AboutYouForm
     .row
-      .col-12.col-lg-4
+      .col-12.col-lg-6.col-xl-4
         .pb-6
           v-sheet.px-8.py-4(rounded elevation="2")
             h3.heading-h3.serif.text-center.mb-8 Standort
@@ -43,7 +43,7 @@
               :backendItemsName='["languages", "languages"]'
               :itemsInStoreName='["stylist", "languages"]'
             )
-      .col-12.col-lg-8
+      .col-12.col-lg-6.col-xl-8
         v-sheet.h-100.px-8.py-4(rounded elevation="2")
           h3.heading-h3.serif.text-center.mb-8 Arbeitsmittel
           p.text-h6

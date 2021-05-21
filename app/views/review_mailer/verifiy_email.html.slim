@@ -1,0 +1,6 @@
+h1 Verifizieren Sie Ihre E-Mail Adresse
+br
+br
+p Bestätigen Sie Ihre E-Mail Adresse über folgenden Link:
+p
+  == link_to "E-Mail bestätigen", verify_review_email_url(id: @review.id, token: @review.email_verification_token)

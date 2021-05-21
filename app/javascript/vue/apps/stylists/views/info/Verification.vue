@@ -2,10 +2,21 @@
   .container.p-0
     BlockWithInfo(title="Verifizierung")
       p Nachweis mittels Upload eines gültigen amtlichen Ausweisdokumentes sowie der Unternehmensregistrierung beim Finanzamt.
-      p Achtung: Nach der Verifizierung können Sie bestimmte Daten 30 Tage lang nicht mehr anpassen.
-      //- v-divider.my-8
-      div#getid-container.mb-4
-        v-skeleton-loader(type="article, actions")
+
+      div(v-if="$store.state.stylist.kyc_pending")
+        p Ihr Antrag wird momentan bearbeitet. Sie erhalten eine Nachricht, sobald Ihr Antrag überprüft wurde.
+      div(v-else-if="$store.state.stylist.kyc_verified")
+        div
+          .d-flex.align-center
+            p
+              v-icon.mr-2 mdi-check
+            p
+              span Ihr Antrag wurde bestätigt. Sie sind nun bereit für die Nächsten Schritte!
+      div(v-else)
+        p Achtung: Nach der Verifizierung können Sie bestimmte Daten 30 Tage lang nicht mehr anpassen.
+        //- v-divider.my-8
+        div#getid-container.mb-4
+          v-skeleton-loader(type="article, actions")
       template(v-slot:info-image)
         img(style="" src="@images/icons/Sicherheit.png" width="92")
       template(v-slot:info-text)
@@ -26,7 +37,7 @@
         span Wir geben dir nicht nur eine Oberfläche, sondern übernehmen auch die unschönen Zeitfresser. Gib uns dein Go dafür!
       template(v-slot:actions)
         div(v-if="!invoice_mandate_accepted")
-          v-btn(color="primary" rounded large @click="save") Speichern
+          v-btn(color="primary" rounded large @click="saveMandata") Speichern
 </template>
 
 <script>
@@ -63,27 +74,42 @@ export default {
     ...mapFields(['invoice_mandate_accepted'])
   },
   methods: {
-    save() {
+    saveMandata() {
       this.$store.dispatch('stylist/updateAccount', [
         {name: 'invoice_mandate_accepted', value: this.invoice_mandate_accepted_temp }
       ]).then(() => {
 
+      })
+    },
+    setKycPending(pending) {
+      this.$store.dispatch('stylist/updateAccount', [
+        {name: 'kyc_pending', value: pending}
+      ]).then(result => {
+        this.$toast.open(this.$t('form.message.update.kyc_pending'))
       })
     }
   },
   mounted() {
     this.$store.dispatch('stylist/requestGetIdJwtToken').then(response => {
       this.getid_jwt = response.data.token
-
-      initGetIdLauncher({
-        apiUrl: 'https://brildlx.getid.ee',
-        jwt: this.getid_jwt,
-        customerId: this.$store.state.stylist.id,
-        containerId: 'getid-container',
-        flowName: this.legalForm,
-        onComplete: (data) => { console.log("everything is complete", data)},
-        onFail: ({ code, message}) => { console.log("something went wrong: " + message )},
-      })
+      if(!this.$store.state.stylist.kyc_pending && !this.$store.state.stylist.kyc_verified) {
+        initGetIdLauncher({
+          apiUrl: 'https://brildlx.getid.ee',
+          jwt: this.getid_jwt,
+          containerId: 'getid-container',
+          flowName: this.legalForm,
+          metadata: {
+            externalId: this.$store.state.stylist.id
+          },
+          onComplete: (data) => {
+            this.setKycPending(true)
+          },
+          onFail: ({ code, message}) => {
+            console.log("something went wrong: " + message )
+            this.setKycPending(false)
+          },
+        })
+      }
     })
   },
 }

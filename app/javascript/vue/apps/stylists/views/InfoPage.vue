@@ -19,7 +19,7 @@
                       v-icon(v-bind="attrs" v-on="on") mdi-information
                     span {{child.tooltip}}
 
-            v-list-item(v-for="item in plainItems" :key="item.text" link :to="item.url" :disabled="item.disabled")
+            v-list-item(v-for="item in plainItems" :key="item.text" link :to="item.external ? '' : item.url" :href="item.external ? item.url : ''" :disabled="item.disabled" :target="item.target ? item.target : ''")
               v-list-item-title
                 v-list-item-title {{item.text}}
       .col-12.col-md-8.offset-lg-1
@@ -68,6 +68,7 @@ export default {
       return [
         { url: '/info/skills', text: "Skills", disabled: false},
         { url: '/info/checklist', text: "Checkliste"},
+        { url: '/info/publish', text: 'Profil Veröffentlichen', disabled: false}
       ]
     },
     ...mapFields(['ready_for_kyc'])

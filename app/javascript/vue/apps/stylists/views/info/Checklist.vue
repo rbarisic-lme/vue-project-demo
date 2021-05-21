@@ -51,7 +51,7 @@ export default {
           {title: 'Workspace', done: this.$store.getters['stylist/workspacePresent'] },
           {title: 'Umkreis', done: this.$store.state.stylist.service_radius != null },
           {title: 'Paketpreise', done: this.$store.getters['stylist/servicePackagePricesPresent'] },
-          {title: 'Extras', done: this.$store.state.stylist.extras.length > 0 },
+          {title: 'Extras', done: this.$store.state.stylist.available_extras.length > 0 },
         ]},
         {title: 'Unternehmensdaten', route: '/info/business/company-data', key: 'checksBusiness', collection: [
           {title: 'Firmenanschrift', done: this.$store.getters['business/businessDataComplete'] },

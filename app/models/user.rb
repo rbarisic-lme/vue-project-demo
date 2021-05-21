@@ -47,8 +47,7 @@ class User < ApplicationRecord
   end
 
   def kyc_verified?
-    !self.kyc_denied_at? && self.kyc_verified_at? && self.kyc_verified_at > self.kyc_updated_at && self.kyc_verified_with_workflow
-
+    !self.kyc_denied_at? && self.kyc_verified_at? && self.kyc_verified_at >= self.kyc_updated_at && self.kyc_verified_with_workflow.present?
   end
 
   def initials

@@ -20,7 +20,7 @@
                   v-text-field(name="end_date" v-model="end_date" label="Bis" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on")
                 v-date-picker(name="end_date" v-model="end_date" @input="end_date_menu = false")
           v-row
-            v-textarea(:rules="fr.basic.presence" name="input-7-1" v-model="body" filled label="Beschreibung des Zertifikats" auto-grow placeholder="Beschreibung")
+            //- v-textarea(:rules="fr.basic.presence" name="input-7-1" v-model="body" filled label="Beschreibung des Zertifikats" auto-grow placeholder="Beschreibung")
           v-row
             v-btn(color="primary" @click="addNewCert" :loading="$store.state.stylist.dataParsing") hinzufügen
 </template>

@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'become-a-stylist', to: 'static_pages#landing_page'
 
   get 'profiles/:md5_identifier', to: 'static_pages#landing_page'
+  get 'review/:md5_identifier', to: 'static_pages#landing_page'
+
+  get 'reviews/v', to: 'api/v1/reviews#verify', as: 'verify_review_email' #verify with email token
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -41,6 +44,7 @@ Rails.application.routes.draw do
   end
 
   scope :wh, :defaults => { :format => :json } do#webhooks
+    post ENV['wh_getid_started_url'], controller: 'webhooks', action: 'getid_started', as: 'getid_started'
     post ENV['wh_getid_complete_url'], controller: 'webhooks', action: 'getid_complete', as: 'getid_complete'
   end
 
@@ -56,6 +60,8 @@ Rails.application.routes.draw do
       resources :businesses do
         get 'current', on: :collection
       end
+
+      resources :reviews, only: [:create, :update]
 
       resources :portfolio_images
 
@@ -78,7 +84,9 @@ Rails.application.routes.draw do
 
       resources :stylists do
         get 'current', on: :collection
+
         get 'public/:md5_identifier', action: 'public', on: :collection
+
         get 'authenticated', on: :collection
         get 'user_mandate', on: :collection
         # get 'business', on: :collection, action: :show_current

@@ -4,6 +4,7 @@ import LandingPage from '@/apps/landing_page/views/LandingPage'
 import StaticPage from '@/apps/landing_page/views/StaticPage'
 import BecomeAStylistPage from '@/apps/landing_page/views/BecomeAStylistPage'
 import StylistProfilePage from '@/apps/landing_page/views/StylistProfilePage'
+import StylistReviewPage from '@/apps/landing_page/views/StylistReviewPage'
 
 const router = new VueRouter({
   mode: 'history',
@@ -17,6 +18,7 @@ const router = new VueRouter({
     {path: '/privacy', component: StaticPage, props: {name: 'privacy'}},
     {path: '/become-a-stylist', component: BecomeAStylistPage},
     {path: '/profiles/:md5_digest', component: StylistProfilePage},
+    {path: '/review/:md5_digest', component: StylistReviewPage},
     {path: '*', component: LandingPage},
   ]
 });

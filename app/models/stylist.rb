@@ -29,9 +29,13 @@ class Stylist < User
   accepts_nested_attributes_for :portfolio_images, allow_destroy: true
 
   def overall_ratings
-    (self.reviews.pluck(:overall_rating).reduce do |sum, rating|
-      sum + rating
-    end / self.reviews.count).to_f
+    if self.reviews.any?
+      (self.reviews.pluck(:overall_rating).reduce do |sum, rating|
+        sum + rating
+      end / self.reviews.count).to_f
+    else
+      []
+    end
   end
 
   def overall_ratings_detailed

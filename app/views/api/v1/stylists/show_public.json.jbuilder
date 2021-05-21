@@ -1,4 +1,5 @@
 json.extract!(@stylist,
+  :id,
   :profile_published,
   :md5_identifier,
   :stylist_tutorial_read,
@@ -38,6 +39,11 @@ end
 
 json.certifications do
   json.array! @stylist.certifications, :id, :title, :certified_by, :body, :start_date, :end_date, :created_at
+end
+
+json.portfolio_images @stylist.portfolio_images do |pi|
+  json.extract! pi, :id
+  json.image_url url_for(pi.image) if pi.image.attached?
 end
 
 json.reviews do

@@ -12,6 +12,7 @@ import BankAccountView from '@/apps/stylists/views/info/BankAccount'
 import VerificationView from '@/apps/stylists/views/info/Verification'
 import SkillsView from '@/apps/stylists/views/info/Skills'
 import ChecklistView from '@/apps/stylists/views/info/Checklist'
+import PublishView from '@/apps/stylists/views/info/Publish'
 
 const router = new VueRouter({
   mode: 'history',
@@ -25,6 +26,7 @@ const router = new VueRouter({
       {path: 'business/verification', component: VerificationView},
       {path: 'skills', component: SkillsView},
       {path: 'checklist', component: ChecklistView},
+      {path: 'publish', component: PublishView},
     ]},
     {path: '/calendar', component: CalendarPage},
     {path: '/messages', component: MessagesPage},

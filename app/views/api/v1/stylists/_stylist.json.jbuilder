@@ -29,9 +29,12 @@ json.extract! stylist,
   :workspace_zipcode,
   :workspace_country,
   :invoice_mandate_accepted,
-  :overall_ratings_detailed
+  :overall_ratings_detailed,
+  :kyc_pending
   # :ratings_by_stars,
   # :overall_ratings
+
+json.kyc_verified stylist.kyc_verified?
 
 json.available_extras do
   json.array! stylist.available_extras, :id, :user_id, :service_extra_id, :price

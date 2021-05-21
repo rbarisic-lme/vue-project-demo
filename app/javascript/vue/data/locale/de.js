@@ -86,7 +86,8 @@ export default {
     message: {
       update: {
         success: 'Erfolgreich gespeichert',
-        failure: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut'
+        failure: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut',
+        kyc_pending: 'Ihr Antrag wird bearbeitet. Sie erhalten eine Nachricht, sobald Ihr Antrag überprüft wurde.'
       },
       clipboard_copy_success: 'Der Link wurde in die Zwischenablage kopiert'
     },
