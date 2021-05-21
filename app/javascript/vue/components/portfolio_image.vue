@@ -34,5 +34,6 @@ export default {
     background-size: cover;
     height: 100%;
     width: 100%;
+    max-height: 400px;
   }
 </style>

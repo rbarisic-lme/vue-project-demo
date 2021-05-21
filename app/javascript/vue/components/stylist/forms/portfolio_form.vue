@@ -22,7 +22,8 @@
       .p-4
         div.m-8.portfolio-modal
           p.lead Bild bearbeiten
-          img.big-image(:src="activeImage.image_url" v-if="activeImage")
+          v-card.mb-4
+            img.big-image(:src="activeImage.image_url" v-if="activeImage")
           v-btn.mt-3(@click="deleteImg" color="primary") Löschen
 </template>
 
@@ -89,5 +90,10 @@ export default {
 <style lang="scss" scoped>
   .portfolio-modal {
     max-height: 80vh;
+  }
+  .big-image {
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 400px;
   }
 </style>
