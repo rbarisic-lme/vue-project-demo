@@ -83,7 +83,7 @@ export default {
           this.$toast.open('Adresse erfolgreich geupdated')
         })
         .catch(error => {
-         this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+         this.$toast.open({message: this.$t('form.message.update.failure'), type: 'error'});
         }).finally(result => {
           this.loading = false
         })

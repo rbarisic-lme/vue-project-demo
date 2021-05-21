@@ -2,12 +2,16 @@
 .container.p-0
   BlockWithInfo(title="Unternehmensdaten" :hideImageBlock="true")
     p Diese Angaben sind für die Erstellung Ihrer Rechnungen notwendig. Sie erscheinen nicht auf Ihrem Profil.
-    p.body-2.mb-8
-      span Zu kompliziert? Lassen Sie sich den Vorgang von unserem Partner
-      a(href="https://app.getsorted.de/#anonymous_login")
-        |  GetSorted
-      span
-        |  vereinfachen.
+    v-row
+      v-col(md="8")
+        p.body-2.mb-8
+          a.sorted-banner(href="https://app.getsorted.de/#anonymous_login" target="_blank")
+            img(src="@images/Bridlx_Sorted_mit_Text.png")
+            //- div.sorted-banner--text
+            //-   span Der perfekte Start in die Selbsständigkeit. Unsere Partner von Sorted helfen dir dabei!
+            //-   br
+            //-   span #getsorted
+            //- img(src="@images/Bridlx_Sorted_ohne_Text.jpg")
     v-row
       v-col(md="8")
         v-form
@@ -107,5 +111,36 @@ export default {
 <style lang="scss" scoped>
 .img-annotation {
  width: 48px; 
+}
+.sorted-banner {
+  display: block;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+    &:hover {
+      img {
+        transform: scale(1.05);
+      }
+      .overlay-lighten {
+        background: rgba(255,255,255,0.1);
+      }
+    }
+  img {
+    transition: transform .2s;
+  }
+  .sorted-banner--text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    height: 100%;
+    width: 60%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+  }
 }
 </style>

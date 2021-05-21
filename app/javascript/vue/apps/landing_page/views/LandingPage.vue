@@ -41,9 +41,9 @@ export default {
     return {
       position: 0,
       headerLinks: [
-        {url: "#", text: "Entdecken"},
-        {url: "/become-a-stylist", text: "Stylist werden"},
-        {url: "#", text: "Login", modal: "signIn"},
+        {url: "#", text: "discover"},
+        {url: "/become-a-stylist", text: "become_a_stylist", active: true},
+        {url: "#", text: "login", modal: "signIn"},
       ]
     }
   }

@@ -2,22 +2,22 @@
   .form--rows
     OAuthFacebookBtn(type="register")
     v-btn(block large color="#fff" dark).mb-4.text--black
-      v-icon(left) mdi-google
-      |  Mit Google registrieren
-    div.my-4.text-center Oder
+      v-icon(left).mr-2 mdi-google
+      span {{$t('header.signup_google')}}
+    div.my-4.text-center {{$t('header.or')}}
     v-form(v-model="valid")
       v-container(fluid)
         v-row
           v-col.py-0
-            v-text-field(lazy-validation :rules="fr.stylist.first_name" v-model="first_name" label="Vorname" autocomplete="first-name")
+            v-text-field(lazy-validation :rules="fr.stylist.first_name" v-model="first_name" :label="$t('form.label.first_name')" autocomplete="first-name")
           v-col.py-0
-            v-text-field(lazy-validation :rules="fr.stylist.last_name" v-model="last_name" label="Nachname" autocomplete="family-name")
+            v-text-field(lazy-validation :rules="fr.stylist.last_name" v-model="last_name" :label="$t('form.label.last_name')" autocomplete="family-name")
         v-row
-          v-text-field(lazy-validation :rules="fr.stylist.email" v-model="email" label="E-Mail" autocomplete="email" type="email" prepend-inner-icon="mdi-at")
+          v-text-field(lazy-validation :rules="fr.stylist.email" v-model="email" :label="$t('form.label.email')" autocomplete="email" type="email" prepend-inner-icon="mdi-at")
         v-row
-          v-text-field(lazy-validation :rules="fr.stylist.password" v-model="password" autocomplete="new-password" label="Passwort" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
+          v-text-field(lazy-validation :rules="fr.stylist.password" v-model="password" autocomplete="new-password" :label="$t('form.label.password')" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
         v-row
-          v-text-field(lazy-validation :rules="pwConfirmRule" v-model="password_confirmation" autocomplete="new-password" label="Passwort bestätigen" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
+          v-text-field(lazy-validation :rules="pwConfirmRule" v-model="password_confirmation" autocomplete="new-password" :label="$t('form.label.password_confirmation')" :append-icon="showPw ? 'mdi-eye' : 'mdi-eye-off'" :type="showPw ? 'text' : 'password'" @click:append="showPw = !showPw" prepend-inner-icon="mdi-lock")
 
     v-btn(block large color="#6ccc52" @click="signup" :loading="loading" :disabled="!valid").mb-4 Weiter
 </template>
@@ -71,7 +71,7 @@ export default {
           // window.location = '/stylists'
         // }
       }).catch( error => {
-        this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+        this.$toast.open({message: this.$t('form.message.update.failure'), type: 'error'});
       })
 
       this.loading = false
@@ -94,7 +94,7 @@ export default {
           window.location = '/dashboard'
         }
       }).catch(error => {
-       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+       this.$toast.open({message: this.$t('form.message.update.failure'), type: 'error'});
       }).finally(() => {
         this.loading = false;
       })

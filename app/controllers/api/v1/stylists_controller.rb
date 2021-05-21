@@ -43,7 +43,6 @@ class Api::V1::StylistsController < ApplicationController
   # PATCH/PUT /api/v1/stylists/1 or /api/v1/stylists/1.json
   def update
     # @stylist.available_extras.build
-
     respond_to do |format|
       # @stylist.available_extras.build(stylist_params["available_extras_attributes"])
 
@@ -84,6 +83,7 @@ class Api::V1::StylistsController < ApplicationController
       available_extras = params["stylist"]["available_extras_attributes"]
       skills  = params["stylist"]["skills_attributes"]
       certifications  = params["stylist"]["certifications_attributes"]
+      portfolio_images  = params["stylist"]["portfolio_images_attributes"]
 
       if available_extras
         params["stylist"]["available_extras_attributes"] = available_extras.map do |extra|
@@ -101,6 +101,12 @@ class Api::V1::StylistsController < ApplicationController
       if certifications
         params["stylist"]["certifications_attributes"] = certifications.map do |cert|
           json_cert = JSON.parse(cert).merge user_id: current_stylist.id
+        end
+      end
+
+      if portfolio_images
+        params["stylist"]["portfolio_images_attributes"] = portfolio_images.map do |pi|
+          json_pi = JSON.parse(pi).merge user_id: current_stylist.id
         end
       end
 
@@ -161,6 +167,12 @@ class Api::V1::StylistsController < ApplicationController
           :user_id,
           :price,
           :_destroy,
+        ],
+        portfolio_images_attributes: [
+          :id,
+          :_destroy,
+          :user_id,
+          :image
         ],
         certifications_attributes: [
           :id,

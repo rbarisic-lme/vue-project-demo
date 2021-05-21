@@ -93,7 +93,7 @@ export default {
       if(this.isValid()) {
         this.loading = true
         this.$store.dispatch(this.saveAction, this.itemsInStore).catch(error => {
-          this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+          this.$toast.open({message: this.$t('form.message.update.failure'), type: 'error'});
         })
         .finally(() => {
           setTimeout(() => {

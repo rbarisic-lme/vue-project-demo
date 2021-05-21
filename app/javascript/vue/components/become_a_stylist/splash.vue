@@ -4,8 +4,8 @@
     template(v-slot:default)
       v-container
         div
-          h2.heading-h2(style="font-weight: 600") When passion becomes your profession.
-          v-btn.mt-8(x-large color="accent" elevation="0" @click="$modal.show('signIn')") Jetzt anmelden
+          h2.heading-h2(style="font-weight: 600") {{$t('stylist_landing.slogan')}}
+          v-btn.mt-8(x-large color="accent" elevation="0" @click="$modal.show('signIn')") {{$t('stylist_landing.sign_up')}}
 </template>
 
 <script>

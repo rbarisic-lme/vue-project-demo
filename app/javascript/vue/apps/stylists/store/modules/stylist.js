@@ -29,6 +29,7 @@ const state = () => ({
   available_extras: [],
   available_extra_ids: [],
   available_extra_values: {},
+  portfolio_images: [],
   street: undefined,
   city: undefined,
   zipcode: undefined,
@@ -235,6 +236,30 @@ const actions = {
       }, 1000)
     }
 
+  },
+  async updatePortfolioImages(ctx, payload) {
+    ctx.state.dataParsing = true
+    let formData = new FormData();
+    formData.append('portfolio_image[user_id]', ctx.state.id)
+    formData.append('portfolio_image[image]', payload.image)
+
+    try {
+      let result = await this._vm.$axios.post(`/api/v1/portfolio_images/`, formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      })
+
+      this._vm.$toast.open(i18n.t('form.message.update.success'))
+      await ctx.dispatch('loadAccount')
+
+      return result
+    } catch {
+      this._vm.$toast.open({message: i18n.t('form.message.update.failure'), type: 'error'});
+      return {error: 'update failed'}
+    } finally {
+      setTimeout(() => {
+        ctx.state.dataParsing = false
+      }, 1000)
+    }
   },
   async updateAccount(ctx, payload) {
     ctx.state.dataParsing = true

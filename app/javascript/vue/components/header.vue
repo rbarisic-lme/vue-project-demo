@@ -14,9 +14,8 @@
         v-list(nav dense)
           v-list-item-group
             v-list-item(v-for="link in links", :key="link.text" :href="link.url")
-              //- v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal); drawer = false") {{link.text}}
-              v-list-item-title {{link.text}}
-
+              //- v-list-item-title(v-if="link.modal" @click="$modal.show(link.modal); drawer = false") {{$t('header.'+link.text)}}
+              v-list-item-title {{$t('header.'+link.text)}}
     .d-none.d-lg-block
       .header.flex.animate__animated(:class="{scrolled: scrolled || static, sticky: isSticky, animate__fadeInDown: !isSticky}")
         .header-logos.flex
@@ -33,15 +32,15 @@
             div
               img.logo-bridlx-business(src="@images/logos/bridlx-business-bright.svg" alt="bridlx and Beyond")
         .header-items.text-right
-          span(v-for="link in links" :key="link.text")
-            span(v-if="link.modal" @click="$modal.show(link.modal)" class="link-btn").p-3
-              span {{link.text}}
+          div.p-3.header-locale
+            LocaleChanger
+          .header-links
+            span(v-for="link in links" :key="link.text")
+              span(v-if="link.modal" @click="$modal.show(link.modal)" class="link-btn").p-3
+                span {{$t('header.'+link.text)}}
 
-            a(v-else="link.modal" :href="link.url" :class="{'link--active': link.active}").p-3
-              span {{link.text}}
-
-
-
+              a(v-else="link.modal" :href="link.url" :class="{'link--active': link.active}").p-3
+                span {{$t('header.'+link.text)}}
           //- a(href="#" class="hover:text-white").p-3 Entdecken
           //- a(href="become-a-stylist").p-3 Stylist werden
           //- div.link-btn.p-3(@click="$modal.show('userSignIn')") Login
@@ -50,10 +49,12 @@
 
 <script>
 import SignInModal from '@/components/modals/sign_in_modal'
+import LocaleChanger from '@/components/locale_changer'
 
 export default {
   components: {
     SignInModal,
+    LocaleChanger,
   },
   props: {
     type: String,
@@ -76,7 +77,7 @@ export default {
     },
     scrolled() {
       return this.scrollTop > this.scrollThreshold ? true : false;
-    }
+    },
   },
   mounted () {
     window.addEventListener('scroll', this.onScroll);
@@ -95,7 +96,8 @@ export default {
 <style scoped lang="scss">
   .header {
     transition: all .3s;
-
+    user-select: none;
+    -webkit-touch-callout: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -139,22 +141,29 @@ export default {
       }
     }
     .header-items {
+      display: flex;
       width: 50%;
-      a, .link-btn {
-        position: relative;
-        transition: all .2s;
-        display: inline-block;
-        color: #fff;
-        top: 0px;
-        cursor: pointer;
-        &.link--active {
-          border-bottom: 2px solid #fff;
-          &:hover {
-            top: 0px;
+      flex-direction: column;
+      .header-locale {
+        margin-bottom: 12px;
+      }
+      .header-links {
+        a, .link-btn {
+          position: relative;
+          transition: all .2s;
+          display: inline-block;
+          color: #fff;
+          top: 0px;
+          cursor: pointer;
+          &.link--active {
+            border-bottom: 2px solid #fff;
+            &:hover {
+              top: 0px;
+            }
           }
-        }
-        &:hover {
-          top: 4px;
+          &:hover {
+            top: 4px;
+          }
         }
       }
     }
@@ -162,6 +171,12 @@ export default {
       background: #dcb6aa;
       padding: 0 16px;
       box-shadow: 0 0 4px 0 rgba(0,0,0,0.4);
+      .header-items {
+        flex-direction: row-reverse;
+        .header-locale {
+          margin-bottom: 0;
+        }
+      }
       .header-logos {
         .item {
           img.logo-bridlx {

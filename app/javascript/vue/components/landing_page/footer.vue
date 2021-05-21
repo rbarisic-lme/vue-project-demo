@@ -3,30 +3,30 @@
   .container.footer
     .row
       .col-12.col-md-4
-        h3.heading-h3.serif.mb-4 contact
+        h3.heading-h3.serif.mb-4 {{$t('footer.contact')}}
         ul.no-padding
           li
-            a(href="mailto:contact@bridlx.com") M. contact@bridlx.com
-          li
-            a(href="tel:012 345 678 90") F. 012 345 678 90
+            a(:href="`mailto:${$t('footer.email')}`") M. {{$t('footer.email')}}
+          //- li
+            a(href="tel:012 345 678 90") {{$t('footer.tel')}}
       .col-12.col-md-4
-        h3.heading-h3.serif.mb-4 about
+        h3.heading-h3.serif.mb-4 {{$t('footer.about')}}
         ul.no-padding
           li
-            a(href="#") Karriere
+            a(href="#") {{$t('footer.career')}}
           li
-            a(href="#") Presse
+            a(href="#") {{$t('footer.press')}}
           li
-            a(href="#") Partnerschaften
+            a(href="#") {{$t('footer.partners')}}
       .col-12.col-md-4
-        h3.heading-h3.serif.mb-4 community
+        h3.heading-h3.serif.mb-4 {{$t('footer.community')}}
         ul.no-padding
           li
-            a(href="#") Veranstaltungen
+            a(href="#") {{$t('footer.events')}}
           li
-            a(href="#") Blog
+            a(href="#") {{$t('footer.blog')}}
           li
-            a(href="#") Podcast
+            a(href="#") {{$t('footer.podcast')}}
     .row.mt-8
       .col-12.col-md-5
         .footer-social-icons.flex
@@ -42,10 +42,10 @@
             img.mr-0(src="~@images/icons/social/bridlx-linkedin-circle.svg")
       .col-12.col-md-6.offset-md-1
         .footer-links.flex
-          .copyright.p-4 &copy; 2021 bridlx
-          a(href="#").p-4 Hilfe & Support
-          a(href="/privacy").p-4 Datenschutz
-          a(href="/imprint").p-4 Impressum
+          .copyright.p-4 &copy; {{$t('footer.copyright')}}
+          a(href="#").p-4 {{$t('footer.help')}}
+          a(href="/privacy").p-4 {{$t('footer.privacy')}}
+          a(href="/imprint").p-4 {{$t('footer.imprint')}}
 </template>
 
 <script>

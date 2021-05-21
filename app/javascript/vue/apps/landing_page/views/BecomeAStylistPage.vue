@@ -8,23 +8,23 @@
           .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Netzwerk.png" width="92")
             div.text-center.fact-box
-              b.lead.fact-title Wachsende Community
+              b.lead.fact-title {{$t('stylist_landing.facts.community')}}
               div.lead.fact-number
                 number(:from="0" :to="800" :duration="5" :delay="1")
           .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Wallet.png" width="92")
             div.text-center.fact-box
-              b.lead.fact-title Transaktionen
+              b.lead.fact-title {{$t('stylist_landing.facts.transactions')}}
               div.lead.fact-number
                 number(:from="0" :to="600" :duration="5.2" :delay="1")
           .fact-item.animate__animated.animate__fadeInLeft
             img(style="" src="@images/icons/Herzschlag.png" width="92")
             div.text-center.fact-box
-              b.lead.fact-title Happy Brides
+              b.lead.fact-title {{$t('stylist_landing.facts.happy_brides')}}
               div.lead.fact-number
                 number(:from="0" :to="500" :duration="4.8" :delay="1")
       .container.bridlx-features.pt-8.pb-8
-      h2.heading-h2.serif.mt-4.mb-8.text-center Schließe dich unserer Community an
+      h2.heading-h2.serif.mt-4.mb-8.text-center {{$t('stylist_landing.join')}}
       v-item-group.mb-8.pb-8
         v-container
           v-row
@@ -41,7 +41,7 @@
             .col-12.col-md-6.col-lg-4.col-xl-3
               v-card(style="height: 600px; background: #e7e6e6").lead-card.h-100
                 div.d-flex.text-center.cursor-pointer.clickable-card
-                  p.p-8.text-h5 Zauberst du anderen auch gerne ein Lächeln ins Gesicht?
+                  p.p-8.text-h5 {{$t('stylist_landing.join_phrase')}}
                   p.p-8.text-h3.d-flex.justify-center
                     span(style="color: #fff; font-weight: bold")
                       | +1
@@ -52,26 +52,26 @@
           .container.h-100
             .row.h100p.h-100.d-100.no-gutters
               .col-12
-                h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") Zeit für ein neues Kapitel?
+                h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") {{$t('stylist_landing.time_for_a_new_chapter')}}
               .col-6.d-none.d-lg-block.h-100
-                p.lead.w-50.mb-4(style="display: inline-block;") Wir helfen dir dabei dein Herzensbusiness aufzubauen! Zusammen mit unserem Kooperationspartner sorted erledigst du stressfrei und unbürokratisch alle Formalitäten #getsorted
+                p.lead.w-50.mb-4(style="display: inline-block;") {{$t('stylist_landing.chapter_string')}}
                 p.mt-4
-                  a.mt-4.btn-lead(href="https://app.getsorted.de/#anonymous_login" target="_blank") Starte jetzt
+                  a.mt-4.btn-lead(href="https://app.getsorted.de/#anonymous_login" target="_blank") {{$t('stylist_landing.start_now')}}
               .col-12.col-lg-6
                 img.img-stylist(src="@images/illustrations/bridlx-painting.png" height="400")
         .container-slider(key="2" style="height: 600px; background: #FDE4AE")
           .h-100.d-100(style="color: #fff;").p-4
             div(style="max-width: 1200px; margin: 0 auto;")
-                h2.heading-h2.pt-8(style="font-weight: bold") „ Mein größter Wunsch ist es vielen talentierten Stylisten eine Oberfläche zu bieten. Somit können sie sich genau auf das konzentrieren, was sie lieben – Menschen ein lächeln ins Gesicht zu zaubern. “
-                h3.heading-h3.text-right.serif Alisa, Gründerin und CO-CEO bridlx
+                h2.heading-h2.pt-8(style="font-weight: bold") {{$t('stylist_landing.quote_1')}}
+                h3.heading-h3.text-right.serif {{$t('stylist_landing.ceo_quote')}}
         .container-slider(key="3" style="height: 600px; background: #98A3B4; color: #fff")
           .container.h-100
             .row.h100p.h-100.d-100.no-gutters
               .col-12
-                h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") Der erste Eindruck zählt.
+                h2.heading-h2.serif.mb-2.mt-8(style="font-weight: bold") {{$t('stylist_landing.first_impression')}}
               .col-6.d-none.d-lg-block
-                p.lead.w-50 Steigere deine Sichtbarkeit und sorge für eine positive Kundenwahrnehmung durch ein authentisches, professionelles Profil. Was es hierbei zu berücksichtigen gibt, findest du&nbsp;
-                  a(href="#").this-weird-link hier
+                p.lead.w-50 {{$t('stylist_landing.impression_string')}}&nbsp;
+                  a(href="#").this-weird-link {{$t('stylist_landing.here')}}
               .col-12.col-lg-6
                 img.img-stylist(src="@images/illustrations/bridlx-magnet.png" height="400")
       CustomerStories
@@ -104,9 +104,9 @@ export default {
     return {
       position: 0,
       headerLinks: [
-        {url: "#", text: "Entdecken"},
-        {url: "/become-a-stylist", text: "Stylist werden", active: true},
-        {url: "#", text: "Login", modal: "signIn"},
+        {url: "#", text: "discover"},
+        {url: "/become-a-stylist", text: "become_a_stylist", active: true},
+        {url: "#", text: "login", modal: "signIn"},
       ]
     }
   },

@@ -25,8 +25,8 @@
 
         .col-12.col-lg-8.offset-lg-1
           v-sheet.px-8.py-4.mb-8(rounded elevation="2")
-            h3.heading-h3.serif.mb-8.text-center Dein Dashboard
-            p.lead Sobald du Kundenanfragen erhältst, wirst du hier deine Dashboard Informationen sehen können.
+            h3.heading-h3.serif.mb-8.text-center {{$t('dashboard.title')}}
+            p.lead {{$t('dashboard.no_items')}}
           //- v-sheet.px-8.py-4.mb-8(rounded elevation="2")
           //-   h3.heading-h3.serif.mb-8.text-center Du wirst wahrgenommen
           //- v-sheet.px-8.py-4.mb-8(rounded elevation="2")

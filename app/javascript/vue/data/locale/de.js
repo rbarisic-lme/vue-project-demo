@@ -1,8 +1,82 @@
 export default {
+  header: {
+    discover: "Entdecken",
+    become_a_stylist: "Stylist werden",
+    login: "Login",
+    homepage: "Startseite",
+    signup: "Registrieren",
+    signin: "Anmelden",
+    at_bridlx: "bei bridlx",
+    signup_google: "Mit Google registrieren",
+    signup_fb: "Mit Facebook registrieren",
+    signin_google: "Weiter mit Google",
+    signin_fb: "Weiter mit Facebook",
+    or: 'Oder',
+  },
+  footer: {
+    contact: "Kontakt",
+    email: "contact@bridlx.com",
+    tel: "F. 012 345 678 90",
+    about: "About",
+    career: "Karriere",
+    press: "Presse",
+    partners: "Partnerschaften",
+    community: "Community",
+    events: "Veranstaltungen",
+    blog: "Blog",
+    podcast: "Podcast",
+    copyright: "2021 bridlx",
+    help: "Hilfe & Support",
+    privacy: "Datenschutz",
+    imprint: "Impressum",
+  },
+  dashboard: {
+    title: "Dein Dashboard",
+    no_items: "Sobald du Kundenanfragen erhältst, wirst du hier deine Dashboard Informationen sehen können."
+  },
+  stylist_landing: {
+    slogan: "When passion becomes your profession.",
+    sign_up: "Jetzt anmelden",
+    facts: {
+      community: "Wachsende Community",
+      transactions: "Transaktionen",
+      happy_brides: "Happy Brides",
+    },
+    join: "Schließe dich unserer Community an",
+    join_phrase: "Zauberst du anderen auch gerne ein Lächeln ins Gesicht?",
+    time_for_a_new_chapter: "Zeit für ein neues Kapitel?",
+    chapter_string: "Wir helfen dir dabei dein Herzensbusiness aufzubauen! Zusammen mit unserem Kooperationspartner sorted erledigst du stressfrei und unbürokratisch alle Formalitäten #getsorted",
+    start_now: "Starte jetzt",
+    quote_1: "„Mein größter Wunsch ist es vielen talentierten Stylisten eine Oberfläche zu bieten. Somit können sie sich genau auf das konzentrieren, was sie lieben – Menschen ein lächeln ins Gesicht zu zaubern.“",
+    ceo_quote: "Alisa, Gründerin und CO-CEO bridlx",
+    first_impression: "Der erste Eindruck zählt.",
+    impression_string: "Steigere deine Sichtbarkeit und sorge für eine positive Kundenwahrnehmung durch ein authentisches, professionelles Profil. Was es hierbei zu berücksichtigen gibt, findest du",
+    here: "hier",
+    customer_stories: {
+      title: "Kunden Stories",
+      one: {
+        name: 'Faye',
+        body: 'Ich kann nur sagen, dass Bridlx unsere Hochzeit und meine Vorstellung von einer perfekten Hochzeit komplettiert hat. Ich habe mich noch nie zuvor so wunderschön gefühlt.',
+      },
+      two: {
+        name: 'Gaby',
+        body: 'Danke bridlx für euer perfektes Gefühl für Ästhetik und Natürlichkeit! Es war beruhigend, jemanden von euch an unserem großen Tag an meiner Seite gehabt zu haben.',
+      },
+      three: {
+        name: 'Helen',
+        body: 'Eine Hochzeit ist lang und vergeht gleichzeitig wie im Flug - mir war es wichtig, ein Make-Up und ein Haarstyling zu haben, was den ganzen Tag einfach perfekt hält. Bridlx hat alles nach meinen Wünschen und Vorstellungen umgesetzt.',
+      },
+      four: {
+        name: 'Lisa G.',
+        body: 'Spielend leicht habe ich den Traumstylisten in meiner Umgebung gefunden! Ich kann sowohl den Service als auch die unkomplizierte Abwicklung jedem empfehlen. Mein Hochzeitstag war einfach perfekt.',
+      },
+    },
+  },
   form: {
     btn: {
       cancel: 'Abbrechen',
       save: 'Speichern',
+      continue: 'Weiter',
       edit: {
         service_packages: {
           prices: 'Preise Bearbeiten'
@@ -20,6 +94,11 @@ export default {
       extra_item: "Wähle einen angemessenen Preis."
     },
     label: {
+      first_name: 'Vorname',
+      last_name: 'Nachname',
+      email: 'E-Mail Adresse',
+      password: 'Passwort',
+      password_confirmation: 'Passwort bestätigen',
       street: 'Straße und Hausnummer',
       city: 'Stadt',
       zipcode: 'Postleitzahl',

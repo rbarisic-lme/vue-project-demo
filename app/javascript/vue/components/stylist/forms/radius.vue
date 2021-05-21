@@ -4,11 +4,11 @@
         p.p-4(v-if="service_mobility") Bis zu {{service_radius}} Kilometer
         p.p-4(v-else="service_mobility") Kein Mobil-Dienst
       template(v-slot:hideInactive)
-        v-form(name="").pt-8
+        v-form(name="").pt-2
           //- v-text-field(name="street" v-model="street" label="Strasse und Hausnummer")
           v-checkbox(v-model="service_mobility" label="Ich biete meine Dienste Mobil an")
           v-spacer
-          v-slider(v-model="service_radius" thumb-label="always" ticks="always" step="25" tick-size="4" min="0" max="500" :disabled="!service_mobility")
+          v-slider.pt-8(v-model="service_radius" thumb-label="always" ticks="always" step="25" tick-size="4" min="0" max="500" :disabled="!service_mobility")
             //- template(v-slot:thumb-label="{ value }")
               span {{value}} km
             template(v-slot:append) KM

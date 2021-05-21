@@ -17,6 +17,8 @@ class Stylist < User
   has_many :available_extras, foreign_key: :user_id, dependent: :delete_all
   has_many :service_extras, through: :available_extras, foreign_key: :user_id, class_name: 'AvailableExtras'
 
+  has_many :portfolio_images, foreign_key: :user_id, dependent: :delete_all
+
   validate :brands_format
 
   validates :sustainable_materials_percent, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, allow_blank: true
@@ -24,6 +26,7 @@ class Stylist < User
   accepts_nested_attributes_for :available_extras, allow_destroy: true
   accepts_nested_attributes_for :skills, allow_destroy: true
   accepts_nested_attributes_for :certifications, allow_destroy: true
+  accepts_nested_attributes_for :portfolio_images, allow_destroy: true
 
   def overall_ratings
     (self.reviews.pluck(:overall_rating).reduce do |sum, rating|

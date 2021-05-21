@@ -2,13 +2,13 @@
 Modal(name="signIn" height="auto" :maxWidth="600" :adaptive="true")
   div.m-8.text-center
     h3.heading-h3.mb-5
-      | bei bridlx
-      span {{ tab === 0 ? ' registrieren ' : ' anmelden ' }}
+      span {{$t('header.at_bridlx')}}&nbsp;
+      span {{ tab === 0 ? $t('header.signup').toLowerCase() : $t('header.signin').toLowerCase() }}
 
   v-card
     v-tabs(v-model="tab" grow show-arrows)
-      v-tab(color="green") Registrieren
-      v-tab(color="green") Anmelden
+      v-tab(color="green") {{$t('header.signup')}}
+      v-tab(color="green") {{$t('header.signin')}}
       v-tabs-items(v-model="tab").p-4
         v-tab-item
           v-card(flat)

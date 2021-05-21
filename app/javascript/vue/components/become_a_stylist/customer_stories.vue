@@ -1,6 +1,6 @@
 <template lang="pug">
   .container.bridlx-features.pt-8.pb-8.mb-8
-    h2.heading-h2.serif.mt-4.mb-8.text-center Kunden Stories
+    h2.heading-h2.serif.mt-4.mb-8.text-center {{$t('stylist_landing.customer_stories.title')}}
     .container
       .row.no-gutters.customer-stories
         .col-12.col-md-6.customer-story(v-for="(bride, index) in brides" :key="bride.name" :class="{'cs-left': index <= 1, 'cs-right': index > 1}")
@@ -28,23 +28,23 @@ export default {
     return {
       brides: [
         {
-          name: 'Faye',
-          body: 'Ich kann nur sagen, dass Bridlx unsere Hochzeit und meine Vorstellung von einer perfekten Hochzeit komplettiert hat. Ich habe mich noch nie zuvor so wunderschön gefühlt.',
+          name: this.$t('stylist_landing.customer_stories.one.name'),
+          body: this.$t('stylist_landing.customer_stories.one.body'),
           image: ImgFaye,
         },
         {
-          name: 'Gaby',
-          body: 'Danke bridlx für euer perfektes Gefühl für Ästhetik und Natürlichkeit! Es war beruhigend, jemanden von euch an unserem großen Tag an meiner Seite gehabt zu haben.',
+          name: this.$t('stylist_landing.customer_stories.two.name'),
+          body: this.$t('stylist_landing.customer_stories.two.body'),
           image: ImgGabriele,
         },
         {
-          name: 'Helen',
-          body: 'Eine Hochzeit ist lang und vergeht gleichzeitig wie im Flug - mir war es wichtig, ein Make-Up und ein Haarstyling zu haben, was den ganzen Tag einfach perfekt hält. Bridlx hat alles nach meinen Wünschen und Vorstellungen umgesetzt.',
+          name: this.$t('stylist_landing.customer_stories.three.name'),
+          body: this.$t('stylist_landing.customer_stories.three.body'),
           image: ImgHelen,
         },
         {
-          name: 'Lisa G.',
-          body: 'Spielend leicht habe ich den Traumstylisten in meiner Umgebung gefunden! Ich kann sowohl den Service als auch die unkomplizierte Abwicklung jedem empfehlen. Mein Hochzeitstag war einfach perfekt.',
+          name: this.$t('stylist_landing.customer_stories.four.name'),
+          body: this.$t('stylist_landing.customer_stories.four.body'),
           image: ImgLisa,
         },
       ]

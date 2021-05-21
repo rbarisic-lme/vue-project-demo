@@ -49,6 +49,12 @@ json.reviews do
   json.array! stylist.reviews.slice(0,3), :id, :author, :body, :overall_rating_2f, :updated_at
 end
 
+json.portfolio_images stylist.portfolio_images do |pi|
+  json.extract! pi, :id
+  json.image_url url_for(pi.image) if pi.image.attached?
+  # json.array! stylist.portfolio_images, :id, :image, :image_url
+end
+
 json.ready_for_kyc stylist.ready_for_kyc?
 
 json.avatar_url url_for(stylist.avatar) if stylist.avatar.attached?

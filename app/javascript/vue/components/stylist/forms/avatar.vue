@@ -66,7 +66,7 @@ export default {
 
       })
       .catch((error) => {
-       this.$toast.open({message: 'Leider ist ein Fehler aufgetreten. Versuche es später erneut.', type: 'error'});
+       this.$toast.open({message: this.$t('form.message.update.failure'), type: 'error'});
       }).finally(response => {
         this.avatar = null
         this.loading = false

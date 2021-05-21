@@ -1,7 +1,7 @@
 <template lang="pug">
   v-btn(block large color="#4267b2" dark @click="postFb").mb-4
-    v-icon(left) mdi-facebook
-    |  Mit Facebook registrieren
+    v-icon.mr-2(left) mdi-facebook
+    span {{$t('header.signup_fb')}}
 </template>
 
 <script>

@@ -57,11 +57,14 @@ Rails.application.routes.draw do
         get 'current', on: :collection
       end
 
+      resources :portfolio_images
+
       scope :auth do
         get 'current', to: 'auth#current'
         get 'authenticated', to: 'auth#authenticated'
         get 'fb_oauth_path', to: 'auth#fb_oauth_path'
       end
+
 
       resources :service_extras, only: [:index] do
 
