@@ -89,7 +89,7 @@ Rails.application.configure do
     :port => 587,
     :user_name => ENV['sendinblue_user'],
     :password => ENV['sendinblue_pw'],
-    :authentication => ‘login’,
+    :authentication => 'login',
     :enable_starttls_auto => true
   }
 
