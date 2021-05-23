@@ -20,6 +20,7 @@
     "sass-resources-loader": "^2.1.1",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.0.1-compat",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue": "^2.6.12",
     "vue-auth-jwt": "^0.4.4",
     "vue-cookies": "^1.7.4",

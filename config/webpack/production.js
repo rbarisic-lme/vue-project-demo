@@ -4,6 +4,13 @@ const environment = require('./environment')
 
 const config = environment.toWebpackConfig()
 
-config.devtool = 'none'
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+
+config.set('devtool', 'none')
+
+config.set('optimization.minimizer', [new UglifyJsPlugin({
+  exclude: 'vendors'
+})])
+
 
 module.exports = config

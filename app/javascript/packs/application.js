@@ -11,6 +11,7 @@ import "channels"
 import '../css/application.scss';
 import 'bootstrap-4-grid';
 import 'animate.css';
+
 Rails.start()
 // Turbolinks.start()
 ActiveStorage.start()
