@@ -31,7 +31,8 @@ export default {
   mounted() {
     for (var i = 0; i < this.loadImagesCount; i++) {
       let image = new Image();
-      image.src = require(`@images/${this.pathPrefix}${this.imageNames[i]}`);
+      // image.src = require(`@images/${this.pathPrefix}${this.imageNames[i]}`);
+      image.src = this.imageNames[i];
       image.onload = this.onImgLoad(image);
     }
   },

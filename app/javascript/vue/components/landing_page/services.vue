@@ -2,10 +2,10 @@
   .container-fluid.bridlx-services
     .row
       .col-12
-        h1.heading-h2.serif.mt-16.text-center Erkunde unsere professionellen Services
+        h1.heading-h2.serif.mt-16.text-center {{$t('landing.explore_services')}}
     .row
       .col-12
-        SliderWithArrows(:imageNames='["bridlx-service-1-make-up.jpg", "bridlx-service-2-hairstyling.jpg", "bridlx-service-3-typberatung.jpg", "bridlx-service-4-nails.jpg", "bridlx-service-5-elearning.jpg", "bridlx-service-6-fitness.jpg", "bridlx-service-7-yoga.jpg", "bridlx-service-8-health-coaching.jpg"]', pathPrefix="lp/services/")
+        SliderWithArrows(:imageNames="imageNames", pathPrefix="lp/services/")
 </template>
 
 <script>
@@ -20,7 +20,16 @@ export default {
   },
   data() {
     return {
-      
+      imageNames: [
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-1-make-up.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-2-hairstyling.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-3-typberatung.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-4-nails.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-5-elearning.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-6-fitness.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-7-yoga.jpg`,
+        `${this.$config.awsPath}/bilder/lp/services/bridlx-service-8-health-coaching.jpg`
+      ]
   }}
 }
 </script>

@@ -33,6 +33,9 @@ gem 'jbuilder', '~> 2.7'
 
 gem'active_storage_validations'
 
+gem 'aws-sdk-rails', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
+
 gem "attr_encrypted", "~> 3.1.0" # Encrypt and Decrypt attributes
 
 gem 'omniauth'

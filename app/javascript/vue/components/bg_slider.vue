@@ -25,7 +25,7 @@ export default {
   mounted() {
     for (var i = 1; i <= this.loadImagesCount; i++) {
       let image = new Image();
-      image.src = require(`@images/banner/Model${i}.jpeg`);
+      image.src = `${this.$config.awsPath}/bilder/banner/Model${i}.jpeg`;
       image.onload = this.onImgLoad(image);
     }
     this.interval = this.setNewInterval();

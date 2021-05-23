@@ -30,6 +30,9 @@ export default {
     privacy: "Datenschutz",
     imprint: "Impressum",
   },
+  landing: {
+    explore_services: "Erkunde unsere professionellen Services",
+  },
   dashboard: {
     title: "Dein Dashboard",
     no_items: "Sobald du Kundenanfragen erhältst, wirst du hier deine Dashboard Informationen sehen können."
