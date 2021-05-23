@@ -28,7 +28,7 @@ environment.config.merge({
     alias: {
       '@':       path.resolve(__dirname, '..', '..', 'app/javascript/vue'),
       '@assets': path.resolve(__dirname, '..', '..', 'app/assets'),
-      '@images': path.resolve(__dirname, '..', '..', 'app/assets/images'),    
+      '@images': path.resolve(__dirname, '..', '..', 'app/assets/images'),
     }
   }
 })

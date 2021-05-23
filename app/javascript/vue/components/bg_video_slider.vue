@@ -29,7 +29,8 @@ export default {
   },
   mounted() {
     for(let i = 0; i < this.videoNames.length; i++) {
-      this.videos.push(require(`@assets/${this.pathPrefix}/${this.videoNames[i]}`));
+      // this.videos.push(require(`@assets/${this.pathPrefix}/${this.videoNames[i]}`));
+      this.videos.push(this.videoNames[i])
     }
     this.interval = this.setNewInterval();
   },

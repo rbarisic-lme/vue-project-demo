@@ -45,7 +45,7 @@
                 a.lead-btn-stylist-1.lead-btn-stylist-white(href="#") Entdecke mehr dazu
             .col-6.d-none.d-lg-block
               video(autoplay loop muted playsinline preload="metadata" style="height: 400px; margin-left: auto; margin-right: 32px;")
-                source(src="@assets/videos/bridlx-business-trailer.mp4" type="video/mp4")
+                source(:src="`${$config.awsPath}/videos/bridlx-business-trailer.mp4`" type="video/mp4")
                 | Your browser does not support the video tag.
     .container-slider(key="4" style="height: 600px")
       .row.h100p.no-gutters

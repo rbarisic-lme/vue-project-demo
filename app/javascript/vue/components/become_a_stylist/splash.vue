@@ -1,6 +1,6 @@
 <template lang="pug">
 .splash
-  BGVideoSlider(:videoNames="['become_a_stylist/banner_1_mobile.mp4', 'become_a_stylist/banner_2_mobile.mp4', 'become_a_stylist/banner_todo_mobile.mp4']")
+  BGVideoSlider(:videoNames="[`${$config.awsPath}/videos/become_a_stylist/banner_1_mobile.mp4`, `${$config.awsPath}/videos/become_a_stylist/banner_2_mobile.mp4`, `${$config.awsPath}/videos/become_a_stylist/banner_todo_mobile.mp4`]")
     template(v-slot:default)
       v-container
         div

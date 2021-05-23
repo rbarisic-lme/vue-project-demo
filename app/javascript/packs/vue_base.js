@@ -41,6 +41,9 @@ const initApp = function(appName, routerName = false, storeName = false) {
 
   Vue.prototype.$axios = axios;
   Vue.prototype.$cookies = VueCookies;
+  Vue.prototype.$config = {
+    awsPath: "https://bridlx-storage.s3.eu-central-1.amazonaws.com"
+  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const app = new Vue({
