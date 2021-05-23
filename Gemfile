@@ -49,7 +49,7 @@ gem "figaro" # enables application.yml ENV
 gem "oauth2"
 gem "httparty" # http client
 gem "devise" # user authentication
-gem 'devise-jwt' # authentication via JSON Web Token
+gem 'devise-jwt', git: 'https://github.com/waiting-for-dev/devise-jwt.git', tag: 'v0.8.0' # authentication via JSON Web Token
 # gem "rubyzip"
 # gem "ransack" # better search
 # gem "font-awesome-sass", "~> 5.15.1"
