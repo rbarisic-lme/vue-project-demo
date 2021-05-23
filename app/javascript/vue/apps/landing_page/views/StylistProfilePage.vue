@@ -87,7 +87,8 @@
 </template>
 
 <script>
-import moment from 'moment'
+import { format } from 'date-fns'
+
 
 import Header from '@/components/header.vue'
 import Footer from '@/components/landing_page/footer.vue'
@@ -140,7 +141,8 @@ export default {
       return this.stylist.reviews ? this.stylist.reviews.length : '' 
     },
     memberSince() {
-      return moment(this.stylist.created_at).format("YYYY/MM")
+      return format(new Date(this.stylist.created_at), 'MM.yyyy')
+      // return moment(this.stylist.created_at).format("YYYY/MM")
     },
     overallRatings() {
       return this.stylist.overall_ratings ? this.stylist.overall_ratings.toFixed(1) : ''

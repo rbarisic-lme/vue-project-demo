@@ -39,8 +39,8 @@
         p Link zum teilen:
         div.pretty-link
           v-text-field(outlined readonly :value="shareLink" append-icon="mdi-content-copy" @click:append="copyLink" ref="copyfield" hide-details)
-        v-divider.my-6
-        p Per E-Mail einladen:
+        //- v-divider.my-6
+        //- p Per E-Mail einladen:
 
 </template>
 

@@ -7,7 +7,7 @@
         div
           h2.heading-h2.serif {{stylist.first_name}} {{stylist.last_name}}
           .d-flex.align-center
-            div Stylist aus {{stylist.workspace_city}}
+            div(v-if="stylist.workspace_city") Stylist aus {{stylist.workspace_city}}
       v-divider.my-4
       div(v-if="alreadyReviewed")
         div.py-4

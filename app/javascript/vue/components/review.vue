@@ -15,7 +15,7 @@
 
 <script>
 import Avatar from '@/components/user/avatar.vue'
-import moment from 'moment'
+import { format } from 'date-fns'
 
 export default {
   components: {
@@ -24,7 +24,7 @@ export default {
   props: ['review'],
   data() {
     return {
-      reviewDate: moment(this.review.updated_at).format('DD. MMMM YYYY')   
+      reviewDate: format(new Date(this.review.updated_at), 'dd.MM.yyyy')   
     }
   }
 }
