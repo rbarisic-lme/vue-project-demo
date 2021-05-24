@@ -1,0 +1,5 @@
+de:
+  hello: "Hello world"
+  review_mailer:
+    verify_email:
+      subject: 'bridlx Review - Bestätigen Sie Ihre E-Mail Adresse'

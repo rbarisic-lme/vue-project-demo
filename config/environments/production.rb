@@ -33,7 +33,6 @@ Rails.application.configure do
   routes.default_url_options[:host] = 'bridlx.com'
   config.action_mailer.default_url_options = { host: 'bridlx.com' }
 
-
   # Compress CSS using a preprocessor.
   config.assets.css_compressor = :sass
   # config.assets.js_compressor = :uglifier
