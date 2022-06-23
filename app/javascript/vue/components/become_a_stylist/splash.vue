@@ -1,6 +1,6 @@
 <template lang="pug">
 .splash
-  BGVideoSlider(:videoNames="[`${$config.awsPath}/videos/become_a_stylist/banner_1_mobile.mp4`, `${$config.awsPath}/videos/become_a_stylist/banner_2_mobile.mp4`, `${$config.awsPath}/videos/become_a_stylist/banner_todo_mobile.mp4`]")
+  BGVideoSlider(:videoNames="[`https://assets.mixkit.co/videos/preview/mixkit-makeup-artist-working-in-her-beauty-salon-40540-large.mp4`, `https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-bride-with-the-ring-and-her-bouquet-5223-large.mp4`, `https://assets.mixkit.co/videos/preview/mixkit-newlyweds-entering-their-wedding-car-5219-large.mp4`]")
     template(v-slot:default)
       v-container
         div

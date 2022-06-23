@@ -67,13 +67,12 @@ export default {
 
 <style lang="scss" scoped>
   .bg-slider {
-    background-color: #81ae76;
+    background-color: #dfb98b;
     position: absolute;
     top: 0;
     left: -60px;
     width: calc(100% + 60px);
     height: 100%;
-    background: #fff;
     background-size: cover;
     background-position-x: right;
     background-position-y: top;
